@@ -43,18 +43,19 @@ class UserRegController extends Controller
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required|digits_between:6,16',
+            'repass' => 'required|digits_between:6,16',
+        ], [
+            'email.required' => '不能为空',
+            'password.digits_between:6,16' => '不能小于6大于16',
         ]);
-        try{
-            if(!$user_reg['password'] === $user_reg['repass']){
-                throw new Exception('密码不同');
-            }
-        }catch(\Exception $e){
-            echo $e;
+        
+        if(!$user_reg['password'] == $user_reg['repass']){
+            return redirect('/');
         }
+        
         $user = new UserModel();
         $user->email = $user_reg['email'];
         $user->password = $user_reg['password'];
-
         $res = $user->save();
         dd($res);
 

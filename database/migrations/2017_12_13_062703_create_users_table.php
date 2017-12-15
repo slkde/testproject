@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('username')->nullable();
             $table->string('nickname')->nullable();
-            $table->integer('phone')->unsigned()->unique();
+            $table->integer('phone')->nullable()->unsigned()->unique();
             $table->string('email')->nullable()->unique();
             $table->string('password');
             $table->tinyInteger('sex')->unsigned()->nullable();
@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('identty')->default(0);
             $table->string('autograph');
             $table->string('job')->nullable();
-            $table->timestamps('updated_at');
+            $table->timestamp('updated_at');
         });
     }
 
