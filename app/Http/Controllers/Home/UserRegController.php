@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use  App\Model\UserModel;
+use  App\Model\User;
 
 class UserRegController extends Controller
 {
@@ -53,7 +53,7 @@ class UserRegController extends Controller
             return redirect('/');
         }
         
-        $user = new UserModel();
+        $user = new User();
         $user->email = $user_reg['email'];
         $user->password = $user_reg['password'];
         $res = $user->save();
