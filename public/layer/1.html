@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 1.引入Layer.js -->
+	<script type="text/javascript" src='jquery.js'></script>
+	<script type="text/javascript" src='layer.js'></script>
+</head>
+<body>
+	<button onclick="confirm()">提示框</button>
+
+	<script type="text/javascript">
+	// 调用相应的代码
+	function confirm(){
+		layer.confirm('确认删除吗？', {
+			  btn: ['确认','取消'] //按钮
+			}, function(){
+			  layer.msg('删除成功', {icon: 1});
+			}, function(){
+			 
+			});
+	}
+
+	</script>
+</body>
+</html>
