@@ -21,7 +21,7 @@ class CreateAnswerTable extends Migration
             $table->text('answer_content');
             $table->integer('support')->unsigned()->default(0);
             $table->tinyInteger('answer_status')->unsigned()->default(0);
-            $table->timestamps('created_at');
+            $table->timestamp('created_at')->nullable();
         });
     }
 

@@ -18,7 +18,7 @@ class CreateComplainTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('question_id')->unsigned();
             $table->text('content');
-            $table->timestamps('created_at');
+            $table->timestamp('created_at')->nullable();
         });
     }
 

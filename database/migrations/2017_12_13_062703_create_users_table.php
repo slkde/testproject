@@ -24,9 +24,9 @@ class CreateUsersTable extends Migration
             $table->string('photo')->nullable();
             $table->integer('score')->unsigned()->default(100);
             $table->string('identty')->default(0);
-            $table->string('autograph');
+            $table->string('autograph')->nullable();
             $table->string('job')->nullable();
-            $table->timestamp('updated_at');
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

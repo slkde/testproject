@@ -24,7 +24,7 @@ class CreateQuestionTable extends Migration
             $table->integer('bonus')->unsigned()->default(0);
             $table->integer('support')->unsigned()->nullable()->default(0);
             $table->integer('price')->unsigned()->nullable()->default(0);
-            $table->timestamps('created_at');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
