@@ -133,7 +133,7 @@
               </div>
             </div>
             <div class="layui-form-item">
-              <button class="layui-btn" lay-filter="*" lay-submit>确认修改</button>
+              <button class="layui-btn" key="set-mine" lay-filter="*" lay-submit>确认修改</button>
             </div>
           </div>
           
@@ -214,7 +214,22 @@
 </div>
 
 <script src="{{asset('/res/layui/layui.js')}}"></script>
-
+<script>
+layui.cache.page = 'user';
+layui.cache.user = {
+  username: '游客'
+  ,uid: -1
+  ,avatar: '../../res/images/avatar/00.jpg'
+  ,experience: 83
+  ,sex: '男'
+};
+layui.config({
+  version: "2.0.0"
+  ,base: "{{asset('/res/mods/')}}/"
+}).extend({
+  fly: 'index'
+}).use('fly');
+</script>
 
 </body>
 </html>
