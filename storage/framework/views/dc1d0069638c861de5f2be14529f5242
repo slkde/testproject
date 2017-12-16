@@ -99,8 +99,9 @@
       </ul>
       <div class="layui-tab-content" style="padding: 20px 0;">
         <div class="layui-form layui-form-pane layui-tab-item layui-show">
-          <form action="{{ url('user/set') }}" method="post">
-          {{csrf_field()}}
+          <form action="<?php echo e(url('user/set')); ?>" method="post">
+          <?php echo e(csrf_field()); ?>
+
             <div class="layui-form-item">
               <label for="L_email" class="layui-form-label">邮箱</label>
               <div class="layui-input-inline">
@@ -213,7 +214,7 @@
   </p>
 </div>
 
-<script src="{{asset('/res/layui/layui.js')}}"></script>
+<script src="<?php echo e(asset('/res/layui/layui.js')); ?>"></script>
 
 
 </body>

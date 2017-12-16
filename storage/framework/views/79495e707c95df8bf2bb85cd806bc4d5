@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <?php echo $__env->yieldContent('title'); ?>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="keywords" content="1111111111">
+  <meta name="description" content="11111111111">
+  <link rel="stylesheet" href="<?php echo e(asset('/res/layui/css/layui.css')); ?>">
+  <link rel="stylesheet" href="<?php echo e(asset('/res/css/global.css')); ?>">
+</head>
+<body>
+<?php $__env->startSection('body'); ?>
+<?php echo $__env->yieldSection(); ?>
+</body>
+</html>

@@ -16,7 +16,7 @@ class CenterSetController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.set');
     }
 
     /**
@@ -37,7 +37,7 @@ class CenterSetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

@@ -44,9 +44,6 @@ class UserRegController extends Controller
             'email' => 'required|email',
             'password' => 'required|digits_between:6,16',
             'repass' => 'required|digits_between:6,16',
-        ], [
-            'email.required' => '不能为空',
-            'password.digits_between:6,16' => '不能小于6大于16',
         ]);
         
         if(!$user_reg['password'] == $user_reg['repass']){
