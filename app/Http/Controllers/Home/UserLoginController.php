@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model\User;
+
 class UserLoginController extends Controller
 {
     /**
@@ -16,7 +18,7 @@ class UserLoginController extends Controller
      */
     public function index()
     {
-        return view('user/login');
+        return view('user/login')->with('msg','请登录');
     }
 
     /**
@@ -37,7 +39,27 @@ class UserLoginController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $user_reg = $request->except('_token');
+        
+        
+        $rule = [
+            'email'=>'required|email',
+            'pass'=>'required|between:6,18'
+        ];
+        
+        $msg =[
+            'email.required'=>'必须输入邮箱地址',
+            'email.email'=>'必须输入一个邮箱',
+            'pass.required'=>'必须输入密码',
+            'pass.between'=>'密码长度为6到16位',
+        ];
+        $this->validate($request, $rule, $msg);
+
+        if(User::where('email', '=', $user_reg['email'])->where('password', '=', $user_reg['pass'])->first()){
+            return redirect('user/center');
+        }else{
+            return view('user.login')->with('msg','邮箱或者密码错误');
+        }
     }
 
     /**

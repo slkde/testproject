@@ -13,7 +13,7 @@ Route::group(['prefix'=>'user'], function(){
     Route::get('home', 'Home\User\UserHomeController@index');
 });
 
-
+Route::get('mail','Home\UserRegController@email');
 
 
 

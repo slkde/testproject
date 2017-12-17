@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Model\User;
+use Mail;
 
 use Illuminate\Support\Facades\Validator;
 
@@ -61,7 +62,7 @@ class UserRegController extends Controller
             'password.required'=>'必须输入密码',
             'username.between'=>'密码长度为6到16位',
         ];
-        return json_encode($this->validate($request, $rule, $msg));
+        $this->validate($request, $rule, $msg);
 
         // $validator = Validator::make($user_reg, $rule,$msg);
         // //如果验证失败
@@ -70,6 +71,7 @@ class UserRegController extends Controller
         //         ->withErrors($validator)
         //         ->withInput();
         // }
+        
         
         $user = new User();
         if($user->register($user_reg) == true)
@@ -123,5 +125,25 @@ class UserRegController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function email()
+    {
+
+
+        Mail::raw('这里填写邮件的内容',function ($message){
+             // 发件人（你自己的邮箱和名称）
+            $message->from('114595028@qq.com', 'laravel');
+            // 收件人的邮箱地址
+            $message->to('114595028@qq.com');
+            // 邮件主题
+            $message->subject('测试');
+        });
+
+        // $data = ['email'=>$email,];
+        // Mail::send('activemail', $data, function($message) use($data)
+        // {
+        //     $message->to($data['email'])->subject('欢迎注册我们的网站，请激活您的账号！');
+        // });
     }
 }

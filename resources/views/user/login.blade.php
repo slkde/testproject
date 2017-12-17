@@ -10,11 +10,17 @@
       <ul class="layui-tab-title">
         <li class="layui-this">登入</li>
         <li><a href="{{ url('reg') }}">注册</a></li>
+        <li>
+          @if($msg)
+          {{$msg}}
+          @endif
+        </li>
       </ul>
       <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
         <div class="layui-tab-item layui-show">
           <div class="layui-form layui-form-pane">
             <form action="{{ url('login') }}" method="post">
+            {{csrf_field()}}
               <div class="layui-form-item">
                 <label for="L_email" class="layui-form-label">邮箱</label>
                 <div class="layui-input-inline">
@@ -59,21 +65,6 @@
   </p>
 </div>
 
-<script src="../../res/layui/layui.js"></script>
-<script>
-layui.cache.page = 'user';
-layui.cache.user = {
-  username: '游客'
-  ,uid: -1
-  ,avatar: '../../res/images/avatar/00.jpg'
-  ,experience: 83
-  ,sex: '男'
-};
-layui.config({
-  version: "3.0.0"
-  ,base: '../../res/mods/'
-}).extend({
-  fly: 'index'
-}).use('fly');
-</script>
+<script src="{{asset('/res/layui/layui.js')}}"></script>
+
 @endsection
