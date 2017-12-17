@@ -309,9 +309,6 @@ Route::group(['prefix'=>'user'], function(){
 
 
 //后台路由
-Route::get('/', function () {
-    return view('welcome');//欢迎页面
-});
 //后台登录页面路由
 Route::get('admin/login','admin\LoginController@login');
 //后台登录验证码路由

@@ -10,6 +10,17 @@
       <ul class="layui-tab-title">
         <li><a href="{{ url('login') }}">登入</a></li>
         <li class="layui-this">注册</li>
+        <li>
+                @if (count($errors) > 0)
+                @if(is_object($errors))
+                @foreach($errors as $error)
+                {{ $error }}
+                @endforeach
+                @else
+                {{ $errors }}
+                @endif
+                @endif
+        </li>
       </ul>
       <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
         <div class="layui-tab-item layui-show">
@@ -21,7 +32,9 @@
                 <div class="layui-input-inline">
                   <input type="text" id="L_email" name="email" required lay-verify="email" autocomplete="off" class="layui-input">
                 </div>
-                <div class="layui-form-mid layui-word-aux">将会成为您唯一的登入名</div>
+                <div class="layui-form-mid layui-word-aux">将会成为您唯一的登入名
+                
+                </div>
               </div>
               {{--  <div class="layui-form-item">
                 <label for="L_username" class="layui-form-label">昵称</label>

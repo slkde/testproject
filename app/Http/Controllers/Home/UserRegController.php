@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use  App\Model\User;
+use App\Model\User;
+
+use Illuminate\Support\Facades\Validator;
 
 class UserRegController extends Controller
 {
@@ -40,24 +42,42 @@ class UserRegController extends Controller
     public function store(Request $request)
     {
         $user_reg = $request->except('_token');
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required|digits_between:6,16',
-            'repass' => 'required|digits_between:6,16',
-        ]);
-        
         if(!$user_reg['password'] == $user_reg['repass']){
-            return redirect('/');
+            // return redirect('/')->with('msg', '两次密码输入不一致');
+            return '两次密码输入不一致';
         }
+        if(User::where('email', '=', $user_reg['email'])->first()){
+            return '邮箱已被使用';
+        }
+
+        $rule = [
+            'email'=>'required|email',
+            'password'=>'required|between:6,18'
+        ];
+
+        $msg =[
+            'email.required'=>'必须输入邮箱地址',
+            'email.email'=>'必须输入一个邮箱',
+            'password.required'=>'必须输入密码',
+            'username.between'=>'密码长度为6到16位',
+        ];
+        return json_encode($this->validate($request, $rule, $msg));
+
+        // $validator = Validator::make($user_reg, $rule,$msg);
+        // //如果验证失败
+        // if ($validator->fails()) {
+        //     return redirect('reg')
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // }
         
         $user = new User();
-        $user->email = $user_reg['email'];
-        $user->password = $user_reg['password'];
-        $res = $user->save();
-        dd($res);
-
-
-
+        if($user->register($user_reg) == true)
+        {
+            return '注册成功';
+        }else{
+            return '注册失败';
+        }
     }
 
     /**
