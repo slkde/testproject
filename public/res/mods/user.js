@@ -109,10 +109,10 @@ layui.define(['laypage', 'fly', 'element', 'flow'], function(exports){
             });
           });
         } else {
-          fly.json('/api/'+ type +'/', {
+          fly.json('admin/'+ type +'/', {
             page: curr
           }, function(res){
-            view(res);
+            view({{ asset('res') }});
             gather.minelog['mine-jie-page-' + curr] = res;
             now || laypage.render({
               elem: 'LAY_page'

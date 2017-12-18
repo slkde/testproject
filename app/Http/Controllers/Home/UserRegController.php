@@ -71,15 +71,13 @@ class UserRegController extends Controller
         //         ->withErrors($validator)
         //         ->withInput();
         // }
-        
-        
-        $user = new User();
-        if($user->register($user_reg) == true)
-        {
+        $user_reg = $request->except('_token','repass','vcode');
+        if(User::create($user_reg)){
             return '注册成功';
         }else{
             return '注册失败';
         }
+        
     }
 
     /**

@@ -58,7 +58,7 @@
               <div class="layui-form-item">
                 <label for="L_vercode" class="layui-form-label">验证码</label>
                 <div class="layui-input-inline">
-                  <input type="text" id="L_vercode" name="vercode" required lay-verify="required" placeholder="请回答后面的问题" autocomplete="off" class="layui-input">
+                  <input type="text" id="L_vercode" name="vcode" required lay-verify="required" placeholder="请回答后面的问题" autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-mid">
                   <span style="color: #c00;"> </span>
@@ -86,20 +86,20 @@
 </div>
 
 <script src="{{ asset('/res/layui/layui.js') }}"></script>
-{{--  <script>
+<script>
 layui.cache.page = 'user';
 layui.cache.user = {
   username: '游客'
   ,uid: -1
-  ,avatar: '../../res/images/avatar/00.jpg'
+  ,avatar: '{{ asset('/res/images/avatar/00.jpg') }}'
   ,experience: 83
   ,sex: '男'
 };
 layui.config({
   version: "3.0.0"
-  ,base: '../../res/mods/'
+  ,base: '{{ asset('/res/mods') }}/'
 }).extend({
   fly: 'index'
 }).use('fly');
-</script>  --}}
+</script>
 @endsection
