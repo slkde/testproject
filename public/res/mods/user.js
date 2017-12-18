@@ -191,9 +191,6 @@ layui.define(['laypage', 'fly', 'element', 'flow'], function(exports){
     });
   }
 
-  //合作平台
-  if($('#LAY_coop')[0]){
-
     //资源上传
     $('#LAY_coop .uploadRes').each(function(index, item){
       var othis = $(this);
@@ -269,29 +266,6 @@ layui.define(['laypage', 'fly', 'element', 'flow'], function(exports){
     });
   }
 
-  //帐号绑定
-  $('.acc-unbind').on('click', function(){
-    var othis = $(this), type = othis.attr('type');
-    layer.confirm('整的要解绑'+ ({
-      qq_id: 'QQ'
-      ,weibo_id: '微博'
-    })[type] + '吗？', {icon: 5}, function(){
-      fly.json('/api/unbind', {
-        type: type
-      }, function(res){
-        if(res.status === 0){
-          layer.alert('已成功解绑。', {
-            icon: 1
-            ,end: function(){
-              location.reload();
-            }
-          });
-        } else {
-          layer.msg(res.msg);
-        }
-      });
-    });
-  });
 
 
   //我的消息
