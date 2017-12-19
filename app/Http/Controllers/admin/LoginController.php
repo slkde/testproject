@@ -96,9 +96,10 @@ class LoginController extends Controller
 
     public function crypt()
     {
-//        $str = 1234;
-//        $res = Crypt::encrypt($str);
-//        return $res;
+      $str = 1234;
+       $res = Crypt::encrypt($str);
+	   dd($res);
+        return $res;
         $str = 'eyJpdiI6IlhBVEMxMWhcLzhFa2FVc21LV2l3NXhBPT0iLCJ2YWx1ZSI6Ikt1dzhDQ1JzVVJEUkdFNGhjM2tEYWc9PSIsIm1hYyI6IjVmZmM0MGIwZmYzYmRiYmU5ZjE5OWU2NjU4Yjk5OTU5Nzk2MTRmYjEzN2U1YzAxYjAwZDc0ZWQ3Y2JlYWJkMDQifQ==';
         $res = Crypt::decrypt($str);
         return $res;

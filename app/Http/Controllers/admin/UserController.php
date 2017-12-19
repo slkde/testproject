@@ -64,17 +64,19 @@ class UserController extends Controller
             'sex' => 'required',
             'identty' => 'required',
             'password'=>'required|alpha_num|between:4,18',
-            //'password_confirmation'=>'alpha_num|between:4,18'
+            'password_confirmation'=>'alpha_num|between:4,18|same:password'
         ];
         $mess = [
             'username.required' => '用户名不能为空',
             'username.unique' => '用户名已被占用，请更换一个用户名',
             'username.between' => '用户名必须在4-18位之间',
             'username.alpha_dash' => '用户名只能由数字、字母或下划线组成',
+            'password_confirmation.alpha_num' => '密码只能是数字和字母',
             'password.required' => '密码不能为空',
             'password.between' => '密码必须在4-18位之间',
-            'password.alpha_num' => '密码可以是字母和数字的组合',
-//            'password.confirmed' => '密码需要相同，请您确认',
+            'password_confirmation.between' => '密码必须在4-18位之间',
+            'password.alpha_num' => '密码只能是数字和字母',
+            'password_confirmation.same' => '密码需要相同，请您确认',
             'sex.required' => '性别不能为空哦',
             'identty.required' => '权限不能为空哦',
         ];

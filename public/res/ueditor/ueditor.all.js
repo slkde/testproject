@@ -9948,7 +9948,7 @@ var LocalStorage = UE.LocalStorage = (function () {
 UE.plugins['defaultfilter'] = function () {
     var me = this;
     me.setOpt({
-        'allowDivTransToP':true,
+        'allowDivTransToP':false,
         'disabledTableInTable':true
     });
     //默认的过滤处理
@@ -16519,8 +16519,9 @@ UE.plugins['enterkey'] = function() {
                     return;
                 }
             }
-            if (tag == 'p') {
-
+            //if (tag == 'p') {
+				//郭康康2017-12-19
+			if(tag == 'br'){
 
                 if (!browser.ie) {
 

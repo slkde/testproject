@@ -15,7 +15,7 @@
                 <header class="panel-heading">
                     <h3>用户列表</h3>
                 </header>
-                <form class=" navbar-form navbar-left" role="search" action="{{ url('/admin/user/list')}}">
+                <form class=" navbar-form navbar-left" role="search" action="{{ url('/admin/user/')}}">
                     <div class="form-group">&nbsp;&nbsp;&nbsp;&nbsp;
                         姓名：<input type="text" class="form-control" placeholder="名字" name="username" style="height: 35px">&nbsp;&nbsp;&nbsp;&nbsp;
                         性别：<select class="form-control" name="sex" style="height: 35px">

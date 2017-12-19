@@ -13,6 +13,11 @@ use App\Model\Question;
 use App\Services\OSS;
 //引用七牛云的服务配置
 use Illuminate\Support\Facades\Storage;
+
+//验证提交的表单需要
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Validator;
+use DB;
 class QuestionController extends Controller
 {
     //文件上传的方法
@@ -49,14 +54,36 @@ class QuestionController extends Controller
      */
     public function index(Request $request)
     {
-        //获取提问列表数据
-		$data = Question::get();
+		$where = [];
+        $db = DB::table('ask_question');
+        if($request->has('title')){
+            $title = $request->input('title');
+            $where['title'] = $title;
+            $db->where('title','like',"%{$title}%");
+        }
+		if($request->has('content')){
+            $content = $request->input('content');
+            $where['content'] = $content;
+            $db->where('content','like',"%{$content}%");
+        }
+		//这个作者待解决
+		/* if($request->has('title')){
+            $title = $request->input('title');
+            $where['title'] = $title;
+            $db->where('username','like',"%{$title}%");
+        }  */  
+		//获取提问列表数据
+		/* $data = Question::get()->paginate(5);   */
+        $data = $db->paginate(3); 
+        return view("admin.question.list", ['data'=>$data], ['where'=>$where]);
 		
-		/* Question::where('user_id', $user_id)->select(User::get('username'));
-		/* //根据usr_id得到username
-	 	$username = User::where('id', $id)->select('username');
-		dd($username); */  
-		return view('admin.question.list', compact('data'));
+        
+		
+	
+		/* $data = $data->user->username;
+		// $username = $data->user->username; 
+		dd($data); */
+		/* return view('admin.question.list', compact('data')); */
     }
 
     /**
@@ -79,7 +106,34 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		//1、获取用户提交的数据
+		$input = $request->except(htmlspecialchars_decode('_token'));
+		//2.对提交表单验证
+        $rule = [
+            'content'=>'required|between:10,1000',
+            'title' => 'required|unique:ask_question|between:10,30',
+        ];
+        $mess = [
+            'title.required' => '提问标题不能为空',
+            'title.unique' => '提问已被占用，请更换一个问题',
+            'title.between' => '问题标题必须在10-30位之间',         
+            'content.required' => '提问内容不能为空',
+            'content.between' => '高质量的提问内容不能少于10个字',
+        ];
+        $validator = Validator::make($input, $rule,$mess);
+        //如果验证失败
+        if ($validator->fails()) {
+            return redirect('admin/question/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+		
+		$res = Question::create($input);
+		if($res){
+            return redirect('admin/question')->with('msg','添加成功');
+        }else{
+            return back()->with('msg','添加失败');
+        }
     }
 
     /**
@@ -101,7 +155,9 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+		$topic = Topic::get();
+		$question = Question::find($id);
+        return view('admin.question.edit',compact('question', 'topic'));
     }
 
     /**
@@ -113,7 +169,30 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+		//1、修改了提问之后的验证
+		$messages = [
+            'title.required' => '提问不能为空',
+            // 'title.unique' => '提问标题已存在',
+            'title.between' => '提问标题要在10到30个字之间',
+			'content.required' => '提问内容不能为空',
+            'content.between' => '高质量的提问内容不能少于10个字',
+        ];
+        $this->validate($request,[
+			'content'=>'required|between:10,1000',
+            'title'=>'required|between:10,30',
+        ], $messages);
+		//2、通过$request获取要修改的值
+        $input = $request->except('_token', '_method');
+        //dd($input);
+		//3、执行修改操作
+        $question = Question::find($id);
+		$res = $question->update(['title'=>$input['title'],'content'=>$input['content'],'photo'=>$input['photo']]);
+		/* dd($res); */
+        if($res){
+           return redirect('admin/question') -> with('msg', '修改成功');
+        }else{
+           return back() -> with('msg', '修改失败');
+             }		
     }
 
     /**
@@ -124,6 +203,19 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $res = Question::find($id)->delete();
+        if($res){
+            $data = [
+                'status' => 0,
+                'msg' => '删除成功',
+            ];
+        }else{
+            $data = [
+                'status' => 1,
+                'msg' => '删除失败',
+            ];
+        }
+        //返回json格式的数据
+        return $data;
     }
 }
