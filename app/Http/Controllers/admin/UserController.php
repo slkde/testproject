@@ -110,7 +110,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        //对密码解密
+        $user['password'] = Crypt::decrypt($user['password']);
+//        dd($user);
+        return view('admin.user.show', ['user'=>$user]);
     }
 
     /**
@@ -139,7 +143,33 @@ class UserController extends Controller
     {
         //通过$request获取要修改的值
         $input = $request->except('_token', '_method');
+
 //        dd($input);
+        //2.对提交表单验证
+        $rule = [
+            'username'=>'required|between:4,18|alpha_dash',
+            'identty' => 'required',
+            'password'=>'required|alpha_num|between:4,18',
+            //'password_confirmation'=>'alpha_num|between:4,18'
+        ];
+        $mess = [
+            'username.required' => '用户名不能为空',
+            // 'username.unique' => '用户名已被占用，请更换一个用户名',
+            'username.between' => '用户名必须在4-18位之间',
+            'username.alpha_dash' => '用户名只能由数字、字母或下划线组成',
+            'password.required' => '密码不能为空',
+            'password.between' => '密码必须在4-18位之间',
+            'password.alpha_num' => '密码可以是字母和数字的组合',
+        //            'password.confirmed' => '密码需要相同，请您确认',
+            'identty.required' => '权限不能为空哦',
+        ];
+        $validator = Validator::make($input, $rule,$mess);
+        //如果验证失败
+        if ($validator->fails()) {
+            return redirect("admin/user/{$id}/edit")
+                ->withErrors($validator)
+                ->withInput();
+        }
         //执行修改操作
         $user = User::find($id);
         $res = $user->update(['username'=>$input['username'],'password'=>Crypt::encrypt($input['password']),'identty'=>$input['identty']]);

@@ -319,7 +319,7 @@ Route::get('/code/captcha/{tmp}', 'admin\LoginController@captcha');
 //后台登录提交
 Route::post('admin/dologin', 'admin\LoginController@doLogin');
 //加密验证
-//Route::get('crypt','admin\LoginController@crypt');
+Route::get('crypt','admin\LoginController@crypt');
 //路由前缀admin， 命名空间admin\, 中间件islogin
 Route::group(['prefix' => 'admin','namespace' => 'admin', 'middleware' => 'islogin'], function(){
     //后台首页路由
@@ -328,5 +328,32 @@ Route::group(['prefix' => 'admin','namespace' => 'admin', 'middleware' => 'islog
     Route::get('logout', 'IndexController@logout');
     //用户模块
     Route::resource('user', 'UserController');
+    //话题模块
+    Route::resource('topic', 'TopicController');
+
+    //提问模块
+    Route::resource('question', 'QuestionController');
+	//上传图片的路由
+    Route::post('upload', 'QuestionController@upload');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

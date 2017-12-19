@@ -26,7 +26,8 @@
         "App\\Providers\\AppServiceProvider",
         "App\\Providers\\AuthServiceProvider",
         "App\\Providers\\EventServiceProvider",
-        "App\\Providers\\RouteServiceProvider"
+        "App\\Providers\\RouteServiceProvider",
+        "Overtrue\\LaravelFilesystem\\Qiniu\\QiniuStorageServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -43,7 +44,8 @@
         "App\\Providers\\AppServiceProvider",
         "App\\Providers\\AuthServiceProvider",
         "App\\Providers\\EventServiceProvider",
-        "App\\Providers\\RouteServiceProvider"
+        "App\\Providers\\RouteServiceProvider",
+        "Overtrue\\LaravelFilesystem\\Qiniu\\QiniuStorageServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",

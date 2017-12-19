@@ -144,6 +144,8 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+		//七牛云的服务
+		Overtrue\LaravelFilesystem\Qiniu\QiniuStorageServiceProvider::class,
 
     ],
 

@@ -6,38 +6,38 @@
     <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
     <meta name="author" content="GeeksLabs">
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-    <link rel="shortcut icon" href="{{ asset('admin/img/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('res/admin/img/favicon.png') }}">
 
     <title>Creative - Bootstrap Admin Template</title>
 
     <!-- Bootstrap CSS -->
-    <link href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('res/admin/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- bootstrap theme -->
-    <link href="{{ asset('admin/css/bootstrap-theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('res/admin/css/bootstrap-theme.css') }}" rel="stylesheet">
     <!--external css-->
     <!-- font icon -->
-    <link href="{{ asset('admin/css/elegant-icons-style.css') }}" rel="stylesheet" />
-    <link href="{{ asset('admin/css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('res/admin/css/elegant-icons-style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('res/admin/css/font-awesome.min.css') }}" rel="stylesheet" />
     <!-- full calendar css-->
-    <link href="{{ asset('admin/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css') }}" rel="stylesheet" />
-    <link href="{{ asset('admin/assets/fullcalendar/fullcalendar/fullcalendar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('res/admin/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('res/admin/assets/fullcalendar/fullcalendar/fullcalendar.css') }}" rel="stylesheet" />
     <!-- easy pie chart-->
-    <link href="{{ asset('admin/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="{{ asset('res/admin/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css') }}" rel="stylesheet" type="text/css" media="screen"/>
     <!-- owl carousel -->
-    <link rel="stylesheet" href="{{ asset('admin/css/owl.carousel.css') }}" type="text/css">
-    <link href="{{ asset('admin/css/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('res/admin/css/owl.carousel.css') }}" type="text/css">
+    <link href="{{ asset('res/admin/css/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="{{ asset('admin/css/fullcalendar.css') }}">
-    <link href="{{ asset('admin/css/widgets.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/css/style-responsive.css') }}" rel="stylesheet" />
-    <link href="{{ asset('admin/css/xcharts.min.css') }}" rel=" stylesheet">
-    <link href="{{ asset('admin/css/jquery-ui-1.10.4.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('res/admin/css/fullcalendar.css') }}">
+    <link href="{{ asset('res/admin/css/widgets.css') }}" rel="stylesheet">
+    <link href="{{ asset('res/admin/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('res/admin/css/style-responsive.css') }}" rel="stylesheet" />
+    <link href="{{ asset('res/admin/css/xcharts.min.css') }}" rel=" stylesheet">
+    <link href="{{ asset('res/admin/css/jquery-ui-1.10.4.min.css') }}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
-    <script src="{{ asset('admin/js/html5shiv.js') }}"></script>
-    <script src="{{ asset('admin/js/respond.min.js') }}"></script>
-    <script src="{{ asset('admin/js/lte-ie7.js') }}"></script>
+    <script src="{{ asset('res/admin/js/html5shiv.js') }}"></script>
+    <script src="{{ asset('res/admin/js/respond.min.js') }}"></script>
+    <script src="{{ asset('res/admin/js/lte-ie7.js') }}"></script>
     <![endif]-->
 
 </head>
@@ -53,7 +53,7 @@
         </div>
 
         <!--logo start-->
-        <a href="index.html" class="logo">SWYGW <span class="lite">Admin</span></a>
+        <a href="index.html" class="logo">SWYGW <span class="lite">后台</span></a>
         <!--logo end-->
 
         <div class="nav search-row" id="top_menu">
@@ -170,7 +170,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="{{ asset('admin/img/avatar-mini.jpg') }}"></span>
+                                <span class="photo"><img alt="avatar" src="{{ asset('res/admin/img/avatar-mini.jpg') }}"></span>
                                 <span class="subject">
                                     <span class="from">Greg  Martin</span>
                                     <span class="time">1 min</span>
@@ -182,7 +182,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="{{ asset('admin/img/avatar-mini2.jpg') }}"></span>
+                                <span class="photo"><img alt="avatar" src="{{ asset('res/admin/img/avatar-mini2.jpg') }}"></span>
                                 <span class="subject">
                                     <span class="from">Bob   Mckenzie</span>
                                     <span class="time">5 mins</span>
@@ -194,7 +194,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="{{ asset('admin/img/avatar-mini3.jpg') }}"></span>
+                                <span class="photo"><img alt="avatar" src="{{ asset('res/admin/img/avatar-mini3.jpg') }}"></span>
                                 <span class="subject">
                                     <span class="from">Phillip   Park</span>
                                     <span class="time">2 hrs</span>
@@ -206,7 +206,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <span class="photo"><img alt="avatar" src="{{ asset('admin/img/avatar-mini4.jpg') }}"></span>
+                                <span class="photo"><img alt="avatar" src="{{ asset('res/admin/img/avatar-mini4.jpg') }}"></span>
                                 <span class="subject">
                                     <span class="from">Ray   Munoz</span>
                                     <span class="time">1 day</span>
@@ -272,7 +272,7 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img alt="" src="{{ asset('admin/img/avatar1_small.jpg') }}">
+                                <img alt="" src="{{ asset('res/admin/img/avatar1_small.jpg') }}">
                             </span>
                         <span class="username">超级管理员</span>
                         <b class="caret"></b>
@@ -333,46 +333,43 @@
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;" class="">
-                        <i class="icon_desktop"></i>
-                        <span>UI Fitures</span>
+                        <i class="icon_document_alt"></i>
+                        <span>话题管理</span>
                         <span class="menu-arrow arrow_carrot-right"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="general.html">Elements</a></li>
-                        <li><a class="" href="buttons.html">Buttons</a></li>
-                        <li><a class="" href="grids.html">Grids</a></li>
+                        <li><a class="" href="{{ url('/admin/topic') }}">话题列表</a></li>
+                        <li><a class="" href="{{ url('/admin/topic/create') }}">添加话题</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a class="" href="widgets.html">
-                        <i class="icon_genius"></i>
-                        <span>Widgets</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="chart-chartjs.html">
-                        <i class="icon_piechart"></i>
-                        <span>Charts</span>
-
-                    </a>
-
-                </li>
-
                 <li class="sub-menu">
                     <a href="javascript:;" class="">
-                        <i class="icon_table"></i>
-                        <span>Tables</span>
+                        <i class="icon_document_alt"></i>
+                        <span>提问管理</span>
                         <span class="menu-arrow arrow_carrot-right"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="basic_table.html">Basic Table</a></li>
+                        <li><a class="" href="{{ url('/admin/question') }}">提问列表</a></li>
+                        <li><a class="" href="{{ url('/admin/question/create') }}">添加提问</a></li>
                     </ul>
                 </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>回复管理</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="{{ url('/admin/user') }}">回复列表</a></li>
+                        <li><a class="" href="{{ url('/admin/user/create') }}">添加回复</a></li>
+                    </ul>
+                </li>
+
 
                 <li class="sub-menu">
                     <a href="javascript:;" class="">
                         <i class="icon_documents_alt"></i>
-                        <span>Pages</span>
+                        <span>备用页</span>
                         <span class="menu-arrow arrow_carrot-right"></span>
                     </a>
                     <ul class="sub">
@@ -389,57 +386,51 @@
     </aside>
     <!--sidebar end-->
 
-    <!--main content start-->
-    <section id="main-content">
-        <section class="wrapper">
-            @yield('content')
-        </section>
-        <!--main content end-->
-    </section>
+   
     <!-- container section start -->
 
     <!-- javascripts -->
-    <script src="{{ asset('admin/js/jquery.js') }}"></script>
-    <script src="{{ asset('admin/js/jquery-ui-1.10.4.min.js') }}"></script>
-    <script src="{{ asset('admin/js/jquery-1.8.3.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/jquery-ui-1.9.2.custom.min.js') }}"></script>
+    <script src="{{ asset('res/admin/js/jquery.js') }}"></script>
+    <script src="{{ asset('res/admin/js/jquery-ui-1.10.4.min.js') }}"></script>
+    <script src="{{ asset('res/admin/js/jquery-1.8.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('res/admin/js/jquery-ui-1.9.2.custom.min.js') }}"></script>
     <!-- bootstrap -->
-    <script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('res/admin/js/bootstrap.min.js') }}"></script>
     <!-- nice scroll -->
-    <script src="{{ asset('admin/js/jquery.scrollTo.min.js') }}"></script>
-    <script src="{{ asset('admin/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('res/admin/js/jquery.scrollTo.min.js') }}"></script>
+    <script src="{{ asset('res/admin/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
     <!-- charts scripts -->
-    <script src="{{ asset('admin/assets/jquery-knob/js/jquery.knob.js') }}"></script>
-    <script src="{{ asset('admin/js/jquery.sparkline.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('admin/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js') }}"></script>
-    <script src="{{ asset('admin/js/owl.carousel.js') }}" ></script>
+    <script src="{{ asset('res/admin/assets/jquery-knob/js/jquery.knob.js') }}"></script>
+    <script src="{{ asset('res/admin/js/jquery.sparkline.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('res/admin/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js') }}"></script>
+    <script src="{{ asset('res/admin/js/owl.carousel.js') }}" ></script>
     <!-- jQuery full calendar -->
-    <<script src="{{ asset('admin/js/fullcalendar.min.js') }}"></script> <!-- Full Google Calendar - Calendar -->
-    <script src="{{ asset('admin/assets/fullcalendar/fullcalendar/fullcalendar.js') }}"></script>
+    <<script src="{{ asset('res/admin/js/fullcalendar.min.js') }}"></script> <!-- Full Google Calendar - Calendar -->
+    <script src="{{ asset('res/admin/assets/fullcalendar/fullcalendar/fullcalendar.js') }}"></script>
     <!--script for this page only-->
-    <script src="{{ asset('admin/js/calendar-custom.js') }}"></script>
-    <script src="{{ asset('admin/js/jquery.rateit.min.js') }}"></script>
+    <script src="{{ asset('res/admin/js/calendar-custom.js') }}"></script>
+    <script src="{{ asset('res/admin/js/jquery.rateit.min.js') }}"></script>
     <!-- custom select -->
-    <script src="{{ asset('admin/js/jquery.customSelect.min.js') }}" ></script>
-    <script src="{{ asset('admin/assets/chart-master/Chart.js') }}"></script>
+    <script src="{{ asset('res/admin/js/jquery.customSelect.min.js') }}" ></script>
+    <script src="{{ asset('res/admin/assets/chart-master/Chart.js') }}"></script>
 
     <!--custome script for all page-->
-    <script src="{{ asset('admin/js/scripts.js') }}"></script>
+    <script src="{{ asset('res/admin/js/scripts.js') }}"></script>
     <!-- custom script for this page-->
-    <script src="{{ asset('admin/js/sparkline-chart.js') }}"></script>
-    <script src="{{ asset('admin/js/easy-pie-chart.js') }}"></script>
-    <script src="{{ asset('admin/js/jquery-jvectormap-1.2.2.min.js') }}"></script>
-    <script src="{{ asset('admin/js/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <script src="{{ asset('admin/js/xcharts.min.js') }}"></script>
-    <script src="{{ asset('admin/js/jquery.autosize.min.js') }}"></script>
-    <script src="{{ asset('admin/js/jquery.placeholder.min.js') }}"></script>
-    <script src="{{ asset('admin/js/gdp-data.js') }}"></script>
-    <script src="{{ asset('admin/js/morris.min.js') }}"></script>
-    <script src="{{ asset('admin/js/sparklines.js') }}"></script>
-    <script src="{{ asset('admin/js/charts.js') }}"></script>
-    <script src="{{ asset('admin/js/jquery.slimscroll.min.js') }}"></script>
-
-    <script type="text/javascript" src="{{asset('layer/layer.js')}}"></script>
+    <script src="{{ asset('res/admin/js/sparkline-chart.js') }}"></script>
+    <script src="{{ asset('res/admin/js/easy-pie-chart.js') }}"></script>
+    <script src="{{ asset('res/admin/js/jquery-jvectormap-1.2.2.min.js') }}"></script>
+    <script src="{{ asset('res/admin/js/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ asset('res/admin/js/xcharts.min.js') }}"></script>
+    <script src="{{ asset('res/admin/js/jquery.autosize.min.js') }}"></script>
+    <script src="{{ asset('res/admin/js/jquery.placeholder.min.js') }}"></script>
+    <script src="{{ asset('res/admin/js/gdp-data.js') }}"></script>
+    <script src="{{ asset('res/admin/js/morris.min.js') }}"></script>
+    <script src="{{ asset('res/admin/js/sparklines.js') }}"></script>
+    <script src="{{ asset('res/admin/js/charts.js') }}"></script>
+    <script src="{{ asset('res/admin/js/jquery.slimscroll.min.js') }}"></script>
+    {{--  这个是弹窗删除的js文件  --}}
+    <script type="text/javascript" src="{{asset('res/layer/layer.js')}}"></script>
     <script>
 
         //knob
@@ -489,6 +480,13 @@
 
 
     </script>
+	 <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            @yield('content')
+        </section>
+        <!--main content end-->
+    </section>
 
 </body>
 </html>

@@ -10,4 +10,9 @@ class Question extends Model
     public $primaryKey = 'id';
     public $guarded = [];
     public $timestamps = false;
+	
+	public function user()
+	{
+		
+	}
 }
