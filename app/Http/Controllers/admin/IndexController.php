@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
 {
+	public function auth()
+	{
+		return view('errors.auth');
+	}
     /**
      * 后台首页
      *

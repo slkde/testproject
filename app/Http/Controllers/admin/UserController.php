@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Model\User;
+use App\Model\Role;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
@@ -13,6 +14,53 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
+	//给用户授予角色的页面
+	public function auth($id)
+	{
+		//1、根据id获取当前用户
+		$user = User::find($id);
+		//2、获取所有的角色
+		$roles = Role::all();
+		//3、当前用户已经授予的角色
+		$own_roles = DB::table('ask_user_role')->where('user_id', $id)->get();
+		//4、声明一个变量，存放已经授予的角色
+		$own = [];
+		foreach($own_roles as $v){
+			$own[] = $v->role_id;
+		}
+		return view('admin.user.auth', compact('user', 'roles', 'own'));
+	}
+	
+	//处理授权操作
+	public function doAuth(Request $request)
+	{
+		//1.获取表单提交数据
+		$input = $request->except('_token');
+		//dd($input);
+		if(isset($input['role_id'])){
+		 DB::beginTransaction();
+        try{
+            //先删除掉已经授予的权限
+            DB::table('ask_user_role')->where('user_id',$input['id'])->delete();
+            //        2 向角色权限表中添加授权记录
+            foreach($input['role_id'] as $v){
+                DB::table('ask_user_role')->insert(['user_id'=>$input['id'],'role_id'=>$v]);
+            }
+            DB::commit();
+
+            return redirect('admin/user')->with('msg', '授权成功');
+
+
+        }catch(Exception $e){
+            DB::rollBack();
+            return redirect()->back()
+                ->withErrors(['error' => $e->getMessage()]);
+        }
+		}else{
+            DB::table('ask_user_role')->where('role_id',$input['id'])->delete();
+            return back();
+        }
+	}
     /**
      * Display a listing of the resource.
      *

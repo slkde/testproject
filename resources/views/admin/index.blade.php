@@ -8,26 +8,26 @@
                 <div class="result_title">
                     <h3>系统基本信息</h3>
                 </div>
-                <div class="result_content">
+                <div class="result_content" style="font-size:20px">
                     <ul>
                         <li>
-                            <label>操作系统</label><span>WINNT</span>
+                            <label>操作系统</label>&nbsp;&nbsp;<span>WINNT</span>
                         </li>
                         <li>
-                            <label>运行环境</label><span>{{$_SERVER['SERVER_SOFTWARE']}}</span>
+                            <label>运行环境</label>&nbsp;&nbsp;<span>{{$_SERVER['SERVER_SOFTWARE']}}</span>
                         </li>
 
                         <li>
-                            <label>上传附件限制</label><span><?php echo get_cfg_var ("upload_max_filesize")?get_cfg_var ("upload_max_filesize"):"不允许上传附件"; ?></span>
+                            <label>上传附件限制</label>&nbsp;&nbsp;<span><?php echo get_cfg_var ("upload_max_filesize")?get_cfg_var ("upload_max_filesize"):"不允许上传附件"; ?></span>
                         </li>
                         <li>
-                            <label>北京时间</label><span>{{date('Y-m-d H:i:s',time())}}</span>
+                            <label>北京时间</label>&nbsp;&nbsp;<span>{{date('Y-m-d H:i:s',time())}}</span>
                         </li>
                         <li>
-                            <label>服务器域名/IP</label><span>{{$_SERVER['SERVER_NAME']}} [ {{$_SERVER['SERVER_ADDR']}} ]</span>
+                            <label>服务器域名/IP</label>&nbsp;&nbsp;<span>{{$_SERVER['SERVER_NAME']}} [ {{$_SERVER['SERVER_ADDR']}} ]</span>
                         </li>
                         <li>
-                            <label>Host</label><span> {{$_SERVER['SERVER_ADDR']}}</span>
+                            <label>Host</label>&nbsp;&nbsp;<span> {{$_SERVER['SERVER_ADDR']}}</span>
                         </li>
                     </ul>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="result_title">
                     <h3>使用帮助</h3>
                 </div>
-                <div class="result_content">
+                <div class="result_content" style="font-size:20px">
                     <ul>
                         <li>
                             <label>官方交流网站：</label><span><a href="#">http://bbs.itxdl.cn</a></span>

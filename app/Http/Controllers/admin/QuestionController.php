@@ -53,7 +53,10 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
+    {	
+		
+		   
+		
 		$where = [];
         $db = DB::table('ask_question');
         if($request->has('title')){
@@ -75,7 +78,10 @@ class QuestionController extends Controller
 		//获取提问列表数据
 		/* $data = Question::get()->paginate(5);   */
         $data = $db->paginate(3); 
-        return view("admin.question.list", ['data'=>$data], ['where'=>$where]);
+		/* dd($data); */
+		 $arr = User::with('user')->get()->toArray();
+        return view("admin.question.list", compact('data','where','arr'));
+        //return view("admin.question.list", ['data'=>$data],['where'=>$where],['arr'=>$arr]);
 		
         
 		

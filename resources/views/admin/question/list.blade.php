@@ -34,6 +34,7 @@
                         <th>发布时间</th>
                         <th>操作</th>
                     </tr>
+				
                 @foreach($data as $k=>$v)
                         <tr>
                             <td class="tc">{{$v->id}}</td>
@@ -41,14 +42,17 @@
                                 <a href="#">{{$v->title}}</a>
                             </td>
                             <td>{{$v->content}}</td>
+							
+							<td>{{$arr[$k]['username']}}</td>
                             <td>{{$v->support}}</td>                         
-                            <td>{{$v->user_id}}</td>
+                            
                             <td>{{date('Y-m-d',$v->created_at)}}</td>
                             <td>
                                 <a href="{{url('admin/question/'.$v->id.'/edit')}}">修改</a>
                                 <a href="javascript:;" onclick="delQuestion({{ $v->id }})">删除</a>
                             </td>
                         </tr>
+						
                     @endforeach
                 </table>
 				<!-- 带搜索的分页  -->

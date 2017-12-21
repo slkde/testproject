@@ -8,7 +8,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="{{ asset('res/admin/img/favicon.png') }}">
 
-    <title>Creative - Bootstrap Admin Template</title>
+    <title>你问我答后台管理系统</title>
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('res/admin/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -360,10 +360,33 @@
                         <span class="menu-arrow arrow_carrot-right"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="{{ url('/admin/user') }}">回复列表</a></li>
-                        <li><a class="" href="{{ url('/admin/user/create') }}">添加回复</a></li>
+                        <li><a class="" href="{{ url('/admin/answer') }}">回复列表</a></li>
+                        <li><a class="" href="{{ url('/admin/answer/create') }}">添加回复</a></li>
                     </ul>
                 </li>
+				<li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>角色管理</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="{{ url('/admin/role') }}">角色列表</a></li>
+                        <li><a class="" href="{{ url('/admin/role/create') }}">添加角色</a></li>
+                    </ul>
+                </li>
+				<li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>权限管理</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="{{ url('/admin/permission') }}">权限列表</a></li>
+                        <li><a class="" href="{{ url('/admin/permission/create') }}">添加权限</a></li>
+                    </ul>
+                </li>
+				
 
 
                 <li class="sub-menu">
