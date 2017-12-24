@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class UsersMessageController extends Controller
+class UsersSetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,7 @@ class UsersMessageController extends Controller
     public function index()
     {
         //
-        $message = User::find(\Auth::user()->id)->message();
-        return view('users/message', compact('message'));
+        return view('users/set');
     }
 
     /**

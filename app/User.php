@@ -46,6 +46,17 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany(Answer::class,'id','user_id');
     }
 
+    public function message()
+    {
+        return $this->hasMany(Message::class,'id','user_id');
+    }
+
+    
+    public function getmessage()
+    {
+        return $this->hasMany(Message::class,'id','to_user_id');
+    }
+
     // public function setPasswordAttribute($password)
     // {
     //     $this->attributes['password'] = \Hash::make($password);
