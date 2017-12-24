@@ -8,7 +8,7 @@
                     <img class="img-circle user_photo" width="150" height="150" src="{{ asset(Auth::user()->photo) }}">
                     </img>
                     
-                    {!! Form::open(['url'=>'user/photo', 'files'=>true, 'id'=>'up_photo']) !!}
+                    {!! Form::open(['method'=>'patch','url'=>'user/photo/{{ Auth::user()->id }}', 'files'=>true, 'id'=>'up_photo']) !!}
                     
                     <div>
                         {{--  {!! Form::submit('上传头像', ['class' => 'btn btn-primary pull-right']) !!}  --}}

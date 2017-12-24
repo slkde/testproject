@@ -24,5 +24,5 @@ Route::get('/user/login', 'Home\UsersController@login');
 Route::post('/user/login', 'Home\UsersController@signin');
 Route::get('/logout', 'Home\UsersController@logout');
 Route::get('/verify/{confirm_code}', 'Home\UsersController@checkEmail');
-Route::get('/user/photo', 'User\UsersCenterController@photo');
-Route::post('/user/photo', 'User\UsersCenterController@uPhoto');
+Route::resource('/user/photo', 'User\UsersAvatarController');
+Route::resource('/user/message', 'User\UsersMessageController');
