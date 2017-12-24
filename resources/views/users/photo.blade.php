@@ -14,7 +14,7 @@
                         {{--  {!! Form::submit('上传头像', ['class' => 'btn btn-primary pull-right']) !!}  --}}
                         <div class="text-center">
                             <button type="button" class="btn btn-primary" id="upload_photo">上传头像</button>
-                        {!! Form::file('photo',['class'=>'photo','id'=>'image']) !!}
+                        {!! Form::file('photo',['class'=>'photo','id'=>'image', 'style'=>"display:none"]) !!}
                     </div>
                     </div>
 
@@ -36,6 +36,9 @@
             success:       showResponse,
             dataType: 'json'
         };
+        $('#upload_photo').click(function(){
+            $('#image').click();
+        });
         $('#image').on('change', function(){
             $('#upload_photo').html('正在上传...');
             $('#up_photo').ajaxForm(options).submit();
