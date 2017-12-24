@@ -35,7 +35,7 @@ class User extends Model
         return $this->hasMany(Message::class,'id','user_id');
     }
 
-    public function getmessage()
+    public function getMessage()
     {
         return $this->hasMany(Message::class,'id','to_user_id');
     }

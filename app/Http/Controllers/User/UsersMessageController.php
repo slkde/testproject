@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model\User;
+use App\Model\Message;
+
 class UsersMessageController extends Controller
 {
     /**
@@ -17,8 +20,9 @@ class UsersMessageController extends Controller
     public function index()
     {
         //
-        $message = User::find(\Auth::user()->id)->message();
-        return view('users/message', compact('message'));
+        $messages = User::find(\Auth::user()->id)->getMessage();
+        // dd($messages);
+        return view('users/message', compact('messages'));
     }
 
     /**

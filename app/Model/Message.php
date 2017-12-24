@@ -22,5 +22,15 @@ class Message extends Model
     public function touser()
     {
         return $this->belongsTo(User::class, 'to_user_id', 'id');
+    }
+    
+    public function setUpdatedAt($value)
+	{
+		return null;
 	}
+
+	public function getUpdatedAtColumn()
+    {
+        return null;
+    }
 }
