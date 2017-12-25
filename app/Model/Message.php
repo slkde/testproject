@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     //
-    public $table = 'ask_answer';
+    public $table = 'ask_message';
     //    主键
 	public $primaryKey = 'id';
 	

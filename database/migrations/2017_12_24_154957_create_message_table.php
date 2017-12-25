@@ -20,6 +20,7 @@ class CreateMessageTable extends Migration
             $table->integer('to_user_id')->unsigned();
             $table->string('message_title');
             $table->string('message_body');
+            $table->tinyInteger('message_status')->unsigned()->default(0);
             $table->timestamp('created_at');
         });
     }

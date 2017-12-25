@@ -31,9 +31,9 @@ class QuestionListController extends Controller
      */
     public function index()
     {
-        $questions = Question::latest()->Paginate(6);
+        $questions = Question::latest('created_at')->Paginate(6);
         
-//    	dd($questions);
+   	// dd($questions);
         return view('question.index', ['questions'=>$questions]);
     }
 

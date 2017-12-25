@@ -19,8 +19,11 @@ class UsersMessageController extends Controller
      */
     public function index()
     {
-        //
-        $messages = User::find(\Auth::user()->id)->getMessage();
+        // $userid = \Auth::user()->id;
+        // dd($userid);
+        // $messages = Message::where('to_user_id', '40');
+        $messages = Message::where('to_user_id', \Auth::user()->id)->get();
+        // var_dump($messages);
         // dd($messages);
         return view('users/message', compact('messages'));
     }
@@ -33,6 +36,7 @@ class UsersMessageController extends Controller
     public function create()
     {
         //
+        return view('users/sendmsg');
     }
 
     /**
@@ -41,9 +45,14 @@ class UsersMessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(\App\Http\Requests\MessageRequest $request)
     {
-        //
+        $date = [];
+        User::where('nickname',$request->user_name);
+        $date['to_user_id'] = User::where('nickname',$request->user_name)->first()->id;
+        $date['user_id'] = \Auth::user()->id;
+        Message::create(array_merge($request->except('user_name'),$date));
+        return ['msg' => '发送成功'];
     }
 
     /**

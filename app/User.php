@@ -10,6 +10,11 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+
+use App\Model\Message;
+use App\Model\Question;
+use App\Model\Answer;
+
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
@@ -52,7 +57,7 @@ class User extends Model implements AuthenticatableContract,
     }
 
     
-    public function getmessage()
+    public function getMessage()
     {
         return $this->hasMany(Message::class,'id','to_user_id');
     }
