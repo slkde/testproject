@@ -178,7 +178,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         //把密码解密后传入页面
-        $user['password'] = Crypt::decrypt($user['password']);
+        // $user['password'] = Crypt::decrypt($user['password']);
 //        dd($user);
         return view('admin.user.edit',compact('user'));
     }
@@ -227,8 +227,10 @@ class UserController extends Controller
                 ->withInput();
         }
         //执行修改操作
-        $user = User::find($id);
-        $res = $user->update(['username'=>$input['username'],'password'=>Crypt::encrypt($input['password']),'identty'=>$input['identty'],'email'=>$input['email']]);
+
+        $res = User::where('id',$id)->update(['username'=>$input['username'],'password'=>\Hash::make($input['password']),'identty'=>$input['identty'],'email'=>$input['email']]);
+        // $user = User::find($id);
+        // $res = $user->update(['username'=>$input['username'],'password'=>Crypt::encrypt($input['password']),'identty'=>$input['identty'],'email'=>$input['email']]);
         if($res){
             return redirect('admin/user') -> with('msg', '修改成功');
         }else{
