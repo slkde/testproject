@@ -26,12 +26,12 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var string
      */
-    protected $fillable = ['email', 'password','photo'];
+    protected $fillable = ['username','sex','identty','email', 'password','photo'];
     public $table = 'ask_user';
     public $primaryKey = 'id';
     protected $remember_token ='';
-    // public $guarded = [];
-    // public $timestamps = false;
+    public $guarded = [];
+    public $timestamps = false;
 
     //用户注册
     public function register($user_reg)
@@ -51,6 +51,16 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany(Answer::class,'id','user_id');
     }
 
+    public function roles()
+    {
+        //多对多模型
+//        参数一：关联模型
+//        参数二：关联表
+//        参数三：当前模型在关联表中的外键
+//        参数四：关联模型在关联表中的外键
+        return $this->belongsToMany('App\Model\Role','ask_user_role', 'user_id', 'role_id');
+    }
+
     public function message()
     {
         return $this->hasMany(Message::class,'id','user_id');
@@ -62,11 +72,11 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany(Message::class,'id','to_user_id');
     }
 
-    // public function setPasswordAttribute($password)
-    // {
-    //     $this->attributes['password'] = \Hash::make($password);
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = \Hash::make($password);
         
-    // }
+    }
     
     public function setCreatedAt($value)
 	{

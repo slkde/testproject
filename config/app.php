@@ -148,6 +148,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         YuanChao\Editor\EndaEditorServiceProvider::class,
+        //七牛云的服务
+		Overtrue\LaravelFilesystem\Qiniu\QiniuStorageServiceProvider::class,
 
     ],
 
