@@ -20,12 +20,15 @@
 
                 <article class=" type-post format-standard hentry clearfix">
 
-                    <h1 class="post-title"><a href="#">{!! $info->title !!}</a></h1>
+                    <h1 class="post-title">
+                        <img src="{{ asset(Auth::user()->photo) }}" class="img-circle user_photo" width="50" height="50"></li>
+                        <a href="#">{!! $info->title !!}</a>
+                    </h1>
 
                     <div class="post-meta clearfix">
                         <span class="date">{{ $info->title }}</span>
                         <span class="category"><a href="#" title="View all posts in Server &amp; Database"></a></span>
-                        <span class="comments"><a href="#" title="Comment on Integrating WordPress with Your Website">评论数:<?php echo random_int(100,999);?></a></span>
+                        <span class="comments"><a href="#" title="Comment on Integrating WordPress with Your Website">评论数:{{ $info->question_answer->count('id') }}</a></span>
                         @if(Auth::check() && Auth::user()->id == $info->user_id)
                         <span class="comments"><a href="{{ $info->id }}/edit" title="编辑问题">编辑问题</a></span>
                         @endif

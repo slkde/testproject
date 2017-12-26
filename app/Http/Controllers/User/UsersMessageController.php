@@ -22,7 +22,7 @@ class UsersMessageController extends Controller
         // $userid = \Auth::user()->id;
         // dd($userid);
         // $messages = Message::where('to_user_id', '40');
-        $messages = Message::where('to_user_id', \Auth::user()->id)->get();
+        $messages = Message::where('to_user_id', \Auth::user()->id)->paginate(5);
         // var_dump($messages);
         // dd($messages);
         return view('users/message', compact('messages'));
@@ -97,6 +97,11 @@ class UsersMessageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = Message::select('to_user_id')->where('id', $id)->first();
+        if(!$user['to_user_id'] == \Auth::user()->id){
+            return '只能删除自己的站内信';
+        }
+        Message::where('id',$id)->delete();
+        return '删除成功';
     }
 }

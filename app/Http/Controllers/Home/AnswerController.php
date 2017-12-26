@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Model\Anwser;
+use App\Model\Answer;
 
 class AnswerController extends Controller
 {
