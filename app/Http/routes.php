@@ -27,3 +27,4 @@ Route::get('/verify/{confirm_code}', 'Home\UsersController@checkEmail');
 Route::resource('/user/photo', 'User\UsersAvatarController');
 Route::resource('/user/set', 'User\UsersSetController');
 Route::resource('/user/message', 'User\UsersMessageController');
+Route::get('/question/like/{id}', 'Home\LikeController@like');

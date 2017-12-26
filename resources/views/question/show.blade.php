@@ -21,7 +21,7 @@
                 <article class=" type-post format-standard hentry clearfix">
 
                     <h1 class="post-title">
-                        <img src="{{ asset(Auth::user()->photo) }}" class="img-circle user_photo" width="50" height="50"></li>
+                        <img src="{{ asset($info->user->photo) }}" class="img-circle user_photo" width="70" height="70"></li>
                         <a href="#">{!! $info->title !!}</a>
                     </h1>
 
@@ -31,8 +31,9 @@
                         <span class="comments"><a href="#" title="Comment on Integrating WordPress with Your Website">评论数:{{ $info->question_answer->count('id') }}</a></span>
                         @if(Auth::check() && Auth::user()->id == $info->user_id)
                         <span class="comments"><a href="{{ $info->id }}/edit" title="编辑问题">编辑问题</a></span>
+                        <span class="comments"><a href="javascript:;" data-toggle="modal" data-target="#sendmessage" class="sendmsg" title="发送站内信">发送站内信</a></span>
                         @endif
-                        <span class="like-count">点赞</span>
+                        <span class="like-count">{{ $info->support }}点赞</span>
                     </div><!-- end of post meta -->
                    
                         {!! EndaEditor::MarkDecode($info->content) !!}
@@ -45,10 +46,10 @@
                         <input type="hidden" name="action" value="like_it">
                     </form>
 
-                    <span class="tags">
+                    {{--  <span class="tags">
                     <strong>Tags:&nbsp;&nbsp;</strong>
                         <a href="#" rel="tag">basic</a>, <a href="#" rel="tag">setting</a>, <a href="http://knowledgebase.inspirythemes.com/tag/website/" rel="tag">website</a>
-                    </span>
+                    </span>  --}}
 
                 </div>
 
@@ -173,4 +174,94 @@
 </div>
 <!-- End of Page Container -->
 
+
+
+
+
+<div class="modal fade" id="sendmessage" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">发送站内信
+          <span id="returnmsg"></span>
+        </h4>
+      </div>
+      <div class="modal-body">
+          
+          {!! Form::open(['url' => '/user/message','id'=>'send']) !!}
+          
+        <div class="row">
+          <div class="col-md-2 col-md-offset-2">收件人：</div>
+          <div class="col-md-8" id="returnmsgname"></div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-2">
+            {!! Form::text('user_name',null,['id'=>'username']) !!}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 col-md-offset-2">主题：</div>
+          <div class="col-md-8" id="returnmsgtitle"></div>
+        </div>
+        <div>
+          <div class="col-md-10  col-md-offset-2">
+            {!! Form::text('message_title') !!}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2 col-md-offset-2">内容：</div>
+          <div class="col-md-8" id="returnmsgbody"></div>
+        </div>
+
+        <div  class="row">
+          <div class="col-md-10 col-md-offset-2">
+            {!! Form::textarea('message_body') !!}
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="clearmsg()">关闭</button>
+        <button type="button" class="btn btn-primary" id="sendout">发送</button>
+      </div>
+      
+      {!! Form::close() !!}
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+
+
+<script>
+    $('.sendmsg').click(function(){
+    $('#username').val('{!! $info->user->nickname !!}');
+  })
+    @include('users.sendmsg')
+
+    $('.like-it').click( function(){
+
+        $.ajax({
+        url:'like/'+{{ $info->id }},
+        async:true,
+        type:'get',
+        datatype:'json',
+        {{--  data:{'_token':'{{csrf_token()}}'},  --}}
+        success:function(data){
+        console.log(data);
+        $('.like-it').html(data);
+        $('.like-count').html(parseInt($('.like-count').html())+1);
+        }
+        });
+        
+    });
+
+
+</script>
 @endsection

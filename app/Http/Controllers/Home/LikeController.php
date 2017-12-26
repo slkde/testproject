@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Model\User;
-use App\Model\Message;
+use App\Model\Question;
 
-class UsersMessageController extends Controller
+class LikeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,13 +18,19 @@ class UsersMessageController extends Controller
      */
     public function index()
     {
-        // $userid = \Auth::user()->id;
-        // dd($userid);
-        // $messages = Message::where('to_user_id', '40');
-        $messages = Message::where('to_user_id', \Auth::user()->id)->latest('created_at')->paginate(5);
-        // var_dump($messages);
-        // dd($messages);
-        return view('users/message', compact('messages'));
+        //
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function like($id)
+    {
+        //
+        Question::where('id',$id)->increment('support');
+        return '点赞成功';
     }
 
     /**
@@ -44,14 +49,9 @@ class UsersMessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(\App\Http\Requests\MessageRequest $request)
+    public function store(Request $request)
     {
-        $date = [];
-        User::where('nickname',$request->user_name);
-        $date['to_user_id'] = User::where('nickname',$request->user_name)->first()->id;
-        $date['user_id'] = \Auth::user()->id;
-        Message::create(array_merge($request->except('user_name'),$date));
-        return ['msg' => '发送成功'];
+        //
     }
 
     /**
@@ -63,8 +63,6 @@ class UsersMessageController extends Controller
     public function show($id)
     {
         //
-        Message::where('id',$id)->update(['message_status'=>1]);
-        return '已读';
     }
 
     /**
@@ -98,11 +96,6 @@ class UsersMessageController extends Controller
      */
     public function destroy($id)
     {
-        $user = Message::select('to_user_id')->where('id', $id)->first();
-        if(!$user['to_user_id'] == \Auth::user()->id){
-            return '只能删除自己的站内信';
-        }
-        Message::where('id',$id)->delete();
-        return '删除成功';
+        //
     }
 }

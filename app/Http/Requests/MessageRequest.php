@@ -27,7 +27,7 @@ class MessageRequest extends Request
     {
         return [
             'user_name' => 'required|exists:ask_user,nickname',
-            'message_title' => 'required|between:6,20|string',
+            'message_title' => 'required|between:3,20|string',
             'message_body' => 'required|between:6,40|string'
         ];
     }

@@ -10,7 +10,11 @@
         "illuminate/html": "^5.0",
         "guzzlehttp/guzzle": "^6.3",
         "yuanchao/laravel-5-markdown-editor": "dev-master",
-        "intervention/image": "^2.4"
+        "intervention/image": "^2.4",
+        "gregwar/captcha": "^1.1",
+        "johnlui/aliyun-oss": "~1.0",
+        "overtrue/laravel-filesystem-qiniu": "^1.0",
+        "predis/predis": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
