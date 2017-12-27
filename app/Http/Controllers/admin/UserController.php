@@ -142,7 +142,7 @@ class UserController extends Controller
         // $user->identty = $input['identty'];
         // $res = $user->save();
         // dd($input);
-        $res = User::create($input);
+        $res = User::create(array_merge($input,['photo'=>'/uploads/defaultAvatar.png']));
 
         //4.如果添加成功，跳转到列表页；失败，跳转回添加页面
         if($res){

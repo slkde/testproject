@@ -24,7 +24,7 @@
                     </tr>
                     <tr>
                         <td>性别</td>
-                        <td>{{ ($user->sex == 1) ?"男":"女" }}</td>
+                        <td>{{ ($user->sex == 1) ?"男":($user->sex == 2) ?"女":"未知" }}</td>
                     </tr>
                     <tr>
                         <td>密码</td>
@@ -48,7 +48,7 @@
                     </tr>
                      <tr>
                         <td>权限</td>
-                        <td>{{ ($user->identty == 0)?'普通用户':'管理员' }}</td>
+                        <td>{{ ($user->identty == 1)?'普通用户':'管理员' }}</td>
                     </tr>
                     <tr>
                         <td>签名</td>

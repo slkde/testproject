@@ -63,7 +63,7 @@ class UsersController extends Controller
     {
         //
         // dd($request->all());
-        User::create(array_merge($request->all(),['photo'=>'/image/defaultAvatar.png']));
+        User::create(array_merge($request->all(),['photo'=>'/uploads/defaultAvatar.png']));
         $data = [
             'token' => str_random(48),
             'email' => $request->email
