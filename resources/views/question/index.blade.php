@@ -5,6 +5,7 @@
 <!-- Start of Page Container -->
 <div class="page-container">
     <div class="container">
+        
         <div class="row">
 
             <!-- start of page content -->
@@ -15,7 +16,7 @@
                     <header class="clearfix">
 
                         <h3 class="post-title">第{{ $v->id }}问
-                            <a href="{{ url('question/'.$v->id) }}">{{ $v->title }}</a>
+                            <a href="{{ url('answer/'.$v->id) }}">{{ $v->title }}</a>
                         </h3>
 
                         <div class="post-meta clearfix">

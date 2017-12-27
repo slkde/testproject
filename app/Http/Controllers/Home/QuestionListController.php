@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model\Topic;
+
 // use App\Markdown\Markdown;
 
 
@@ -45,7 +47,8 @@ class QuestionListController extends Controller
     public function create()
     {
         //
-        return view('question.create');
+        $topic = Topic::get();
+        return view('question.create', compact('topic'));
     }
 
     /**
@@ -61,6 +64,7 @@ class QuestionListController extends Controller
         $data = [
             'user_id' => \Auth::user()->id
         ];
+        // dd($request->all());
         $dis = Question::create(array_merge($request->all(),$data));
         return redirect()->action('Home\QuestionListController@show',['id'=>$dis->id]);
     }

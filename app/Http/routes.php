@@ -14,10 +14,8 @@
 Route::get('/', function () {
     return view('home.home');
 });
-Route::resource('answer', 'Home\AnswerController');
-
-
 Route::resource('question', 'Home\QuestionListController');
+Route::resource('answer', 'Home\AnswerController');
 Route::get('/user/register', 'Home\UsersController@register');
 Route::post('/user/register', 'Home\UsersController@store');
 Route::get('/user/login', 'Home\UsersController@login');

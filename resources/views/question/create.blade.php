@@ -3,9 +3,20 @@
 @include('editor::head')
     <div class ="container">
         <div class="row">
+            {!! Form::open(['url' => '/question']) !!}
+            <div class="col-md-10 col-md-offset-1">
+                <div class="btn-group" data-toggle="buttons">
+                    @foreach($topic as $v)
+                <label class="btn btn-primary">
+                    <input type="radio" name="topic_id" value="{{ $v->id }}" autocomplete="off">{{ $v->name }}
+                </label>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-10 col-md-offset-1" >
                 
-                {!! Form::open(['url' => '/question']) !!}
                     
                 @include('question.form')
                 <div>

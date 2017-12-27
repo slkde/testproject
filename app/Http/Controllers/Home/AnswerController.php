@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 
 use App\Model\Answer;
 
+use App\Model\Question;
+
 class AnswerController extends Controller
 {
     /**
@@ -54,6 +56,16 @@ class AnswerController extends Controller
     public function show($id)
     {
         //
+        $info = Question::findOrFail($id);
+        // $info->content = $this->markdown->markdown($info->content);
+        
+        // $info->content = $this->markdown->markdown($question->content);
+
+        // dd($info);
+
+        // $info = Question::with('question_answer')->where('id', $id)->get()->toArray();
+
+        return view('answer.show', compact('info'));
     }
 
     /**
