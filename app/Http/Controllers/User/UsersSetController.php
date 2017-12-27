@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model\User;
+
 class UsersSetController extends Controller
 {
     /**
@@ -17,7 +19,8 @@ class UsersSetController extends Controller
     public function index()
     {
         //
-        return view('users/set');
+        $userinfo = User::find(\Auth::user()->id);
+        return view('users/set',compact('userinfo'));
     }
 
     /**
@@ -39,6 +42,18 @@ class UsersSetController extends Controller
     public function store(Request $request)
     {
         //
+        $input = $request->except('_token');
+        foreach($input as $k=>$v){
+            if(empty($input[$k])){
+                unset($input[$k]);
+            }
+        }
+        if(empty($input)){
+            return '空的';
+        }
+        // dd($input);
+        $user = User::where('id',\Auth::user()->id)->update($input);
+        return $user;
     }
 
     /**

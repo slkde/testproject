@@ -36,7 +36,7 @@ class QuestionListController extends Controller
         $questions = Question::latest('created_at')->Paginate(6);
         
    	// dd($questions);
-        return view('question.index', ['questions'=>$questions]);
+        return view('question.index', compact('questions'));
     }
 
     /**
