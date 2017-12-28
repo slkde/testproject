@@ -102,7 +102,7 @@
                     <div class="row">
                     {{--  <div class="col-md-9" role="main">  --}}
                     
-                    {!! Form::open([ 'url' => '/answer']) !!}
+                    {!! Form::open([ 'url' => '/answer', 'id'=>'answer']) !!}
                         
                         {!! Form::hidden('question_id',  $info->id) !!}
                         
@@ -240,8 +240,8 @@
 
 <script>
     $('.sendmsg').click(function(){
-    $('#username').val('{!! $info->user->nickname !!}');
-  })
+        $('#username').val('{!! $info->user->nickname !!}');
+    })
     @include('users.sendmsg')
 
     $('.likeclick').click( function(){

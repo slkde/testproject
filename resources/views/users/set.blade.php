@@ -36,7 +36,7 @@
     </div>
     <div class="col-md-3">
         
-       发送激活邮件
+       注意，修改邮箱需要验证邮箱
         
     </div>
 </div>
@@ -53,8 +53,10 @@
 </div>
 {!! Form::close() !!}
 <div class="row">
+    <div class="col-md-2 col-md-offset-4 backmsg" style="color:green;line-height:32px">
+    </div>
 
-    <div class="col-md-3 col-md-offset-6">
+    <div class="col-md-3">
         
         
         {!! Form::submit('提交修改', ['class'=>'btn btn-primary','id'=> 'userset']) !!}
@@ -79,13 +81,14 @@
   });
   
   function showResponse(response){
-    alert(response);
-    
+    $('.backmsg').html(response.msg);
+    return;
   }
   
   function showError(data){
     var error = JSON.parse(data.responseText);
-    alert(error);
+    $('.backmsg').html(error);
+    return;
   }
 </script>
 @endsection

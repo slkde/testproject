@@ -52,8 +52,8 @@ class UsersSetController extends Controller
                 unset($input[$k]);
             }
         }
-        if(empty($input)){
-            return '空的';
+        if(empty($input['username']) && empty($input['nickname']) && empty($input['email'])){
+            return ['msg'=>'请填写需要修改的信息'];
         }
         if(!empty($input['email'])){
             $data = [
@@ -68,7 +68,7 @@ class UsersSetController extends Controller
 
         // dd($input);
         $user = User::where('id',\Auth::user()->id)->update($input);
-        return '成功';
+        return ['msg'=>'修改成功'];
     }
 
     /**
