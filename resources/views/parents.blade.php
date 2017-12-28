@@ -97,12 +97,18 @@
               @if(Auth::check())
               <li><img src="{{ asset(Auth::user()->photo) }}" class="img-circle user_photo" width="50" height="50"></li>
             <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->email}} <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                @if(empty(Auth::user()->nickname))
+                {{Auth::user()->email}}
+                @else
+                {{Auth::user()->nickname}}
+                @endif
+                <span class="caret"></span></a>
             <ul class="dropdown-menu">
+                <li><a href="{{ url('user/center') }}">个人首页</a></li>
                 <li><a href="{{ url('user/photo') }}">头像设置</a></li>
-                <li><a href="{{ url('user/set') }}">设置</a></li>
+                <li><a href="{{ url('user/set') }}">个人设置</a></li>
                 <li><a href="{{ url('user/message') }}">站内信</a></li>
-                <li><a href="#">abc</a></li>
                 {{--  <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
                 <li><a href="#">Separated link</a></li>

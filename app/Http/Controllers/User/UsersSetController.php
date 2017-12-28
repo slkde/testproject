@@ -43,17 +43,18 @@ class UsersSetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(\App\Http\Requests\SetRequest $request)
     {
         //
-        $input = $request->except('_token');
+        $input = $request->except('_token','password_confirmation');
         foreach($input as $k=>$v){
             if(empty($input[$k])){
                 unset($input[$k]);
             }
+            
         }
-        if(empty($input['username']) && empty($input['nickname']) && empty($input['email'])){
-            return ['msg'=>'请填写需要修改的信息'];
+        if(!empty($input['password'])){
+            $input['password'] = \Hash::make($input['password']);
         }
         if(!empty($input['email'])){
             $data = [

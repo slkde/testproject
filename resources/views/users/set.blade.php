@@ -51,6 +51,36 @@
         {!! Form::radio('sex', 2, ($userinfo->sex == 2)? 'checked':'' ) !!}女
     </div>
 </div>
+<div class="row">
+    <div class="col-md-1 col-md-offset-4">
+        手机号:
+    </div>
+    <div class="col-md-3 col-md-offset-1">
+        
+        {!! Form::text('phone',null,['placeholder' => $userinfo->phone ]) !!}
+        
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1 col-md-offset-4">
+        密码:
+    </div>
+    <div class="col-md-3 col-md-offset-1">
+        
+        {!! Form::text('password',null,['placeholder' => '请输入密码' ]) !!}
+        
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1 col-md-offset-4">
+        确认密码:
+    </div>
+    <div class="col-md-3 col-md-offset-1">
+        
+        {!! Form::text('password_confirmation',null,['placeholder' => '请再次输入密码' ]) !!}
+        
+    </div>
+</div>
 {!! Form::close() !!}
 <div class="row">
     <div class="col-md-2 col-md-offset-4 backmsg" style="color:green;line-height:32px">
@@ -81,13 +111,12 @@
   });
   
   function showResponse(response){
-    $('.backmsg').html(response.msg);
+    $('.backmsg').html(response.password);
     return;
   }
-  
-  function showError(data){
-    var error = JSON.parse(data.responseText);
-    $('.backmsg').html(error);
+
+  function showError(response){
+    $('.backmsg').html(JSON.parse(response.responseText).password[0]);
     return;
   }
 </script>
