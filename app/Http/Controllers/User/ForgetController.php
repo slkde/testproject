@@ -60,10 +60,14 @@ class ForgetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($token)
     {
         //
-        return 'show';
+        $email = PasswordReset::where('token',$token)->get();
+        if(empty($email)){
+            return redirect('/');
+        }
+        return view('users.change',compact('token'));
     }
 
     /**
@@ -85,9 +89,21 @@ class ForgetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $token)
     {
         //
+        $userEmail = $request->input('email');
+        $password = \Hash::make($request->input('password'));
+        $forget = PasswordReset::where('token',$token)->first();
+        if(empty($forget)){
+            return 123;
+        }
+        if($forget->email != $userEmail){
+            return 111;
+        }
+        User::where('email',$forget->email)->update(['password'=>$password]);
+        PasswordReset::where('token', $token)->delete();
+        return redirect('/');
     }
 
     /**
