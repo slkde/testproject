@@ -31,7 +31,7 @@
                         <span class="comments"><a href="{{ $info->id }}/edit" title="编辑问题">编辑问题</a></span>
                         <span class="comments"><a href="javascript:;" data-toggle="modal" data-target="#sendmessage" class="sendmsg" title="发送站内信">发送站内信</a></span>
                         @endif
-                        <span class="like-count">{{ $info->support }}点赞</span>
+                        <span class="like-count like-this">{{ $info->support }}点赞</span>
                     </div><!-- end of post meta -->
                    
                         {!! EndaEditor::MarkDecode($info->content) !!}
@@ -39,9 +39,10 @@
                 <div class="like-btn">
 
                     <form id="like-it-form" action="#" method="post">
-                        <span class="like-it ">点赞</span>
-                        <input type="hidden" name="post_id" value="99">
-                        <input type="hidden" name="action" value="like_it">
+                        <button type="button" class="btn btn-info likeclick">点赞</button>
+                        {{--  <span class="like-it">点赞</span>  --}}
+                        {{--  <input type="hidden" name="post_id" value="99">
+                        <input type="hidden" name="action" value="like_it">  --}}
                     </form>
 
                     {{--  <span class="tags">
@@ -243,18 +244,15 @@
   })
     @include('users.sendmsg')
 
-    $('.like-it').click( function(){
+    $('.likeclick').click( function(){
 
         $.ajax({
-        url:'like/'+{{ $info->id }},
+        url:'/question/like/'+{{ $info->id }},
         async:true,
         type:'get',
         datatype:'json',
-        {{--  data:{'_token':'{{csrf_token()}}'},  --}}
         success:function(data){
-        console.log(data);
-        $('.like-it').html(data);
-        $('.like-count').html(parseInt($('.like-count').html())+1+'点赞');
+        $('.like-this').html(parseInt($('.like-this').html())+1+'点赞');
         }
         });
         

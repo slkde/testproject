@@ -55,7 +55,7 @@
                         <li class="article-entry standard">
                             <h4><a href="single.html">Integrating WordPress with Your Website</a></h4>
                             <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
-                            <span class="like-count">66</span>
+                            <span class="like-count1">66</span>
                         </li>
 
                     </ul>
@@ -84,4 +84,10 @@
     </div>
 </div>
 <!-- End of Page Container -->
+<script>
+
+    $('.like-count').click(function(){
+        
+    })
+</script>
 @endsection

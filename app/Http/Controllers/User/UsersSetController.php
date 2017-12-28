@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 
 use App\Model\User;
 
+use App\Model\PasswordReset;
+
+use App\Http\Controllers\Home\UsersController;
+
 class UsersSetController extends Controller
 {
     /**
@@ -51,9 +55,20 @@ class UsersSetController extends Controller
         if(empty($input)){
             return '空的';
         }
+        if(!empty($input['email'])){
+            $data = [
+                'token' => str_random(48),
+                'email' => $request->email
+            ];
+            PasswordReset::create($data);
+            $emailTitle = '激活你的账户';
+            $emailView = 'email.register';
+            $this->sendTo($emailTitle,$emailView,$data);
+        }
+
         // dd($input);
         $user = User::where('id',\Auth::user()->id)->update($input);
-        return $user;
+        return '成功';
     }
 
     /**
@@ -99,5 +114,13 @@ class UsersSetController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function sendTo($emailTitle,$emailView,$data)
+    {
+        //
+        \Mail::queue($emailView,$data,function($message) use ($data,$emailTitle){
+            $message->to($data['email'])->subject($emailTitle);
+        });
     }
 }

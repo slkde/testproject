@@ -152,7 +152,7 @@ class UsersController extends Controller
         if(is_null($user)){
             return redirect('/');
         }
-        User::where('email',['slkde@sina.com'])->update(['identty'=>'1']);
+        User::where('email',$user->email)->update(['identty'=>'1']);
         PasswordReset::where('token', $confirm_code)->delete();
         return redirect('/');
     }

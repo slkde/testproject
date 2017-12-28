@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-3 col-md-offset-1">
         
-        {!! Form::text('nickname',['placeholder']) !!}
+        {!! Form::text('nickname',null,['placeholder' => $userinfo->nickname ]) !!}
         
     </div>
 </div>
@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-2 col-md-offset-1">
         
-        {!! Form::email('email') !!}
+        {!! Form::email('email',null,['placeholder' => $userinfo->email ]) !!}
         
     </div>
     <div class="col-md-3">
@@ -45,10 +45,10 @@
         性别:
     </div>
     <div class="col-md-1 col-md-offset-1">
-        {!! Form::radio('sex', 1) !!}男
+        {!! Form::radio('sex', 1, ($userinfo->sex == 1)? 'checked':'' ) !!}男
     </div>
     <div class="col-md-1">
-        {!! Form::radio('sex', 2) !!}女
+        {!! Form::radio('sex', 2, ($userinfo->sex == 2)? 'checked':'' ) !!}女
     </div>
 </div>
 {!! Form::close() !!}
