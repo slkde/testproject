@@ -19,7 +19,7 @@
         <form action="{{ url('/admin/user/'.$user->id) }}" method="post" class=" navbar-left">
             {{ method_field('put') }}
             {{ csrf_field() }}
-            用户名：<input class="form-control input-lg m-b-10" type="text" placeholder="请输入用户名" name="username" value="{{ $user->username }}">           
+            用户名：<input class="form-control input-lg m-b-10" type="text" placeholder="请输入用户名" name="username" value="{{ $user->username }}" disabled>           
             密码：<input type="password" name="password" class="form-control input-lg m-b-10" placeholder="请输入密码" value="{{ $user->password }}">
             
             确认密码：<input type="password" name="password_confirmation"

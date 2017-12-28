@@ -73,7 +73,7 @@
                         {{ method_field('delete') }}
                     </form>
             </div>
-			<input type="button" class="btn btn-primary btn-lg btn-block" onclick="history.go(-1)" value="返回">
+			<a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/question/') }}">返回</a>
         </div>
 		
     </div>

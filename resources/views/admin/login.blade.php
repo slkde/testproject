@@ -8,7 +8,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     {{--<link rel="shortcut icon" href="{{ asset('res/admin/img/favicon.png') }}">--}}
 
-    <title>Login Page 2 | Creative - Bootstrap 3 Responsive Admin Template</title>
+    <title>管理员后台登录页面</title>
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('res/admin/css/bootstrap.min.css') }}" rel="stylesheet">
