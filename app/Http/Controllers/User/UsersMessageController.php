@@ -12,6 +12,14 @@ use App\Model\Message;
 
 class UsersMessageController extends Controller
 {
+
+    public function __construct()
+    // public function __construct(Markdown $markdown)
+    {
+        // $this->markdown = $markdown;
+
+        $this->middleware('auth',['only'=>['index','show','destory']]);
+    }
     /**
      * Display a listing of the resource.
      *

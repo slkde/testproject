@@ -13,6 +13,14 @@ use App\Model\PasswordReset;
 class UsersController extends Controller
 {
 
+    public function __construct()
+    // public function __construct(Markdown $markdown)
+    {
+        // $this->markdown = $markdown;
+
+        $this->middleware('auth',['only'=>['store']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

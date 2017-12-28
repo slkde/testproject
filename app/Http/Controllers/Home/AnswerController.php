@@ -13,6 +13,13 @@ use App\Model\Question;
 
 class AnswerController extends Controller
 {
+    public function __construct()
+    // public function __construct(Markdown $markdown)
+    {
+        // $this->markdown = $markdown;
+
+        $this->middleware('auth',['only'=>['store','edit','update']]);
+    }
     /**
      * Display a listing of the resource.
      *

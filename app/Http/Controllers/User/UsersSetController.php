@@ -15,6 +15,13 @@ use App\Http\Controllers\Home\UsersController;
 
 class UsersSetController extends Controller
 {
+    public function __construct()
+    // public function __construct(Markdown $markdown)
+    {
+        // $this->markdown = $markdown;
+
+        $this->middleware('auth',['only'=>['index','store','sendTo']]);
+    }
     /**
      * Display a listing of the resource.
      *

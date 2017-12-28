@@ -14,6 +14,14 @@ use Validator;
 
 class UsersAvatarController extends Controller
 {
+
+    public function __construct()
+    // public function __construct(Markdown $markdown)
+    {
+        // $this->markdown = $markdown;
+
+        $this->middleware('auth',['only'=>['index','update']]);
+    }
     /**
      * Display a listing of the resource.
      *
