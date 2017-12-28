@@ -106,5 +106,10 @@ Route::group(['prefix' => 'admin','namespace' => 'admin', 'middleware' => 'islog
 	Route::post('role/doauth','RoleController@doAuth');
 	
 	//权限路由
-	Route::resource('permission', 'PermissionController');
+    Route::resource('permission', 'PermissionController');
+    
+    //网站配置路由
+    Route::get('config/putfile','ConfigController@putFile');
+    Route::resource('config','ConfigController');
+    Route::post('config/changecontent','ConfigController@changeContent');
 });

@@ -163,6 +163,17 @@
                        
                     </ul>
                 </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon_document_alt"></i>
+                        <span>网站配置</span>
+                        <span class="menu-arrow arrow_carrot-right"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="{{ url('/admin/config/create') }}">网站配置添加</a></li>
+                        <li><a class="" href="{{ url('/admin/config') }}">网站配置列表</a></li>
+                    </ul>
+                </li>
 				<li class="sub-menu">
                     <a href="javascript:;" class="">
                         <i class="icon_document_alt"></i>

@@ -13,7 +13,7 @@ class CreateConfigTable extends Migration
     public function up()
     {
         //
-        Schema::create('ask_web_config', function (Blueprint $table) {
+        Schema::create('ask_config', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('title');
