@@ -21,6 +21,7 @@ Route::post('/user/register', 'Home\UsersController@store');
 Route::get('/user/login', 'Home\UsersController@login');
 Route::post('/user/login', 'Home\UsersController@signin');
 Route::get('/logout', 'Home\UsersController@logout');
+Route::resource('/user/forget', 'User\ForgetController');
 Route::get('/verify/{confirm_code}', 'Home\UsersController@checkEmail');
 Route::resource('/user/photo', 'User\UsersAvatarController');
 Route::resource('/user/set', 'User\UsersSetController');

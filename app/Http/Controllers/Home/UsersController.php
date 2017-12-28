@@ -64,52 +64,18 @@ class UsersController extends Controller
         //
         // dd($request->all());
         User::create(array_merge($request->all(),['photo'=>'/uploads/defaultAvatar.png']));
-        $data = [
-            'token' => str_random(48),
-            'email' => $request->email
-        ];
-        // $date['token'] = str_random(48);
-        // $date['email'] = $request->email;
-        // dd($date);
-        PasswordReset::create($data);
-        $emailTitle = '激活你的账户';
-        $emailView = 'email.register';
-        $this->sendTo($emailTitle,$emailView,$data);
+        // $data = [
+        //     'token' => str_random(48),
+        //     'email' => $request->email
+        // ];
+        // // $date['token'] = str_random(48);
+        // // $date['email'] = $request->email;
+        // // dd($date);
+        // PasswordReset::create($data);
+        // $emailTitle = '激活你的账户';
+        // $emailView = 'email.register';
+        $this->sendTo($request->email);
         return redirect('/');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**
@@ -131,9 +97,16 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function sendTo($emailTitle,$emailView,$data)
+    public function sendTo($email)
     {
         //
+        $data = [
+            'token' => str_random(48),
+            'email' => $email
+        ];
+        PasswordReset::create($data);
+        $emailTitle = '激活你的账户';
+        $emailView = 'email.register';
         \Mail::queue($emailView,$data,function($message) use ($data,$emailTitle){
             $message->to($data['email'])->subject($emailTitle);
         });
@@ -156,4 +129,5 @@ class UsersController extends Controller
         PasswordReset::where('token', $confirm_code)->delete();
         return redirect('/');
     }
+
 }
