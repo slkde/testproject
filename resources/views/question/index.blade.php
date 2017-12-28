@@ -21,11 +21,7 @@
 
                         <div class="post-meta clearfix">
                             <span class="date">{{ $v->created_at }}</span>
-<<<<<<< HEAD
-                            <span class="category"><a href="#" title="View all posts in Server &amp; Database">所属话题:{!! $v->topic->name !!}</a></span>
-=======
                             <span class="category"><a href="{{ url('question').'/'. $v->topic->id }}" title="View all posts in Server &amp; Database">所属话题:{{ $v->topic->name }}</a></span>
->>>>>>> efee44c4e2ca83707351be2ad1c305224beed5ae
                             <span class="comments"><a href="#" title="Comment on Integrating WordPress with Your Website">评论数:{!! $v->question_answer->count() !!}</a></span>
                             <span class="like-count">{{ $v->support }}</span>
                         </div><!-- end of post meta -->
