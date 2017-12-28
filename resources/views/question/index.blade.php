@@ -5,6 +5,7 @@
 <!-- Start of Page Container -->
 <div class="page-container">
     <div class="container">
+        
         <div class="row">
 
             <!-- start of page content -->
@@ -15,12 +16,16 @@
                     <header class="clearfix">
 
                         <h3 class="post-title">第{{ $v->id }}问
-                            <a href="{{ url('question/'.$v->id) }}">{{ $v->title }}</a>
+                            <a href="{{ url('answer/'.$v->id) }}">{{ $v->title }}</a>
                         </h3>
 
                         <div class="post-meta clearfix">
                             <span class="date">{{ $v->created_at }}</span>
+<<<<<<< HEAD
                             <span class="category"><a href="#" title="View all posts in Server &amp; Database">所属话题:{!! $v->topic->name !!}</a></span>
+=======
+                            <span class="category"><a href="{{ url('question').'/'. $v->topic->id }}" title="View all posts in Server &amp; Database">所属话题:{{ $v->topic->name }}</a></span>
+>>>>>>> efee44c4e2ca83707351be2ad1c305224beed5ae
                             <span class="comments"><a href="#" title="Comment on Integrating WordPress with Your Website">评论数:{!! $v->question_answer->count() !!}</a></span>
                             <span class="like-count">{{ $v->support }}</span>
                         </div><!-- end of post meta -->
@@ -54,7 +59,7 @@
                         <li class="article-entry standard">
                             <h4><a href="single.html">Integrating WordPress with Your Website</a></h4>
                             <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
-                            <span class="like-count">66</span>
+                            <span class="like-count1">66</span>
                         </li>
 
                     </ul>
@@ -83,4 +88,10 @@
     </div>
 </div>
 <!-- End of Page Container -->
+<script>
+
+    $('.like-count').click(function(){
+        
+    })
+</script>
 @endsection

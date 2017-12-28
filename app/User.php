@@ -26,10 +26,10 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var string
      */
-    protected $fillable = ['username','sex','identty','email', 'password','photo'];
+    protected $fillable = ['username','nickname','sex','identty','email', 'password','photo'];
     public $table = 'ask_user';
     public $primaryKey = 'id';
-    protected $remember_token ='';
+    public $remember_token ='';
     public $guarded = [];
     public $timestamps = false;
 

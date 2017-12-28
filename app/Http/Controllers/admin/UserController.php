@@ -152,7 +152,7 @@ class UserController extends Controller
         // $user->identty = $input['identty'];
         // $res = $user->save();
         // dd($input);
-        $res = User::create($input);
+        $res = User::create(array_merge($input,['photo'=>'/uploads/defaultAvatar.png']));
 
         //4.如果添加成功，跳转到列表页；失败，跳转回添加页面
         if($res){
@@ -188,7 +188,11 @@ class UserController extends Controller
     {
         $user = User::find($id);
         //把密码解密后传入页面
+
         //$user['password'] = Crypt::decrypt($user['password']);
+
+        // $user['password'] = Crypt::decrypt($user['password']);
+
 //        dd($user);
         return view('admin.user.edit',compact('user'));
     }
@@ -237,8 +241,10 @@ class UserController extends Controller
                 ->withInput();
         }
         //执行修改操作
-        $user = User::find($id);
-        $res = $user->update(['username'=>$input['username'],'password'=>Crypt::encrypt($input['password']),'identty'=>$input['identty'],'email'=>$input['email']]);
+
+        $res = User::where('id',$id)->update(['username'=>$input['username'],'password'=>\Hash::make($input['password']),'identty'=>$input['identty'],'email'=>$input['email']]);
+        // $user = User::find($id);
+        // $res = $user->update(['username'=>$input['username'],'password'=>Crypt::encrypt($input['password']),'identty'=>$input['identty'],'email'=>$input['email']]);
         if($res){
             return redirect('admin/user') -> with('msg', '修改成功');
         }else{

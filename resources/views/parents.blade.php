@@ -97,12 +97,18 @@
               @if(Auth::check())
               <li><img src="{{ asset(Auth::user()->photo) }}" class="img-circle user_photo" width="50" height="50"></li>
             <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->email}} <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                @if(empty(Auth::user()->nickname))
+                {{Auth::user()->email}}
+                @else
+                {{Auth::user()->nickname}}
+                @endif
+                <span class="caret"></span></a>
             <ul class="dropdown-menu">
+                <li><a href="{{ url('user/center') }}">个人首页</a></li>
                 <li><a href="{{ url('user/photo') }}">头像设置</a></li>
-                <li><a href="{{ url('user/set') }}">设置</a></li>
+                <li><a href="{{ url('user/set') }}">个人设置</a></li>
                 <li><a href="{{ url('user/message') }}">站内信</a></li>
-                <li><a href="#">abc</a></li>
                 {{--  <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
                 <li><a href="#">Separated link</a></li>
@@ -249,3 +255,17 @@
 
 </body>
 </html>
+<script type='text/javascript'>
+    (function(m, ei, q, i, a, j, s) {
+        m[i] = m[i] || function() {
+            (m[i].a = m[i].a || []).push(arguments)
+        };
+        j = ei.createElement(q),
+            s = ei.getElementsByTagName(q)[0];
+        j.async = true;
+        j.charset = 'UTF-8';
+        j.src = 'https://static.meiqia.com/dist/meiqia.js?_=t';
+        s.parentNode.insertBefore(j, s);
+    })(window, document, 'script', '_MEIQIA');
+    _MEIQIA('entId', 92850);
+</script>

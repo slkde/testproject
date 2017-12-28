@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Model\Topic;
+
 // use App\Markdown\Markdown;
 
 
@@ -45,7 +47,8 @@ class QuestionListController extends Controller
     public function create()
     {
         //
-        return view('question.create');
+        $topic = Topic::get();
+        return view('question.create', compact('topic'));
     }
 
     /**
@@ -61,6 +64,7 @@ class QuestionListController extends Controller
         $data = [
             'user_id' => \Auth::user()->id
         ];
+        // dd($request->all());
         $dis = Question::create(array_merge($request->all(),$data));
         return redirect()->action('Home\QuestionListController@show',['id'=>$dis->id]);
     }
@@ -74,7 +78,9 @@ class QuestionListController extends Controller
     public function show($id)
     {
         //
-        $info = Question::findOrFail($id);
+        $questions = Question::where('topic_id',$id)->latest('created_at')->Paginate(6);
+        // dd($questions);
+        // $questions = Question::findOrFail($id);
         // $info->content = $this->markdown->markdown($info->content);
         
         // $info->content = $this->markdown->markdown($question->content);
@@ -83,7 +89,7 @@ class QuestionListController extends Controller
 
         // $info = Question::with('question_answer')->where('id', $id)->get()->toArray();
 
-        return view('question.show', compact('info'));
+        return view('question.show', compact('questions'));
     }
 
     /**

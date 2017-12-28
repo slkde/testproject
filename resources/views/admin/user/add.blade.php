@@ -25,14 +25,17 @@
             确认密码：<input type="password" name="password_confirmation" value="{{old('password_confirmation')}}"
 class="form-control input-lg m-b-10" placeholder="请再次输入密码">
             性别：<select class="form-control m-b-10" name="sex" style="height:50px">
-                <option value=" ">--请选择--</option>
+
+
+                <option value="0" {{ (old('sex')==0)?'selected':'' }}>--请选择--</option>
+
                 <option value="1" {{ (old('sex')==1)?'selected':'' }}>男</option>
                 <option value="2" {{ (old('sex')==2)?'selected':'' }}>女</option>
             </select>
             权限：<select class="form-control m-b-10" name="identty" style="height:50px">
-                <option value="">--请选择--</option>
-                <option value="0" {{ (old('identty')==0)?'selected':'' }}>普通用户</option>
-                <option value="1" {{ (old('identty')==1)?'selected':'' }}>管理员</option>
+                <option value="" {{ (old('identty')==0)?'selected':'' }}>--请选择--</option>
+                <option value="0" {{ (old('identty')==1)?'selected':'' }}>普通用户</option>
+                <option value="1" {{ (old('identty')==9)?'selected':'' }}>管理员</option>
             </select><br>
             <button class="btn btn-lg btn-primary btn-block">添加</button>
         </form>

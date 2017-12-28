@@ -44,8 +44,8 @@
                             <tr class="success text-center">
                                 <td>{{ $v->id }}</td>
                                 <td>{{ $v->username }}</td>
-                                <td>{{ ($v->sex == 1)?'男':'女' }}</td>
-                                <td>{{ ($v->identty == 0)?'普通用户':'管理员' }}</td>
+                                <td>{{ ($v->sex == 1)?'男':($v->sex == 2)?'女':'未知' }}</td>
+                                <td>{{ ($v->identty == 9)?'管理员':'普通用户' }}</td>
                                 {{--//数据库没有这个字段--}}
                                 {{--<td>{{ ($v->status == 0)?'启用':'禁用' }}</td>--}}
                                 <td><a class="btn btn-default" href="{{ url('admin/user/'.$v->id) }}">详情</a>&nbsp;<a class="btn btn-danger">启用</a>&nbsp;<a class="btn btn-success" href="{{ url('admin/user/'.$v->id.'/edit') }}">编辑</a>&nbsp;<a class="btn btn-danger" href="javascript:;" onclick="delUser({{ $v->id }})">删除</a>&nbsp;<a class="btn btn-success" href="{{ url('admin/user/auth/'.$v->id) }}">授权</a></td>

@@ -8,21 +8,30 @@
         <div class="row">
 
             <!-- start of page content -->
-            <div class="span8 page-content">
+            <div class="col-md-8 page-content">
 
                 <!-- Basic Home Page Template -->
                 <div class="row separator">
-                    <section class="span8 articles-list">
-                        <h3>Featured Articles</h3>
-                        <ul class="articles">
-                            <li class="article-entry standard">
-                                <h4><a href="{{ url('content') }}">Integrating WordPress with Your Website</a></h4>
-                                <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
-                                <span class="like-count">66</span>
-                            </li>
+                    @foreach($questions as $k=>$v)
+                        <article class="format-standard type-post hentry clearfix">
 
-                        </ul>
-                    </section>
+                            <header class="clearfix">
+
+                                <h3 class="post-title">
+                                    <a href="{{ url('answer/'.$v->id) }}">{{ $v->title }}</a>
+                                </h3>
+
+                                <div class="post-meta clearfix">
+                                    <span class="date">{{ $v->created_at }}</span>
+                                    <span class="category"><a href="{{ url('question').'/'. $v->topic->id }}" title="View all posts in Server &amp; Database">所属话题:{{ $v->topic->name }}</a></span>
+                                    <span class="comments"><a href="#" title="Comment on Integrating WordPress with Your Website">评论数:{!! $v->question_answer->count() !!}</a></span>
+                                    <span class="like-count">{{ $v->support }}</span>
+                                </div><!-- end of post meta -->
+
+                            </header>
+                            {!! EndaEditor::MarkDecode($v->content) !!}
+                        </article>
+                    @endforeach
 
                 </div>
             </div>
@@ -30,51 +39,37 @@
 
 
             <!-- start of sidebar -->
-            <aside class="span4 page-sidebar">
+            <aside class="col-md-4 page-sidebar">
 
-                <section class="widget">
-                    <div class="support-widget">
-                        <h3 class="title">Support</h3>
-                        <p class="intro">Need more support? If you did not found an answer, contact us for further help.</p>
-                    </div>
-                </section>
+                {{--<section class="widget">--}}
+                    {{--<div class="support-widget">--}}
+                        {{--<h3 class="title">Support</h3>--}}
+                        {{--<p class="intro">Need more support? If you did not found an answer, contact us for further help.</p>--}}
+                    {{--</div>--}}
+                {{--</section>--}}
+
 
                 <section class="widget">
                     <div class="quick-links-widget">
-                        <h3 class="title">Quick Links</h3>
+                        <h3 class="title">快速链接</h3>
                         <ul id="menu-quick-links" class="menu clearfix">
-                            <li><a href="index-2.html">Home</a></li>
-                            <li><a href="articles-list.html">Articles List</a></li>
-                            <li><a href="faq.html">FAQs</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="https://www.zhihu.com/">知乎</a></li>
+                            <li><a href="http://wenda.tianya.cn/">天涯 </a></li>
+                            <li><a href="http://wenda.so.com/">360问答</a></li>
+                            <li><a href="https://zhidao.baidu.com/">百度知道</a></li>
                         </ul>
                     </div>
                 </section>
 
                 <section class="widget">
-                    <h3 class="title">Tags</h3>
+                    <h3 class="title">话题广场</h3>
                     <div class="tagcloud">
-                        <a href="#" class="btn btn-mini">basic</a>
-                        <a href="#" class="btn btn-mini">beginner</a>
-                        <a href="#" class="btn btn-mini">blogging</a>
-                        <a href="#" class="btn btn-mini">colour</a>
-                        <a href="#" class="btn btn-mini">css</a>
-                        <a href="#" class="btn btn-mini">date</a>
-                        <a href="#" class="btn btn-mini">design</a>
-                        <a href="#" class="btn btn-mini">files</a>
-                        <a href="#" class="btn btn-mini">format</a>
-                        <a href="#" class="btn btn-mini">header</a>
-                        <a href="#" class="btn btn-mini">images</a>
-                        <a href="#" class="btn btn-mini">plugins</a>
-                        <a href="#" class="btn btn-mini">setting</a>
-                        <a href="#" class="btn btn-mini">templates</a>
-                        <a href="#" class="btn btn-mini">theme</a>
-                        <a href="#" class="btn btn-mini">time</a>
-                        <a href="#" class="btn btn-mini">videos</a>
-                        <a href="#" class="btn btn-mini">website</a>
-                        <a href="#" class="btn btn-mini">wordpress</a>
+                        @foreach($topics as $v)
+                        <a href="{{ url('question/'.$v->id) }}" class="btn btn-mini">{{ $v->name }}</a>
+                        @endforeach
                     </div>
                 </section>
+                <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=55" style="border:solid 1px #7ec8ea" width="350" height="294" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
 
             </aside>
             <!-- end of sidebar -->

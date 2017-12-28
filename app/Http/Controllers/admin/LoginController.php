@@ -88,16 +88,17 @@ class LoginController extends Controller
     //    }
 
        if(\Auth::attempt([
-            'password' => $input['password']
+            'username' => $input['username'],
+            'password' => $input['password'],
         ])){
-            return redirect('admin/login')->with('errors', '密码错误');
+            //6.将当前登录用户的数据存入session中
+            session(['user' => $user]);
+            
+            //7.登陆成功后就跳转到后台首页，失败就跳转回登录页
+            return redirect('admin/index');
         }
+        return redirect('admin/index')->with('errors', '密码错误');
 
-        //6.将当前登录用户的数据存入session中
-        session(['user' => $user]);
-
-        //7.登陆成功后就跳转到后台首页，失败就跳转回登录页
-        return redirect('admin/index');
     }
 
     public function crypt()
