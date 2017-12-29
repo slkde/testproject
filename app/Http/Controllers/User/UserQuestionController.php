@@ -24,6 +24,7 @@ class UserQuestionController extends Controller
         $id = \Auth::user()->id;
         //倒序、分页显示我的提问
         $question = Question::where('user_id',$id)->orderBy('created_at','desc')->paginate(1);
+//        dd($question);
         return view('users.userquestion',compact('question'));
     }
 

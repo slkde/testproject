@@ -7,6 +7,8 @@
     <meta name="description" content="个人中心" />
     <link href="{{ asset('css/usercenter/base.css')}}" rel="stylesheet">
     <link href="{{ asset('css/usercenter/index.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}"/>
+    <script type='text/javascript' src="{{ asset('js/jquery.min.js') }}"></script>
     <!--[if lt IE 9]>
     <script src="{{ asset('js/usercenter/modernizr.js')}}"></script>
     <![endif]-->

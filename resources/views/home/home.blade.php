@@ -14,12 +14,12 @@
                 <!-- 轮播（Carousel）项目 -->
                 <div class="carousel-inner">
                     <div class="carousel-caption">
-                        <form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">
+                        <form id="search-form" class="search-form clearfix" method="get" action="{{ url('/') }}" autocomplete="off">
                             <div class="col-md-8 col-md-offset-2 ">
                                 <div class="input-group">
-                                    <input type="text" class="form-control input-lg" placeholder="搜索你感兴趣的内容">
+                                    <input type="text" class="form-control input-lg" name="keyword" placeholder="搜索你感兴趣的内容">
                                     <span class="input-group-btn ">
-                <button class="btn btn-default input-lg" type="button">搜索问题</button>
+                <button class="btn btn-default input-lg" type="submit">搜索问题</button>
               </span>
                                 </div><!-- /input-group -->
                             </div>
@@ -33,7 +33,7 @@
 
                     </div>
                     <div class="item">
-                        <img style="width:1140px;height:286px;" src="{{asset('images/five.jpg')}}" alt="Third slide">
+                        <img style="width:1140px;height:286px;" src="{{asset('images/three.jpg')}}" alt="Third slide">
 
                     </div>
                 </div>
