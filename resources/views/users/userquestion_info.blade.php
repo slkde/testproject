@@ -12,7 +12,7 @@ height: 32px;"></div>
     <ul>
         <p style="margin-left:100px;font-size:20px"><b></b></p>
     </ul><br><br><br>
-
+    <h1>问题详情：</h1>
     {{--问题的基本信息--}}
     <p class="dateview">
         <span style="margin-left:50px">
@@ -28,28 +28,23 @@ height: 32px;"></div>
     <br><br>
     <p style="margin-left:50px">{{$question->content}}</p>
 
-    {{--朴素的分割线--}}
-    <p class="dateview" style="width:600px">
-        ========================================================================================
-    </p>
-
+    {{--以下是回复区--}}
+    <h1>回复区：</h1>
     {{--遍历回复的基本信息--}}
     @foreach($user as $v)
-    <ul>
-        <li>
-            回答者:{{ $v->user->nickname }}
-        <li>
-        <li>
-            积分:{{ $v->user->score }}
-        <li>
-        <li>
-            内容:{{ $v->answer_content }}
-        <li>
-    </ul>
-    {{--又是朴素的分割线--}}
-    <p class="dateview" style="width:600px">
-        ========================================================================================
+    <p class="dateview">
+        <span style="margin-left:50px">
+               回答者:{{ $v->user->nickname }}
+        </span>
+        <span style="margin-left:50px">
+             赞同数:{{ $v->user->score }}
+        </span>
+        <span style="margin-left:50px">
+              回答时间:{{ $v->created_at }}
+        </span>
     </p>
+    回答内容：<h3>{{ $v->answer_content }}</h3>
     @endforeach
+    {!! $user->render() !!}
 </div>
 @endsection

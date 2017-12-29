@@ -57,9 +57,11 @@ class UserQuestionController extends Controller
      */
     public function show($id)
     {
-        //
+        //根据id确定问题
         $question = Question::find($id);
-        $user = $question->question_answer;
+        //查找问题下对应的所有回复
+        $user = Answer::where('question_id', '=', $id)->paginate(3);
+//        dd($user);
         return view('users.userquestion_info', compact('question','user'));
     }
 
@@ -95,12 +97,14 @@ class UserQuestionController extends Controller
     public function destroy($id)
     {
         //
-        $res = Question::find($id)->delete();
+
+        $res1 = Answer::where('question_id','=',$id)->delete();
+        $res = Question::where('id', '=', $id)->delete();
         if($res)
         {
-            $data = '删除成功';
+            $data = ['status'=>1, 'msg'=>'删除成功'];
         }else{
-            $data = '取消删除';
+            $data = ['status'=>0, 'msg'=>'删除失败'];
         }
         return $data;
     }

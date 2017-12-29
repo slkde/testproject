@@ -6,10 +6,10 @@
   margin: auto;
   height: 32px;"></div>
   <div class="container">
-    <div style="padding-left:250px;padding-top:100px">
+    <div >
       @if (count($errors) > 0)
-        <div class="alert alert-danger">
-          <ul>
+        <div class="alert alert-danger" style="width:500px;margin-left:200px">
+          <ul style="text-align:center">
             @foreach ($errors->all() as $error)
               <li>{{ $error }}</li>
             @endforeach
@@ -21,7 +21,7 @@
       @endif
     </div>
     <div class="bloglist f_l"><br><br><br><br>
-      <form action="{{ url('/user/changes') }}" method="post" style="padding-left:200px">
+      <form action="{{ url('/user/changes') }}" method="post" style="padding-left:270px">
         {{ csrf_field() }}
         昵&nbsp&nbsp称：<input type="text" name="nickname" value="{{ old('nickname') }}" placeholder="{{ $user['nickname'] }}"><br><br><br>
         密&nbsp&nbsp码：<input type="password"  name="password_confirmation"><br><br><br>
