@@ -40,14 +40,18 @@ Route::get('/question/like/{id}', 'Home\LikeController@like');
 
 
 //个人中心=================================================
-//用户提问路由
-Route::resource('/user/question', 'User\UserQuestionController');
-//用户回答路由
-Route::resource('/user/answer', 'User\UserAnswerController');
-//用户信息中心路由
-Route::resource('/user/person', 'User\UserPersonController');
-//用户修改信息路由
-Route::resource('/user/changes', 'User\UserChangeController');
+//路由群组，设置中间件进行验证请求
+Route::group(['middleware'=>'auth','prefix'=>'/user'],function(){
+    //用户提问
+    Route::resource('/question', 'User\UserQuestionController');
+    //用户回答路由
+    Route::resource('/answer', 'User\UserAnswerController');
+    //用户信息中心路由
+    Route::resource('/person', 'User\UserPersonController');
+    //用户修改信息路由
+    Route::resource('/changes', 'User\UserChangeController');
+});
+
 
 
 

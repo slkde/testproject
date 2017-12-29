@@ -22,7 +22,6 @@ class QuestionListController extends Controller
     // public function __construct(Markdown $markdown)
     {
         // $this->markdown = $markdown;
-
         $this->middleware('auth',['only'=>['create','store','edit','update']]);
     }
 
