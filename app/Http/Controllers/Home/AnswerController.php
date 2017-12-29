@@ -51,7 +51,7 @@ class AnswerController extends Controller
         //
         // dd(\Auth::user()->id);
         Answer::create(array_merge($request->all(),['user_id' => \Auth::user()->id]));
-        return redirect('/');
+        return 123;;
     }
 
     /**

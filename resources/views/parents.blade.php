@@ -17,11 +17,16 @@
     <link rel="stylesheet" href="{{asset("css/style.css")}}"/>
     {{--<link rel='stylesheet' id='bootstrap-css-css'  href='{{asset("css/bootstrap5152.css?ver=1.0")}}' type='text/css' media='all' />--}}
     {{--<link rel='stylesheet' id='responsive-css-css'  href='{{asset("css/responsive5152.css?ver=1.0")}}' type='text/css' media='all' />--}}
-    <link rel='stylesheet' id='pretty-photo-css-css'  href='{{asset("js/prettyphoto/prettyPhotoaeb9.css?ver=3.1.4")}}' type='text/css' media='all' />
+    {{--  <link rel='stylesheet' id='pretty-photo-css-css'  href='{{asset("js/prettyphoto/prettyPhotoaeb9.css?ver=3.1.4")}}' type='text/css' media='all' />  --}}
     <link rel='stylesheet' id='main-css-css'  href='{{asset("css/main5152.css?ver=1.0")}}' type='text/css' media='all' />
-    <link rel='stylesheet' id='custom-css-css'  href='{{asset("css/custom5152.html?ver=1.0")}}' type='text/css' media='all' />
+    {{--  <link rel='stylesheet' id='custom-css-css'  href='{{asset("css/custom5152.html?ver=1.0")}}' type='text/css' media='all' />  --}}
 
-    <script type='text/javascript' src="{{ asset('js/jquery.min.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <!-- include summernote css/js-->
+    <link href="{{ asset('summernote/summernote.css') }}" rel="stylesheet">
+    <script src="{{ asset('summernote/summernote.js') }}"></script>
+    <!-- include summernote-ko-KR -->
+<script src="{{ asset('summernote/lang/summernote-zh-CN.js') }}"></script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -255,11 +260,11 @@
 <script type='text/javascript' src="{{ asset('js/jflickrfeed.js') }}"></script>
 <script type='text/javascript' src="{{ asset('js/jquery.formd471.js?ver=3.18') }}"></script>
 <script type='text/javascript' src="{{ asset('js/jquery.validate.minfc6b.js?ver=1.10.0') }}"></script>
-<script type='text/javascript' src="{{ asset('js/custom5152.js?ver=1.0') }}"></script>
+{{--  <script type='text/javascript' src="{{ asset('js/custom5152.js?ver=1.0') }}"></script>  --}}
 
 </body>
 </html>
-<script type='text/javascript'>
+{{--  <script type='text/javascript'>
     (function(m, ei, q, i, a, j, s) {
         m[i] = m[i] || function() {
             (m[i].a = m[i].a || []).push(arguments)
@@ -272,4 +277,4 @@
         s.parentNode.insertBefore(j, s);
     })(window, document, 'script', '_MEIQIA');
     _MEIQIA('entId', 92850);
-</script>
+</script>  --}}
