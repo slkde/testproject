@@ -26,6 +26,7 @@ class PostRequest extends Request
         return [
             'title' => 'required|between:6,20',
             'content' => 'required|between:6,100',
+            'topic_id' => 'required|unique:ask_topic,id'
         ];
     }
 }
