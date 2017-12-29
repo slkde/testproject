@@ -3,12 +3,12 @@
 
 <div style="background: url('{{ asset('images/background2.jpg') }} '); margin-top:50px;width:100%;height:100%">
     <div class="container heade">
-        <br><br><br><br><br><br>
+        <br><br><br><br><br>
         <div class="row">
         <div class="col-md-4 col-md-offset-4" role="main">
             <h2 style="text-align: center">问问答--用户登录</h2>
 
-            <br><br>
+            <br><br><br>
             {!! Form::open(['url'=>'/user/login']) !!}
 
             {{--  <div class="form-group">

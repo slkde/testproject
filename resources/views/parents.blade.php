@@ -149,7 +149,6 @@
     {{--</div>--}}
 {{--</div>--}}
 <!-- End of Search Wrapper -->
-
 @yield('content')
 
 <!-- Start of Footer -->
