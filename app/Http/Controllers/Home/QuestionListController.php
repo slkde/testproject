@@ -59,15 +59,17 @@ class QuestionListController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(\App\Http\Requests\PostRequest $request)
+    // public function store(Request $request)
     {
         //
         // dd(\Auth::user());
+        // return $request->input('title');
         $data = [
             'user_id' => \Auth::user()->id
         ];
         // dd($request->all());
         $dis = Question::create(array_merge($request->all(),$data));
-        return redirect()->action('Home\AnswerController@show',['id'=>$dis->id]);
+        return $dis->id;
     }
 
     /**
@@ -102,11 +104,12 @@ class QuestionListController extends Controller
     public function edit($id)
     {
         //
+        $topic = Topic::get();
         $question = Question::findOrFail($id);
         if(\Auth::user()->id != $question->user_id){
             return back();
         }
-        return view('question.edit', compact('question'));
+        return view('question.edit', compact('question','topic'));
     }
 
     /**
@@ -120,8 +123,11 @@ class QuestionListController extends Controller
     {
         //
         $question = Question::findOrFail($id);
+        if(\Auth::user()->id != $question->user_id){
+            return $id;
+        }
         $question->update($request->all());
-        return redirect()->action('Home\QuestionListController@show',['id'=>$id]);
+        return $id;
     }
 
     /**

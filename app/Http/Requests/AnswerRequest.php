@@ -24,7 +24,7 @@ class AnswerRequest extends Request
     public function rules()
     {
         return [
-            'answer_content' => 'required|between:6,100',
+            'answer_content' => 'required',
             'question_id' => 'required'
         ];
     }
