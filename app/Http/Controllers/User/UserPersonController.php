@@ -20,7 +20,7 @@ class UserPersonController extends Controller
         //遍历用户个人信息
         // $user = session()->get('id');
         $id = \Auth::user()->id;
-        $user = User::find($user);
+        $user = User::find($id);
         return view('users.userperson', compact('user'));
     }
 

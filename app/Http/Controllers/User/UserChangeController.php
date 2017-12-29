@@ -81,7 +81,7 @@ class UserChangeController extends Controller
         $pwd = (int)$user['password'];
         $user['password'] = md5($pwd);
         //写入数据库
-        $res = User::where('id', $id)->update($user);
+        $res = User::where('id', '=', $id)->update($user);
         if($res)
         {
             return back()->with('msg', '修改成功');
