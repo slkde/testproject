@@ -90,7 +90,17 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view("admin.user.add");
+		 $list = User::get()->toArray();
+		/*$uname = $request->uname;
+		if($uname){
+			if(in_array($uname,$input)){
+				$data = 'y';
+			}else{
+				$data = 'n';
+			}
+		} */
+		
+        return view("admin.user.add",compact('list'));
     }
 
     /**
@@ -178,7 +188,11 @@ class UserController extends Controller
     {
         $user = User::find($id);
         //把密码解密后传入页面
+
+        //$user['password'] = Crypt::decrypt($user['password']);
+
         // $user['password'] = Crypt::decrypt($user['password']);
+
 //        dd($user);
         return view('admin.user.edit',compact('user'));
     }

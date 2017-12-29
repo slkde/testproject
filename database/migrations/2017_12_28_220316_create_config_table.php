@@ -12,15 +12,17 @@ class CreateConfigTable extends Migration
      */
     public function up()
     {
-        Schema::create('ask_web_config', function (Blueprint $table) {
+        //
+        Schema::create('ask_config', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('title')->nullable();
-            $table->string('keywords')->nullable();
-            $table->string('descrption')->nullable();
-            $table->string('icp_num')->nullable();
-            $table->text('filter_keywords')->nullable();
-            $table->tinyInteger('web_status')->default(0);
+            $table->string('title');
+            $table->string('name');
+            $table->text('content');
+            $table->integer('order')->unsigned()->default(0);
+            $table->string('tips');
+            $table->string('type');
+            $table->string('value');
         });
     }
 
@@ -31,6 +33,6 @@ class CreateConfigTable extends Migration
      */
     public function down()
     {
-        Schema::drop('ask_web_config');
+        //
     }
 }

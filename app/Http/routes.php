@@ -25,6 +25,8 @@ Route::get('/user/login', 'Home\UsersController@login');
 Route::post('/user/login', 'Home\UsersController@signin');
 //前台用户退出
 Route::get('/logout', 'Home\UsersController@logout');
+//忘记密码
+Route::resource('/user/forget', 'User\ForgetController');
 //前台邮箱激活
 Route::get('/verify/{confirm_code}', 'Home\UsersController@checkEmail');
 //前台用户头像修改
@@ -35,6 +37,19 @@ Route::resource('/user/set', 'User\UsersSetController');
 Route::resource('/user/message', 'User\UsersMessageController');
 //前台点赞功能
 Route::get('/question/like/{id}', 'Home\LikeController@like');
+
+
+//个人中心=================================================
+//用户提问路由
+Route::resource('/user/question', 'User\UserQuestionController');
+//用户回答路由
+Route::resource('/user/answer', 'User\UserAnswerController');
+//用户信息中心路由
+Route::resource('/user/person', 'User\UserPersonController');
+//用户修改信息路由
+Route::resource('/user/changes', 'User\UserChangeController');
+
+
 
 
 
@@ -91,5 +106,10 @@ Route::group(['prefix' => 'admin','namespace' => 'admin', 'middleware' => 'islog
 	Route::post('role/doauth','RoleController@doAuth');
 	
 	//权限路由
-	Route::resource('permission', 'PermissionController');
+    Route::resource('permission', 'PermissionController');
+    
+    //网站配置路由
+    Route::get('config/putfile','ConfigController@putFile');
+    Route::resource('config','ConfigController');
+    Route::post('config/changecontent','ConfigController@changeContent');
 });

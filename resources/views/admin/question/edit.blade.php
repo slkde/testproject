@@ -25,7 +25,7 @@
 							<td>
 								<select name="topic_id">
 									@foreach($topic as $k=>$v)
-									<option value="{{$v->topic_id}}">{{$v->name}}</option>
+									<option value="{{$v->id}}" {{($question->topic_id == $v->id)?'selected':''}} >{{$v->name}}</option>
 									@endforeach
 								</select>
 							</td>
@@ -89,9 +89,9 @@
 		                                    //alert("上传成功");
 												//$('#img1').attr('src','/'+data);
 												//上传到阿里云
-												/* $('#img1').attr('src','http://kangke.oss-cn-beijing.aliyuncs.com/'+data); */
+												$('#img1').attr('src','http://kangke.oss-cn-beijing.aliyuncs.com/'+data); 
 												//上传到七牛云
-												$('#img1').attr('src','http://p15p213cx.bkt.clouddn.com/'+data);
+												//$('#img1').attr('src','http://p15p213cx.bkt.clouddn.com/'+data);
 												$('#art_thumb').val(data);
 
 											},

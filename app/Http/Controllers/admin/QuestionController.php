@@ -36,16 +36,16 @@ class QuestionController extends Controller
 		       //上传到七牛云
 //        参数一 上到到七牛云后的路径和文件名
 //        参数二 要上传的文件
-       $res = Storage::disk('qiniu')->writeStream($fileName, fopen($input->getRealPath(), 'r'));
+      // $res = Storage::disk('qiniu')->writeStream($fileName, fopen($input->getRealPath(), 'r'));
 		//七牛云上这样写
 		//return $fileName;
 		 //阿里云上传到oss  参数1：新文件的名字 参数2：原文件的路径
-		//$res = OSS::upload('upload/'.$fileName,$input->getRealPath());
+		$res = OSS::upload('upload/'.$fileName,$input->getRealPath());
 		//阿里云上这样写
-		//return 'upload/'.$fileName;
+		return 'upload/'.$fileName;
         /* dd($res); */
 		
-		return $fileName;
+		//return $fileName;
     }
 
     /**
@@ -101,7 +101,8 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
 		//1、获取用户提交的数据
-		$input = $request->except(htmlspecialchars_decode('_token'));
+		$input = $request->except('_token');
+		//dd($input['photo']);
 		//2.对提交表单验证
         $rule = [
             'content'=>'required|between:10,1000',
@@ -114,14 +115,26 @@ class QuestionController extends Controller
             'content.required' => '提问内容不能为空',
             'content.between' => '高质量的提问内容不能少于10个字',
         ];
+		//判断图片上传的格式和大小，如果有图片上传的话
+		if(isset($input['photo'])){
+			$rule = [
+            'photo'=>'image|max:500',           
+			];
+			$mess = [
+				'photo.image' => '上传的必须是图片哦',				
+				'photo.max' => '图片要小于500KB',
+			];
+		}
         $validator = Validator::make($input, $rule,$mess);
         //如果验证失败
         if ($validator->fails()) {
             return redirect('admin/question/create')
                 ->withErrors($validator)
                 ->withInput();
-        }
-		
+        }		
+		//把用户的id传过去
+		$input['user_id'] = \session('user')['id'];
+		//dd($input);
 		$res = Question::create($input);
 		if($res){
             return redirect('admin/question')->with('msg','添加成功');
@@ -211,9 +224,10 @@ class QuestionController extends Controller
      */
     public function destroy($id)
     {
-		//得到问题的id
-		$getquestion_id = Answer::find($id)['question_id'];
-		if($getquestion_id == $id){
+		//得到问题的id	where( 'user_id', '=',$id)
+		$res1 = Answer::where( 'question_id', '=',$id);
+		
+		if($res1){
 			return '该提问下有回复，请去操作->[详情]下删除该问题下的回复后再来删除该提问';
 		}else{
 				$res = Question::find($id)->delete();
