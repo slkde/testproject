@@ -3,6 +3,7 @@
 @include('editor::decode')
 
     <!-- Start of Page Container -->
+<hr>
 <div class="page-container">
     <div class="container">
         
@@ -24,8 +25,8 @@
                     </h1>
 
                     <div class="post-meta clearfix">
-                        <span class="date">{{ $info->title }}</span>
-                        <span class="category"><a href="#" title="View all posts in Server &amp; Database"></a></span>
+                        <span class="date">{{ $info->created_at }}</span>
+                        <span class="category"><a href="#" title="View all posts in Server &amp; Database">悬赏：{{ $info->bonus }}</a></span>
                         <span class="comments"><a href="#" title="Comment on Integrating WordPress with Your Website">评论数:{{ $info->question_answer->count('id') }}</a></span>
                         @if(Auth::check() && Auth::user()->id == $info->user_id)
                         <span class="comments"><a href="{{ $info->id }}/edit" title="编辑问题">编辑问题</a></span>
@@ -151,9 +152,9 @@
 
 
 
-                <section class="widget"><h3 class="title">话题</h3>
+                <section class="widget"><h3 class="title">相似话题</h3>
                     <ul>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet,">Advanced Techniques</a> </li>
+                        <li><a href="{{ url('question/'.$info->topic->id) }}" title="Lorem ipsum dolor sit amet,">{{ $info->topic->name }}</a> </li>
 
                     </ul>
                 </section>
@@ -161,8 +162,13 @@
                 <section class="widget">
                     <h3 class="title">最新评论</h3>
                     <ul id="recentcomments">
-                        <li class="recentcomments"><a href="#" rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating WordPress with Your Website</a></li>
-
+                        @foreach($data as $a)
+                        <li class="recentcomments" >
+                            <div style="overflow:hidden;text-overflow:ellipsis;white-space: nowrap;">
+                                <a href="#">{{ $a->answer_content }}</a>
+                            </div>
+                        </li>
+                        @endforeach
                     </ul>
                 </section>
 

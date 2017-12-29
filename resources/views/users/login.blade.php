@@ -1,9 +1,14 @@
 @extends('parents')
 @section('content')
-    <div class="container heade">
-        <div class="row">
-        <div class="col-md-6 col-md-offset-3" role="main">
 
+<div style="background: url('{{ asset('images/background2.jpg') }} '); margin-top:50px;width:100%;height:100%">
+    <div class="container heade">
+        <br><br><br><br><br><br>
+        <div class="row">
+        <div class="col-md-4 col-md-offset-4" role="main">
+            <h2 style="text-align: center">问问答--用户登录</h2>
+
+            <br><br>
             {!! Form::open(['url'=>'/user/login']) !!}
 
             {{--  <div class="form-group">
@@ -37,12 +42,14 @@
             </div>
 
 
-            
+            <br>
             {!! Form::submit('提交登陆', ['class' => 'btn btn-primary form-control']) !!}
             
             {!! Form::close() !!}
             
         </div>
         </div>
+        <br><br><br><br><br><br><br><br><br>
     </div>
+</div>
 @stop

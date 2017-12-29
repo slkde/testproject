@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-	    $questions = Question::latest('created_at')->Paginate(10);
+	    $questions = Question::latest('support')->Paginate(10);
 	    $topics = Topic::get();
 	    return view('home.home', compact('questions', 'topics'));
     }

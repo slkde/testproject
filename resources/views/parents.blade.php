@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>兄弟连PHP194问答系统</title>
+    <title>问问答</title>
 
     <link rel="shortcut icon" href="images/favicon.png" />
 
@@ -83,7 +83,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ url('/') }}">问答网站</a>
+          <a class="navbar-brand" {{--href="{{ url('/') }}"--}}>问问答</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -131,25 +131,24 @@
 <!-- End of Header -->
 
 <!-- Start of Search Wrapper -->
-<div class="search-area-wrapper search_top">
-    <div class="search-area container input-group-lg">
-        <h3 class="search-header">Have a Question?</h3>
-        <p class="search-tag-line">If you have any question you can ask below or enter what you are looking for!</p>
+{{--<div class="search-area-wrapper search_top">--}}
+    {{--<div class="search-area container input-group-lg">--}}
+        {{--<h3 class="search-header">Have a Question?</h3>--}}
+        {{--<p class="search-tag-line">If you have any question you can ask below or enter what you are looking for!</p>--}}
 
-        <form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">
-            <div class="col-md-8 col-md-offset-2 ">
-                <div class="input-group">
-                    <input type="text" class="form-control input-lg" placeholder="Search for...">
-                    <span class="input-group-btn ">
-        <button class="btn btn-default input-lg" type="button">搜 索</button>
-      </span>
-                </div><!-- /input-group -->
-            </div>
-        </form>
-    </div>
-</div>
+        {{--<form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">--}}
+            {{--<div class="col-md-8 col-md-offset-2 ">--}}
+                {{--<div class="input-group">--}}
+                    {{--<input type="text" class="form-control input-lg" placeholder="Search for...">--}}
+                    {{--<span class="input-group-btn ">--}}
+        {{--<button class="btn btn-default input-lg" type="button">搜 索</button>--}}
+      {{--</span>--}}
+                {{--</div><!-- /input-group -->--}}
+            {{--</div>--}}
+        {{--</form>--}}
+    {{--</div>--}}
+{{--</div>--}}
 <!-- End of Search Wrapper -->
-
 
 @yield('content')
 
@@ -160,59 +159,65 @@
 
             <div class="col-md-3">
                 <section class="widget">
-                    <h3 class="title">How it works</h3>
+                    <h3 class="title">网站介绍</h3>
                     <div class="textwidget">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
-                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                        <p>本互动问答平台是集成了自动切分词、智能搜索、自动分类等一整套的自然语言处理和信息检索技术，为用户提供的一个交流平台，大家可以在这里接受专家和其他网民的帮助，同时也尽力给别的网民提供有效的帮助。</p>
+
                     </div>
                 </section>
             </div>
 
             <div class="col-md-3">
-                <section class="widget"><h3 class="title">Categories</h3>
+                <section class="widget">
+                    <h3 class="title">平台分类</h3>
                     <ul>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet,">Advanced Techniques</a> </li>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet,">Designing in WordPress</a></li>
-
+                        <li><a href="#" title="Lorem ipsum dolor sitamet,">分享平台</a> </li>
+                        <li><a href="#" title="Lorem ipsum dolor sit amet,">知识问答</a></li>
+                        <li><a href="#" title="Lorem ipsum dolor sit amet,">排疑解难</a></li>
                     </ul>
                 </section>
             </div>
 
             <div class="col-md-3">
                 <section class="widget">
-                    <h3 class="title">Latest Tweets</h3>
-                    <div id="twitter_update_list">
-                        <ul>
-                            <li>No Tweets loaded !</li>
-                        </ul>
-                    </div>
+                    <h3 class="title">友情链接</h3>
 
+                        <ul>
+                            <li><a href="">好知网</a></li>
+                            <li><a href="">知识网</a></li>
+                            <li><a href="">中国知网</a></li>
+
+                        </ul>
                 </section>
             </div>
 
             <div class="col-md-3">
                 <section class="widget">
-                    <h3 class="title">Flickr Photos</h3>
+                    <h3 class="title">网站图片</h3>
                     {{--<div class="flickr-photos" id="basicuse">--}}
                     {{--</div>--}}
+                    <img src="http://farm4.staticflickr.com/3940/15647274066_2ee48c3fe9_s.jpg" alt="Halloween 2014 at Envato in Melbourne">
+                    <img src="http://farm4.staticflickr.com/3945/15485436268_846ccca178_s.jpg" alt="Halloween 2014 at Envato in Melbourne">
+                    <img src="http://farm6.staticflickr.com/5599/15668909741_eaf3db4054_s.jpg" alt="Halloween 2014 at Envato in Melbourne">
+
                 </section>
             </div>
 
         </div>
-        <div class="col-md-12">
-            <!-- Social Navigation -->
-            <ul class="social-nav clearfix">
+        {{--<div class="col-md-12">--}}
+            {{--<!-- Social Navigation -->--}}
+            {{--<ul class="social-nav clearfix">--}}
 
-                <li class="linkedin"><a target="_blank" href="#"></a></li>
-                <li class="stumble"><a target="_blank" href="#"></a></li>
-                <li class="google"><a target="_blank" href="#"></a></li>
-                <li class="deviantart"><a target="_blank" href="#"></a></li>
-                <li class="flickr"><a target="_blank" href="#"></a></li>
-                <li class="skype"><a target="_blank" href="skype:#?call"></a></li>
-                <li class="rss"><a target="_blank" href="#"></a></li>
-                <li class="twitter"><a target="_blank" href="#"></a></li>
-                <li class="facebook"><a target="_blank" href="#"></a></li>
-            </ul>
+                {{--<li class="linkedin"><a target="_blank" href="#"></a></li>--}}
+                {{--<li class="stumble"><a target="_blank" href="#"></a></li>--}}
+                {{--<li class="google"><a target="_blank" href="#"></a></li>--}}
+                {{--<li class="deviantart"><a target="_blank" href="#"></a></li>--}}
+                {{--<li class="flickr"><a target="_blank" href="#"></a></li>--}}
+                {{--<li class="skype"><a target="_blank" href="skype:#?call"></a></li>--}}
+                {{--<li class="rss"><a target="_blank" href="#"></a></li>--}}
+                {{--<li class="twitter"><a target="_blank" href="#"></a></li>--}}
+                {{--<li class="facebook"><a target="_blank" href="#"></a></li>--}}
+            {{--</ul>--}}
         </div>
     </div>
     <!-- end of #footer -->

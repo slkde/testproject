@@ -1,13 +1,12 @@
 @extends('parents')
 @section('content')
 @include('editor::decode')
-
 <!-- Start of Page Container -->
+<hr>
 <div class="page-container">
     <div class="container">
-        
-        <div class="row">
 
+        <div class="row">
             <!-- start of page content -->
             <div class="col-md-8 main-listing">
                 @foreach($questions as $k=>$v)
@@ -15,7 +14,7 @@
 
                     <header class="clearfix">
 
-                        <h3 class="post-title">第{{ $v->id }}问
+                        <h3 class="post-title">
                             <a href="{{ url('answer/'.$v->id) }}">{{ $v->title }}</a>
                         </h3>
 
@@ -65,16 +64,18 @@
 
                 <section class="widget"><h3 class="title">话题</h3>
                     <ul>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet,">Advanced Techniques</a> </li>
+
+                        <li><a href="#" title="Lorem ipsum dolor sit amet,"></a> </li>
 
                     </ul>
                 </section>
 
                 <section class="widget">
-                    <h3 class="title">最新评论</h3>
+                    <h3 class="title">热门问题</h3>
                     <ul id="recentcomments">
-                        <li class="recentcomments"><a href="#" rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating WordPress with Your Website</a></li>
-
+                        @foreach($support as $q)
+                        <li class="recentcomments"><a href="#">{{ $q->title }}</a></li>
+                        @endforeach
                     </ul>
                 </section>
 

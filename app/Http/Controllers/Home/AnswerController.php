@@ -64,8 +64,8 @@ class AnswerController extends Controller
         // dd($info);
 
         // $info = Question::with('question_answer')->where('id', $id)->get()->toArray();
-
-        return view('answer.show', compact('info'));
+		$data = Answer::where('question_id', $id)->orderBy('created_at', 'desc')->Paginate(5);
+        return view('answer.show', compact('info', 'data'));
     }
 
     /**
