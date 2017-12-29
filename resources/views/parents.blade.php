@@ -87,7 +87,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="{{ url('/') }}">Home</a></li>
+            <li><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home"></span></a></li>
             <li><a href="{{ url('question') }}">问题列表</a></li>
             <li><a href="{{ url('question/create') }}">发表问题</a></li>
           </ul>
@@ -182,9 +182,9 @@
                     <h3 class="title">友情链接</h3>
 
                         <ul>
-                            <li><a href="">好知网</a></li>
-                            <li><a href="">知识网</a></li>
-                            <li><a href="">中国知网</a></li>
+                            <li><a href="http://www.howzhi.com/">好知网</a></li>
+                            <li><a href="http://www.yjlan.com/">知识网</a></li>
+                            <li><a href="http://www.cnki.net/">中国知网</a></li>
 
                         </ul>
                 </section>
@@ -195,9 +195,9 @@
                     <h3 class="title">网站图片</h3>
                     {{--<div class="flickr-photos" id="basicuse">--}}
                     {{--</div>--}}
-                    <img src="http://farm4.staticflickr.com/3940/15647274066_2ee48c3fe9_s.jpg" alt="Halloween 2014 at Envato in Melbourne">
-                    <img src="http://farm4.staticflickr.com/3945/15485436268_846ccca178_s.jpg" alt="Halloween 2014 at Envato in Melbourne">
-                    <img src="http://farm6.staticflickr.com/5599/15668909741_eaf3db4054_s.jpg" alt="Halloween 2014 at Envato in Melbourne">
+                    <img src="{{ asset('images/footer1.jpg') }}">
+                    <img src="{{ asset('images/footer2.jpg') }}">
+                    <img src="{{ asset('images/footer3.jpg') }}">
 
                 </section>
             </div>

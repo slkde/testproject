@@ -33,7 +33,7 @@
 
                     </div>
                     <div class="item">
-                        <img style="width:1140px;height:286px;" src="{{asset('images/five.jpg')}}" alt="Third slide">
+                        <img style="width:1140px;height:286px;" src="{{asset('images/three.jpg')}}" alt="Third slide">
 
                     </div>
                 </div>
