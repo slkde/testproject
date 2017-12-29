@@ -30,8 +30,8 @@
                         <span class="comments"><a href="#" title="Comment on Integrating WordPress with Your Website">评论数:{{ $info->question_answer->count('id') }}</a></span>
                         @if(Auth::check() && Auth::user()->id == $info->user_id)
                         <span class="comments"><a href="{{ $info->id }}/edit" title="编辑问题">编辑问题</a></span>
-                        <span class="comments"><a href="javascript:;" data-toggle="modal" data-target="#sendmessage" class="sendmsg" title="发送站内信">发送站内信</a></span>
                         @endif
+                        <span class="comments"><a href="javascript:;" data-toggle="modal" data-target="#sendmessage" class="sendmsg" title="发送站内信">发送站内信</a></span>
                         <span class="like-count like-this">{{ $info->support }}点赞</span>
                     </div><!-- end of post meta -->
                    

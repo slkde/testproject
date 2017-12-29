@@ -1,6 +1,7 @@
 @extends('usercenter_parent')
 @section('title','我的提问')
 @section('content')
+
 <div class="jztop" style="	background: url(../../images/usercenter/jztop.png) no-repeat;
   width: 1034px;
   margin: auto;
@@ -27,11 +28,13 @@
     <p class="dateview">
       <span>{{ $v->created_at }}</span>
       <span>作者：{{ $v->user->nickname }}</span>
-      <span>回复数：{{ rand(1000,9999) }}</span>
+      <span>回复数：{{ $v->question_answer->count() }}</span>
       <span>[<a href="javascript:;" onclick="del({{$v->id}})">删除</a>]</span>
     </p>
     @endforeach
-    {!! $question->render() !!}
+
+        {!! $question->render() !!}
+
   </div>
 <script>
   {{--AJAX实现删除操作--}}

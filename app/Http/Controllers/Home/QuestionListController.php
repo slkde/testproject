@@ -66,7 +66,7 @@ class QuestionListController extends Controller
         ];
         // dd($request->all());
         $dis = Question::create(array_merge($request->all(),$data));
-        return redirect()->action('Home\QuestionListController@show',['id'=>$dis->id]);
+        return redirect()->action('Home\AnswerController@show',['id'=>$dis->id]);
     }
 
     /**

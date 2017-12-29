@@ -26,7 +26,9 @@
                         </div><!-- end of post meta -->
 
                     </header>
-                    {!! EndaEditor::MarkDecode($v->content) !!}
+
+                        {!! EndaEditor::MarkDecode($v->content) !!}
+
                 </article>
                 @endforeach
                 <div id="paging">
