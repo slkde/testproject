@@ -2,84 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3be7082a-f9b9-43b7-9618-f9c961fe9846" name="默认" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/ForgetController.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserAnswerController.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserChangeController.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserPersonController.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserQuestionController.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/ConfigController.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/config/webconfig.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/css/usercenter/base.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/css/usercenter/index.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/css/usercenter/main.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/01.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/02.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/03.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/04.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/06.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/bg.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/datepng.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/footerbg.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/ftbg.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/gz01.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/gz01.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/gz02.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/gz02.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/gz03.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/gz03.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/gz04.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/gz04.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/headbg.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/img_1.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/img_2.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/img_3.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/img_4.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/jztop.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/lanmbq.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/libg.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/logo.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/mainendbg.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/maintopbg.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/navbg.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/navbg.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/rtitbg.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/time.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/topbg.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/topbg.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/images/usercenter/yuanshan.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/js/usercenter/jquery.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/js/usercenter/modernizr.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/config/add.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/config/edit.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/config/list.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/email/forget.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/usercenter_parent.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/users/change.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/users/forget.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/users/useranswer_info.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/users/userchange.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/users/userperson.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/users/userquestion.blade.php" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Home/AnswerController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Home/AnswerController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Home/UsersController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Home/UsersController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UsersAvatarController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UsersAvatarController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UsersMessageController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UsersMessageController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UsersSetController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UsersSetController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/QuestionController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/QuestionController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/UserController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/UserController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Topic.php" afterPath="$PROJECT_DIR$/app/Model/Topic.php" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2017_12_13_071619_create_config_table.php" afterPath="$PROJECT_DIR$/database/migrations/2017_12_28_220316_create_config_table.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/index.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/login.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/login.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/parent.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/parent.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/question/add.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/question/add.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/question/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/question/edit.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/question/show.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/question/show.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/add.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/user/add.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/user/edit.blade.php" />
       <change beforePath="$PROJECT_DIR$/resources/views/users/login.blade.php" afterPath="$PROJECT_DIR$/resources/views/users/login.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -103,26 +26,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/home/home.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="412">
+              <caret line="131" column="0" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+              <folding>
+                <element signature="e#6069#6101#0#HTML" expanded="true" />
+                <marker date="1514467935017" expanded="true" signature="9:18" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="29:38" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="1589:1614" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="1775:1799" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="1961:1985" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="3084:3104" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="3349:3372" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="3378:3389" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="3557:3573" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="3653:3689" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="3748:3765" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="3916:3946" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="4024:4037" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="4181:4218" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="5708:5721" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="5762:5787" ph="..." />
+                <marker date="1514467935017" expanded="true" signature="5814:5824" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="login.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/users/login.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1012">
-              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="462">
+              <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
               <folding>
-                <marker date="1514507704806" expanded="true" signature="9:18" ph="..." />
-                <marker date="1514507704806" expanded="true" signature="29:38" ph="..." />
-                <marker date="1514507704806" expanded="true" signature="72:105" ph="..." />
-                <marker date="1514507704806" expanded="true" signature="400:436" ph="..." />
-                <marker date="1514507704806" expanded="true" signature="782:812" ph="..." />
-                <marker date="1514507704806" expanded="true" signature="836:857" ph="..." />
-                <marker date="1514507704806" expanded="true" signature="929:957" ph="..." />
-                <marker date="1514507704806" expanded="true" signature="1028:1085" ph="..." />
-                <marker date="1514507704806" expanded="true" signature="1182:1214" ph="..." />
-                <marker date="1514507704806" expanded="true" signature="1238:1262" ph="..." />
-                <marker date="1514507704806" expanded="true" signature="1335:1366" ph="..." />
-                <marker date="1514507704806" expanded="true" signature="1648:1715" ph="..." />
-                <marker date="1514507704806" expanded="true" signature="1747:1762" ph="..." />
-                <marker date="1514507704806" expanded="true" signature="1789:1809" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="9:18" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="29:38" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="72:105" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="400:436" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="782:812" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="836:857" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="929:957" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="1028:1085" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="1182:1214" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="1238:1262" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="1335:1366" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="1628:1695" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="1727:1742" ph="..." />
+                <marker date="1514509409290" expanded="true" signature="1786:1806" ph="..." />
               </folding>
             </state>
           </provider>
@@ -175,12 +127,12 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Home/HomeController.php" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/resources/views/parents.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/home/home.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Home/QuestionListController.php" />
         <option value="$PROJECT_DIR$/resources/views/question/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Home/AnswerController.php" />
         <option value="$PROJECT_DIR$/resources/views/answer/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/users/register.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/home/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/users/login.blade.php" />
       </list>
     </option>
@@ -382,12 +334,12 @@
       <workItem from="1513663801056" duration="24507000" />
       <workItem from="1513738994555" duration="21601000" />
       <workItem from="1514440836818" duration="24949000" />
-      <workItem from="1514507611347" duration="89000" />
+      <workItem from="1514507611347" duration="1875000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76819000" />
+    <option name="totallyTimeSpent" value="78605000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -679,13 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="116" column="66" lean-forward="false" selection-start-line="116" selection-start-column="37" selection-end-line="116" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/answer/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -714,25 +659,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/home/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="131" column="0" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+          <folding>
+            <element signature="e#6069#6101#0#HTML" expanded="true" />
+            <marker date="1514467935017" expanded="true" signature="9:18" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="29:38" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="1589:1614" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="1775:1799" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="1961:1985" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="3084:3104" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="3349:3372" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="3378:3389" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="3557:3573" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="3653:3689" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="3748:3765" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="3916:3946" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="4024:4037" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="4181:4218" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="5708:5721" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="5762:5787" ph="..." />
+            <marker date="1514467935017" expanded="true" signature="5814:5824" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/users/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1012">
-          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="462">
+          <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
           <folding>
-            <marker date="1514507704806" expanded="true" signature="9:18" ph="..." />
-            <marker date="1514507704806" expanded="true" signature="29:38" ph="..." />
-            <marker date="1514507704806" expanded="true" signature="72:105" ph="..." />
-            <marker date="1514507704806" expanded="true" signature="400:436" ph="..." />
-            <marker date="1514507704806" expanded="true" signature="782:812" ph="..." />
-            <marker date="1514507704806" expanded="true" signature="836:857" ph="..." />
-            <marker date="1514507704806" expanded="true" signature="929:957" ph="..." />
-            <marker date="1514507704806" expanded="true" signature="1028:1085" ph="..." />
-            <marker date="1514507704806" expanded="true" signature="1182:1214" ph="..." />
-            <marker date="1514507704806" expanded="true" signature="1238:1262" ph="..." />
-            <marker date="1514507704806" expanded="true" signature="1335:1366" ph="..." />
-            <marker date="1514507704806" expanded="true" signature="1648:1715" ph="..." />
-            <marker date="1514507704806" expanded="true" signature="1747:1762" ph="..." />
-            <marker date="1514507704806" expanded="true" signature="1789:1809" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="9:18" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="29:38" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="72:105" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="400:436" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="782:812" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="836:857" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="929:957" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="1028:1085" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="1182:1214" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="1238:1262" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="1335:1366" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="1628:1695" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="1727:1742" ph="..." />
+            <marker date="1514509409290" expanded="true" signature="1786:1806" ph="..." />
           </folding>
         </state>
       </provider>

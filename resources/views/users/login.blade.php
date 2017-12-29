@@ -41,14 +41,11 @@
                 <input type="password" class="form-control" name="password">
             </div>
 
-
-
-            <br>
-
             {!! Form::submit('提交登陆', ['class' => 'btn btn-primary form-control']) !!}
             
             {!! Form::close() !!}
-            <a href="{{ url('user/forget') }}" class="btn btn-primary form-control">忘记密码</a>
+            <br>
+            <a href="{{ url('user/forget') }}">忘记密码</a>
         </div>
         </div>
         <br><br><br><br><br><br><br><br><br>
