@@ -89,7 +89,7 @@
                 processData: false,
                 type: 'POST',
                 success: function (data) {
-                    sumfile.summernote('insertImage', 'http://test.answer.com/' +data);
+                    sumfile.summernote('insertImage', "{{ asset('/') }}" +data);
                 }
             });
         }

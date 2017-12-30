@@ -190,7 +190,7 @@
 								@foreach($data as $a)
 								<li class="recentcomments">
 									<div style="overflow:hidden;text-overflow:ellipsis;white-space: nowrap;">
-										<a href="#">{{ $a->answer_content }}</a>
+										<a href="#">{{ strip_tags($a->answer_content) }}</a>
 									</div>
 								</li>
 								@endforeach
@@ -336,7 +336,7 @@
                 processData: false,
                 type: 'POST',
                 success: function (data) {
-                    sumfile.summernote('insertImage', 'http://test.answer.com/' +data);
+                    sumfile.summernote('insertImage',  "{{ asset('/') }}" +data);
                 }
             });
         }

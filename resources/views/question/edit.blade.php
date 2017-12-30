@@ -60,7 +60,34 @@
         $('#summernote').summernote({
             height: 430,
             lang: 'zh-CN',
+            callbacks: {
+                onImageUpload: function (files) {
+                    var sumfile = $('#summernote')
+                    sendFile(sumfile, files[0]);
+                }
+            }
         });
+
+
+        function sendFile(sumfile, file) {
+            var formData = new FormData();
+            formData.append("file", file);
+            formData.append("_token", '{{csrf_token()}}');
+
+            $.ajax({
+                url: "/question/upload",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function (data) {
+                    sumfile.summernote('insertImage', "{{ asset('/') }}" + data);
+                }
+            });
+        }
+
+
         $('#summernote').summernote('code',qc);
     
 

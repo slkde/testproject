@@ -76,7 +76,7 @@
                     <h3 class="title">热门问题</h3>
                     <ul id="recentcomments">
                         @foreach($support as $q)
-                        <li class="recentcomments"><a href="#">{{ $q->title }}</a></li>
+                        <li class="recentcomments"><a href="#">{{ strip_tags($q->title) }}</a></li>
                         @endforeach
                     </ul>
                 </section>
