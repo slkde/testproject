@@ -7,19 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Model\Answer;
+use Image;
 
-use App\Model\Question;
-
-class AnswerController extends Controller
+class UploadController extends Controller
 {
-    public function __construct()
-    // public function __construct(Markdown $markdown)
-    {
-        // $this->markdown = $markdown;
-
-        $this->middleware('auth',['only'=>['store','edit','update']]);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -46,12 +37,26 @@ class AnswerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(\App\Http\Requests\AnswerRequest $request)
+    public function upload(Request $request)
     {
         //
-        // dd(\Auth::user()->id);
-        Answer::create(array_merge($request->all(),['user_id' => \Auth::user()->id]));
-        return 123;;
+        // return 123;
+        $file = $request->file('file');
+        $photo_check = \Validator::make([ 'image'=>$file ], ['image' => 'image']);
+        if($photo_check->fails()){
+            return [
+                'success' => false,
+                'errors'   => $photo_check->getMessageBag()->toArray()
+            ];
+        }
+        
+        // dd($file);
+        $uppath = 'uploads/post/' . date('Ym') .'/' ;
+        $ext = $file->getClientOriginalExtension();
+        $name = \Auth::user()->id . date('YmdHis'). '.' . $ext;
+        $file->move($uppath, $name);
+        Image::make($uppath.$name)->fit(300)->save();
+        return $uppath . $name;
     }
 
     /**
@@ -63,16 +68,6 @@ class AnswerController extends Controller
     public function show($id)
     {
         //
-        $info = Question::findOrFail($id);
-        // $info->content = $this->markdown->markdown($info->content);
-        
-        // $info->content = $this->markdown->markdown($question->content);
-
-        // dd($info);
-
-        // $info = Question::with('question_answer')->where('id', $id)->get()->toArray();
-		$data = Answer::where('question_id', $id)->orderBy('created_at', 'desc')->Paginate(5);
-        return view('answer.show', compact('info', 'data'));
     }
 
     /**
@@ -107,11 +102,5 @@ class AnswerController extends Controller
     public function destroy($id)
     {
         //
-        $ans = Answer::findOrFail($id);
-        if(\Auth::user()->id != $ans->user_id){
-            return '只能删自己的回复';
-        }
-        $ans->delete();
-        return 1;
     }
 }

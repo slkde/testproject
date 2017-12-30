@@ -1,6 +1,4 @@
-@extends('parents') 
-@section('content') 
-{{-- @include('editor::decode') --}}
+@extends('parents') @section('content') {{-- @include('editor::decode') --}}
 
 <!-- Start of Page Container -->
 <hr>
@@ -74,7 +72,7 @@
 						<ol class="commentlist">
 
 							@foreach($info->question_answer as $v)
-							<li class="comment even thread-even depth-1" id="li-comment-2">
+							<li class="comment even thread-even depth-1" id="li-comment-{{$v->id}}">
 								<article id="comment-2">
 
 									<a href="#">
@@ -89,6 +87,10 @@
 											</cite>
 											-
 											<a class="comment-reply-link" href="#">Reply</a>
+											@if(Auth::user()->id == $v->user_id)
+											-
+											<a class="comment-delete" href="javascript:;" answer-id="{{$v->id}}">删除</a>
+											@endif
 										</h5>
 
 										<p class="date">
@@ -121,14 +123,14 @@
 							<div class="row">
 								{{--
 								<div class="col-md-9" role="main"> --}}
-                                     
+
 									<div class="form-group">
 										<div id="summernote"></div>
 									</div>
 									<div class="form-group">
 
-                                        
-                                        <button type="button" class="btn btn-primary  pull-right  subcontent">发表评论</button>
+
+										<button type="button" class="btn btn-primary  pull-right  subcontent">发表评论</button>
 
 									</div>
 
@@ -255,8 +257,8 @@
 						<button type="button" class="btn btn-default" data-dismiss="modal" onclick="clearmsg()">关闭</button>
 						<button type="button" class="btn btn-primary" id="sendout">发送</button>
 					</div>
-                    
-                    {!! Form::close() !!}
+
+					{!! Form::close() !!}
 
 				</div>
 				<!-- /.modal-content -->
@@ -290,14 +292,54 @@
         }
         });
         
+	});
+	
+	$('.comment-delete').click( function(){
+		var aid = $(this).attr('answer-id');
+        $.ajax({
+        url:'/answer/'+ aid,
+        async:true,
+		type:'delete',
+		data:{'_token':'{{csrf_token()}}'},
+        datatype:'json',
+        success:function(data){
+		window.location.reload()
+		}
+        });
+        
     });
 
 
         $(document).ready(function() {
         $('#summernote').summernote({
             height: 200,
-            lang: 'zh-CN',
-        });
+			lang: 'zh-CN',
+			callbacks: {
+                onImageUpload: function (files) {
+                    var sumfile = $('#summernote')
+                    sendFile(sumfile, files[0]);
+                }
+            }
+		});
+		
+
+		function sendFile(sumfile, file) {
+            var formData = new FormData();
+            formData.append("file", file);
+            formData.append("_token", '{{csrf_token()}}');
+
+            $.ajax({
+                url: "/question/upload",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function (data) {
+                    sumfile.summernote('insertImage', 'http://test.answer.com/' +data);
+                }
+            });
+        }
         
         $('.subcontent').click(function(){
             var content = $('#summernote').summernote('code');
@@ -321,5 +363,6 @@
 })
 
 });
-</script>
-@endsection
+
+		</script>
+		@endsection

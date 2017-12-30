@@ -37,6 +37,8 @@ Route::resource('/user/set', 'User\UsersSetController');
 Route::resource('/user/message', 'User\UsersMessageController');
 //前台点赞功能
 Route::get('/question/like/{id}', 'Home\LikeController@like');
+//图片上传
+Route::post('/question/upload', 'Home\UploadController@upload');
 
 
 //个人中心=================================================
