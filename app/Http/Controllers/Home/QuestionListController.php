@@ -47,6 +47,9 @@ class QuestionListController extends Controller
     public function create()
     {
         //
+        if(empty(\Auth::user()->nickname)){
+            return redirect('/user/set');
+        }
         $topic = Topic::get();
         return view('question.create', compact('topic'));
     }

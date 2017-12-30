@@ -110,6 +110,7 @@
                 @endif
                 <span class="caret"></span></a>
             <ul class="dropdown-menu">
+                
                 <li><a href="{{ url('user/person') }}">个人首页</a></li>
                 <li><a href="{{ url('user/photo') }}">头像设置</a></li>
                 <li><a href="{{ url('user/set') }}">个人设置</a></li>

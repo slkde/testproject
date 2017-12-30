@@ -16,6 +16,9 @@
             {!! Form::text('username',null,['class'=>'form-control']) !!}
 
         </div>
+        <div class="col-md-3">
+           <p style="color: red;line-height: 30px">(注意，设置用户名后不能修改)</p>
+        </div>
     </div>
     @endif
     <br>
@@ -27,6 +30,11 @@
 
             {!! Form::text('nickname',null,['placeholder' => $userinfo->nickname ,'class'=>'form-control']) !!}
 
+        </div>
+        <div class="col-md-3">
+            @if(empty(\Auth::user()->nickname))
+           <p style="color: red;line-height: 30px">(注意，必须设置昵称才能发表问题、回复)</p>
+            @endif
         </div>
     </div>
     <br>

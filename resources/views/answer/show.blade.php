@@ -1,4 +1,5 @@
-@extends('parents') @section('content') {{-- @include('editor::decode') --}}
+@extends('parents') 
+@section('content')
 
 <!-- Start of Page Container -->
 <hr>
@@ -268,12 +269,6 @@
 		<!-- /.modal -->
 
 
-
-
-
-
-
-
 		<script>
 			$('.sendmsg').click(function(){
         $('#username').val('{!! $info->user->nickname !!}');
@@ -349,7 +344,7 @@
             type:'post',
             dataType:'json',
             success:function(data){
-                console.log(data);
+                window.location.reload();
             },
             statusCode:{422:function(data){
                 var error = JSON.parse(data.responseText);
