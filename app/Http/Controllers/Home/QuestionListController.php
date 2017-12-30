@@ -50,6 +50,9 @@ class QuestionListController extends Controller
         if(empty(\Auth::user()->nickname)){
             return redirect('/user/set');
         }
+        if(empty(\Auth::user()->username)){
+            return redirect('/user/set');
+        }
         $topic = Topic::get();
         return view('question.create', compact('topic'));
     }
@@ -66,11 +69,19 @@ class QuestionListController extends Controller
         //
         // dd(\Auth::user());
         // return $request->input('title');
+        if(empty(\Auth::user()->nickname)){
+            return redirect('/user/set');
+        }
+        if(empty(\Auth::user()->username)){
+            return redirect('/user/set');
+        }
         $data = [
             'user_id' => \Auth::user()->id
         ];
         // dd($request->all());
-        $dis = Question::create(array_merge($request->all(),$data));
+        $question = $request->all();
+        $question['title'] = strip_tags($question['title']);
+        $dis = Question::create(array_merge($question,$data));
         return $dis->id;
     }
 
@@ -124,11 +135,14 @@ class QuestionListController extends Controller
     public function update(\App\Http\Requests\PostRequest $request, $id)
     {
         //
+        
         $question = Question::findOrFail($id);
         if(\Auth::user()->id != $question->user_id){
             return $id;
         }
-        $question->update($request->all());
+        $res = $request->all();
+        $res['title'] = strip_tags($res['title']);
+        $question->update($res);
         return $id;
     }
 
@@ -138,7 +152,7 @@ class QuestionListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
         //
     }

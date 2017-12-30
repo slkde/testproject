@@ -87,10 +87,5 @@
     </div>
 </div>
 <!-- End of Page Container -->
-<script>
 
-    $('.like-count').click(function(){
-        
-    })
-</script>
 @endsection

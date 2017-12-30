@@ -50,6 +50,12 @@ class AnswerController extends Controller
     {
         //
         // dd(\Auth::user()->id);
+        if(empty(\Auth::user()->nickname)){
+            return redirect('/user/set');
+        }
+        if(empty(\Auth::user()->username)){
+            return redirect('/user/set');
+        }
         Answer::create(array_merge($request->all(),['user_id' => \Auth::user()->id]));
         return 123;;
     }
@@ -107,6 +113,12 @@ class AnswerController extends Controller
     public function destroy($id)
     {
         //
+        if(empty(\Auth::user()->nickname)){
+            return redirect('/user/set');
+        }
+        if(empty(\Auth::user()->username)){
+            return redirect('/user/set');
+        }
         $ans = Answer::findOrFail($id);
         if(\Auth::user()->id != $ans->user_id){
             return '只能删自己的回复';

@@ -66,9 +66,12 @@ class UsersController extends Controller
             'email' => $request->get('email'),
             'password' => $request->get('password')
         ])){
+            if(empty(\Auth::user()->username)){
+                return redirect('user.set');
+            }
             return redirect('/');
         }
-        return back()->withInput()->with('msg','用户验证失败');
+        return back()->withInput()->withErrors(['password'=>'用户验证失败']);
     }
 
     /**
