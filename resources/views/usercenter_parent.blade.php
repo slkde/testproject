@@ -13,7 +13,8 @@
     <script src="{{ asset('js/usercenter/modernizr.js')}}"></script>
     <![endif]-->
     <script type="text/javascript" src="{{ asset('js/usercenter/jquery.js')}}"></script>
-    {{--  <script type="text/javascript" src="{{ asset('layer/layer.js')}}"></script>  --}}
+    <script type='text/javascript' src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/res/layer/layer.js')}}"></script>
 </head>
 <body style=    'font: 12px "宋体", Arial, Helvetica, sans-serif;
 color: #666666;
