@@ -56,6 +56,9 @@ Route::group(['middleware'=>'auth','prefix'=>'/user'],function(){
     Route::get('/code', 'User\UserCodeController@code');
 });
 
+Route::get('/person/question/{id}', 'User\PersonShowController@index');
+Route::get('/person/questioninfo/{id}', 'User\PersonShowController@questioninfo');
+Route::get('/person/answer/{id}', 'User\PersonShowController@answer');
 
 
 

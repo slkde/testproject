@@ -43,16 +43,9 @@ background: url(../../images/usercenter/bg.png) right top no-repeat'>
 	font-family: "微软雅黑";'>
                     <ul class="menu">
                         <li><a href="{{ url('/') }}">网站首页</a></li>
-                            <li><a href="{{ asset('/user/question')  }}">我的提问</a></li>
-                            <li><a href="{{ asset('/user/answer') }}/{{ Auth::user()->id }}">我的回答</a></li>
-                            <li><a href="{{ url('/user/person') }}">个人资料</a></li>
-                        {{--  <li><a href="#">个人信息</a>
-                            <ul>
-                                <li><a href="{{ url('/user/person') }}">个人资料</a></li>
-                                <li><a href="{{ url('/user/person') }}">我的相册</a></li>
-                            </ul>
-                        </li>  --}}
-                        <li><a href="{{ url('/user/changes') }}">修改信息</a> </li>
+                            <li><a href="{{ asset('/person/question').'/'.$id  }}">他的提问</a></li>
+                            <li><a href="{{ asset('/person/answer').'/'.$id }}">他的回答</a></li>
+
                     </ul>
                 </div>
             </nav>

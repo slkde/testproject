@@ -19,16 +19,18 @@
 				<article class=" type-post format-standard hentry clearfix">
 
 					<h1 class="post-title">
+						<a href="{{ asset('person/question').'/'.$info->user->id }}">
 						<img src="{{ asset($info->user->photo) }}" class="img-circle user_photo" width="70" height="70">
+						</a>
 						</li>
 						<a href="#">{!! $info->title !!}</a>
 					</h1>
 
 					<div class="post-meta clearfix">
 						<span class="date">{{ $info->created_at }}</span>
-						<span class="category">
+						{{--  <span class="category">
 							<a href="#" title="View all posts in Server &amp; Database">悬赏：{{ $info->bonus }}</a>
-						</span>
+						</span>  --}}
 						<span class="comments">
 							<a href="#" title="Comment on Integrating WordPress with Your Website">评论数:{{ $info->question_answer->count('id') }}</a>
 						</span>
@@ -76,7 +78,7 @@
 							<li class="comment even thread-even depth-1" id="li-comment-{{$v->id}}">
 								<article id="comment-2">
 
-									<a href="#">
+									<a href="{{ asset('person/answer').'/'.$v->user->id }}">
 										<img alt="" src="{{ asset($v->user->photo) }}" class="avatar avatar-60 photo" height="60" width="60">
 									</a>
 
