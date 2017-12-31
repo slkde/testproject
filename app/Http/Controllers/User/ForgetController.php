@@ -13,9 +13,9 @@ use App\Model\User;
 class ForgetController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 忘记密码页面
      *
-     * @return \Illuminate\Http\Response
+     * @return 
      */
     public function index()
     {
@@ -23,46 +23,39 @@ class ForgetController extends Controller
         return view('users/forget');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
-     * Store a newly created resource in storage.
+     * 找回账户
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  $email用户email
+     * @return 
      */
-    public function store(Request $request)
+    public function store(\App\Http\Requests\Forget $request)
     {
+        //保存token用来验证邮箱
         $data = [
         'token' => str_random(48),
         'email' => $request->input('email')
         ];
         PasswordReset::create($data);
         $emailTitle = '激活你的账户';
+        //忘记密码邮件
         $emailView = 'email.forget';
         \Mail::queue($emailView,$data,function($message) use ($data,$emailTitle){
             $message->to($data['email'])->subject($emailTitle);
         });
-        return back();
+        return back()->withErrors(['msg'=>'确认邮件发送']);
     }
 
     /**
-     * Display the specified resource.
+     * 验证邮箱
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($token)
     {
-        //
+        //验证邮箱和token
         $email = PasswordReset::where('token',$token)->get();
         if(empty($email)){
             return redirect('/');
@@ -70,50 +63,30 @@ class ForgetController extends Controller
         return view('users.change',compact('token'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-        return 'edit';
-    }
+
 
     /**
-     * Update the specified resource in storage.
+     * 更新密码
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  token；email;password
+     * @param
+     * @return 
      */
-    public function update(Request $request, $token)
+    public function update(\App\Http\Requests\UserRegisterRequest $request, $token)
     {
         //
         $userEmail = $request->input('email');
         $password = \Hash::make($request->input('password'));
         $forget = PasswordReset::where('token',$token)->first();
         if(empty($forget)){
-            return 123;
+            return back()->withinput()->withErrors(['msg'=>'验证错误']);
         }
         if($forget->email != $userEmail){
-            return 111;
+            return back()->withinput()->withErrors(['msg'=>'请填写正确的邮箱']);
         }
         User::where('email',$forget->email)->update(['password'=>$password]);
         PasswordReset::where('token', $token)->delete();
         return redirect('/');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

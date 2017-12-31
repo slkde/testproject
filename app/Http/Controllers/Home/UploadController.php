@@ -12,36 +12,17 @@ use Image;
 class UploadController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * AJAX上传图片
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  
+     * @return 返回图片路径
      */
     public function upload(Request $request)
     {
         //
-        // return 123;
+        // 表单提交的图片
         $file = $request->file('file');
+        //验证上传类型
         $photo_check = \Validator::make([ 'image'=>$file ], ['image' => 'image']);
         if($photo_check->fails()){
             return [
@@ -50,57 +31,18 @@ class UploadController extends Controller
             ];
         }
         
-        // dd($file);
+        // 上传路径
         $uppath = 'uploads/post/' . date('Ym') .'/' ;
+        //活动原扩展名
         $ext = $file->getClientOriginalExtension();
+        //拼接文件名
         $name = \Auth::user()->id . date('YmdHis'). '.' . $ext;
+        //移动上传文件
         $file->move($uppath, $name);
+        //调整图片大小
         Image::make($uppath.$name)->fit(300)->save();
+        //返回路径
         return $uppath . $name;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

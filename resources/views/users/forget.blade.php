@@ -7,12 +7,16 @@
         <div class="col-md-4 col-md-offset-4" role="main">
             <br>
             <h2 style="text-align: center">问问答--密码找回</h2>
+            
             <br><br>
             {!! Form::open(['url'=>'/user/forget']) !!}
 
             <div class="form-group">
                 
                 {!! Form::label('email', '邮箱: ') !!}
+                @if($errors->has('msg'))
+                <button type="button" class="btn btn-danger btn-xs">{{ $errors->get('msg') }}</button>
+                @endif
                 @if($errors->has('email'))
                 <button type="button" class="btn btn-danger btn-xs">{{ $errors->get('email')['0'] }}</button>
                 @endif

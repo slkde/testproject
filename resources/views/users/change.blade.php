@@ -1,6 +1,6 @@
 @extends('parents')
 @section('content')
-    <div class="container heade">
+    <div class="container heade" style="margin-top:50px;">
         <div class="row">
         <div class="col-md-6 col-md-offset-3" role="main">
             {!! Form::open(['method'=>'patch','url'=>'/user/forget/'.$token]) !!}

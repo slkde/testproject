@@ -88,8 +88,8 @@
 											<cite class="fn">
 												<a href="#" rel="external nofollow" class="url">{{ $v->user->nickname }}</a>
 											</cite>
-											-
-											<a class="comment-reply-link" href="#">Reply</a>
+											{{--  -
+											<a class="comment-reply-link" href="#">Reply</a>  --}}
 											@if(Auth::user()->id == $v->user_id)
 											-
 											<a class="comment-delete" href="javascript:;" answer-id="{{$v->id}}">删除</a>
@@ -162,16 +162,17 @@
 							<h3 class="title">问题排行</h3>
 							</h3>
 							<ul class="articles">
+								@foreach($hot as $v)
 								<li class="article-entry standard">
 									<h4>
-										<a href="single.html">Integrating WordPress with Your Website</a>
+										<a href="single.html">{{ $v->title }}</a>
 									</h4>
-									<span class="article-meta">25 Feb, 2013 in
-										<a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a>
+									<span class="article-meta">{{ $v->created_at }} in
+										<a href="#" title="View all posts in Server &amp; Database">{{ $v->topic->name }}</a>
 									</span>
-									<span class="like-count">66</span>
+									<span class="like-count">{{ $v->support }}</span>
 								</li>
-
+								@endforeach
 							</ul>
 						</section>
 

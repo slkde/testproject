@@ -26,9 +26,9 @@ class QuestionListController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * 显示问题列表
+     * @param 
+     * @return questions问题列表；support最热
      */
     public function index()
     {
@@ -40,28 +40,30 @@ class QuestionListController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 显示添加问题页面
      *
-     * @return \Illuminate\Http\Response
+     * @return topic话题列表
      */
     public function create()
     {
-        //
+        //验证是否用昵称
         if(empty(\Auth::user()->nickname)){
             return redirect('/user/set');
         }
+        //验证是否有用户名
         if(empty(\Auth::user()->username)){
             return redirect('/user/set');
         }
+        //取话题列表
         $topic = Topic::get();
         return view('question.create', compact('topic'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 添加问题到数据库
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  $request->title标题；$request->content内容;
+     * @return $dis->id 成功ID
      */
     public function store(\App\Http\Requests\PostRequest $request)
     // public function store(Request $request)
@@ -69,27 +71,31 @@ class QuestionListController extends Controller
         //
         // dd(\Auth::user());
         // return $request->input('title');
+        //是否有昵称
         if(empty(\Auth::user()->nickname)){
             return redirect('/user/set');
         }
+        //是否有用户名
         if(empty(\Auth::user()->username)){
             return redirect('/user/set');
         }
-        $data = [
-            'user_id' => \Auth::user()->id
-        ];
+        
         // dd($request->all());
+        //获取表单提交数据，添加用户ID
         $question = $request->all();
+        $question['user_id'] = \Auth::user()->id;
         $question['title'] = strip_tags($question['title']);
-        $dis = Question::create(array_merge($question,$data));
+        // dd($question);
+        //添加到数据库
+        $dis = Question::create($question);
         return $dis->id;
     }
 
     /**
-     * Display the specified resource.
+     * 话题下问题
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id话题id; 
+     * @return questions话题对象
      */
     public function show($id)
     {
@@ -109,16 +115,18 @@ class QuestionListController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 显示编辑问题
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        //获取话题
         $topic = Topic::get();
+        //获取问题
         $question = Question::findOrFail($id);
+        //如果问题user_id不是当前ID，返回
         if(\Auth::user()->id != $question->user_id){
             return back();
         }
@@ -126,34 +134,25 @@ class QuestionListController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 修改问题
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  
+     * @param  int  $id当前问题ID
+     * @return 成功返回当前问题，失败也返回当前问题
      */
     public function update(\App\Http\Requests\PostRequest $request, $id)
     {
-        //
-        
+        //获取当前问题对象
         $question = Question::findOrFail($id);
+        //判断是不是自己的问题；
         if(\Auth::user()->id != $question->user_id){
             return $id;
         }
         $res = $request->all();
         $res['title'] = strip_tags($res['title']);
+        //对象中更新问题
         $question->update($res);
         return $id;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy()
-    {
-        //
-    }
 }

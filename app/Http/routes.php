@@ -39,6 +39,8 @@ Route::resource('/user/message', 'User\UsersMessageController');
 Route::get('/question/like/{id}', 'Home\LikeController@like');
 //图片上传
 Route::post('/question/upload', 'Home\UploadController@upload');
+//前台登陆验证码
+Route::get('/vcode/{tmp}', 'Home\UsersController@vcode');
 
 
 //个人中心=================================================
