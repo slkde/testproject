@@ -150,6 +150,7 @@
 
   $('.sendmsg').click(function(){
     $('#username').val($(this).parents('tr').children().html());
+    
   })
 
 

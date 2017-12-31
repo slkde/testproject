@@ -28,4 +28,5 @@
     $('#returnmsgname').html('');
     $('#returnmsgtitle').html('');
     $('#returnmsgbody').html('');
+    $('#returnmsg').html('');
         }

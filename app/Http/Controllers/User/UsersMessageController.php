@@ -30,7 +30,7 @@ class UsersMessageController extends Controller
         // $userid = \Auth::user()->id;
         // dd($userid);
         // $messages = Message::where('to_user_id', '40');
-        $messages = Message::where('to_user_id', \Auth::user()->id)->latest('created_at')->paginate(5);
+        $messages = Message::where('to_user_id', \Auth::user()->id)->latest('created_at')->paginate(4);
         // var_dump($messages);
         // dd($messages);
         return view('users/message', compact('messages'));
@@ -58,7 +58,10 @@ class UsersMessageController extends Controller
         User::where('nickname',$request->user_name);
         $date['to_user_id'] = User::where('nickname',$request->user_name)->first()->id;
         $date['user_id'] = \Auth::user()->id;
-        Message::create(array_merge($request->except('user_name'),$date));
+        $message = $request->except('user_name');
+        $date['message_title'] = strip_tags($message['message_title']);
+        $date['message_body'] = strip_tags($message['message_body']);
+        Message::create($date);
         return ['msg' => '发送成功'];
     }
 
