@@ -44,7 +44,7 @@ class ForgetController extends Controller
         \Mail::queue($emailView,$data,function($message) use ($data,$emailTitle){
             $message->to($data['email'])->subject($emailTitle);
         });
-        return back()->withErrors(['msg'=>'确认邮件发送']);
+        return redirect()->back();
     }
 
     /**
@@ -72,7 +72,7 @@ class ForgetController extends Controller
      * @param
      * @return 
      */
-    public function update(\App\Http\Requests\UserRegisterRequest $request, $token)
+    public function update(\App\Http\Requests\ChangeRequest $request, $token)
     {
         //
         $userEmail = $request->input('email');

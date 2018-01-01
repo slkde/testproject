@@ -20,6 +20,9 @@
                 @if($errors->has('email'))
             {{ $errors->get('email')['0'] }}
             @endif
+            @if($errors->has('msg'))
+                <button type="button" class="btn btn-danger btn-xs">{{ $errors->get('msg') }}</button>
+                @endif
                 
                 {!! Form::email('email', null, ['class' => 'form-control']) !!}
                 
