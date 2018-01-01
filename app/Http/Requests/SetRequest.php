@@ -28,7 +28,7 @@ class SetRequest extends Request
             'nickname' => 'sometimes|between:3,10|unique:ask_user,nickname',
             'email' => 'sometimes|email|unique:ask_user,email',
             'password' => 'sometimes|confirmed|between:6,14',
-            'phone' => 'sometimes|integer',
+            'phone' => 'sometimes|integer|unique:ask_user,phone',
         ];
     }
 }

@@ -78,7 +78,7 @@ class UsersController extends Controller
         ])){
             //如果用户名为空跳到用户设置
             if(empty(\Auth::user()->username)){
-                return redirect('user.set');
+                return redirect('user/set');
             }
             //跳到首页
             return redirect('/');
@@ -110,7 +110,7 @@ class UsersController extends Controller
         // $emailView = 'email.register';
         //调用邮件
         $this->sendTo($request->email);
-        return redirect('/');
+        return redirect('/user/login');
     }
 
     /**

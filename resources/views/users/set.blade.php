@@ -4,7 +4,8 @@
 	<br>
 	<h2 style="text-align: center">问问答--信息修改</h2>
 	<h3 class="msg" style="text-align: center"></h3>
-	<br> {!! Form::open( ['url'=>'/user/set', 'class'=>'set']) !!} @if(empty(Auth::user()->username))
+	<br> {!! Form::open( ['url'=>'/user/set', 'class'=>'set']) !!} 
+	@if(empty(Auth::user()->username))
 	<div class="row">
 		<div class="col-md-1 col-md-offset-4">
 			用户名
