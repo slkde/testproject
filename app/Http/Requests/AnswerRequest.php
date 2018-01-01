@@ -24,8 +24,8 @@ class AnswerRequest extends Request
     public function rules()
     {
         return [
-            'answer_content' => 'required|between:6,20',
-            'question_id' => 'required'
+            'answer_content' => 'required',
+            'question_id' => 'required|required_with:ask_question,id'
         ];
     }
 }

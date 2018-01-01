@@ -24,8 +24,9 @@ class PostRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required|between:6,20',
-            'content' => 'required|between:6,100',
+            'title' => 'required|between:6,30',
+            'content' => 'required',
+            'topic_id' => 'required|required_with:ask_topic,id',
         ];
     }
 }

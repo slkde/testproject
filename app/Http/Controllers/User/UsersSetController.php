@@ -23,9 +23,9 @@ class UsersSetController extends Controller
         $this->middleware('auth',['only'=>['index','store','sendTo']]);
     }
     /**
-     * Display a listing of the resource.
+     * 显示用户设置页面
      *
-     * @return \Illuminate\Http\Response
+     * @return 
      */
     public function index()
     {
@@ -34,21 +34,12 @@ class UsersSetController extends Controller
         return view('users/set',compact('userinfo'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
-     * Store a newly created resource in storage.
+     * 修改个人资料
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  password;username;nickname;phone
+     * @return 
      */
     public function store(\App\Http\Requests\SetRequest $request)
     {
@@ -80,50 +71,11 @@ class UsersSetController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 发送邮件
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  $emailtitle邮件标题；$emailview邮件视图；$data用户邮箱地址
+     * @return 
      */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function sendTo($emailTitle,$emailView,$data)
     {
         //

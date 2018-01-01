@@ -1,8 +1,12 @@
 @extends('parents')
 @section('content')
+
+<div style="background: url('{{ asset('images/background2.jpg') }} '); margin-top:50px;width:100%;height:100%">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3" >
+                <h2 style="text-align: center">问问答--头像修改</h2>
+                <br><br>
                 <div class="text-center">
                     
                     <img class="img-circle user_photo" width="150" height="150" src="{{ asset(Auth::user()->photo) }}">
@@ -12,8 +16,10 @@
                     
                     <div>
                         {{--  {!! Form::submit('上传头像', ['class' => 'btn btn-primary pull-right']) !!}  --}}
+                        <br><br>
                         <div class="text-center">
                             <button type="button" class="btn btn-primary" id="upload_photo">上传头像</button>
+
                         {!! Form::file('photo',['class'=>'photo','id'=>'image', 'style'=>"display:none"]) !!}
                     </div>
                     </div>
@@ -28,7 +34,9 @@
                 
             </div>
         </div>
+        <br><br><br><br>
     </div>
+</div>
     <script>
     $(document).ready(function() {
         var options = {

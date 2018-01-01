@@ -1,13 +1,12 @@
 @extends('parents')
 @section('content')
-@include('editor::decode')
-
+{{--  @include('editor::decode')  --}}
 <!-- Start of Page Container -->
+<hr>
 <div class="page-container">
     <div class="container">
-        
-        <div class="row">
 
+        <div class="row">
             <!-- start of page content -->
             <div class="col-md-8 main-listing">
                 @foreach($questions as $k=>$v)
@@ -15,7 +14,7 @@
 
                     <header class="clearfix">
 
-                        <h3 class="post-title">第{{ $v->id }}问
+                        <h3 class="post-title">
                             <a href="{{ url('answer/'.$v->id) }}">{{ $v->title }}</a>
                         </h3>
 
@@ -27,7 +26,9 @@
                         </div><!-- end of post meta -->
 
                     </header>
-                    {!! EndaEditor::MarkDecode($v->content) !!}
+
+                        {!! $v->content !!}
+
                 </article>
                 @endforeach
                 <div id="paging">
@@ -39,16 +40,16 @@
 
 
             <!-- start of sidebar -->
-            <aside class="col-md-4 page-sidebar">
+            {{--  <aside class="col-md-4 page-sidebar">
 
                 <section class="widget">
                     <div class="support-widget">
                         <h3 class="title">客服</h3>
                         <p class="intro">需要更多的支持?如果你没有找到一个答案,联系我们进一步的帮助。</p>
                     </div>
-                </section>
+                </section>  --}}
 
-
+{{--  
                 <section class="widget">
                     <h3 class="title">文章</h3>
                     <ul class="articles">
@@ -59,22 +60,24 @@
                         </li>
 
                     </ul>
-                </section>
+                </section>  --}}
 
 
 
                 <section class="widget"><h3 class="title">话题</h3>
                     <ul>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet,">Advanced Techniques</a> </li>
+
+                        <li><a href="#" title="Lorem ipsum dolor sit amet,"></a> </li>
 
                     </ul>
                 </section>
 
                 <section class="widget">
-                    <h3 class="title">最新评论</h3>
+                    <h3 class="title">热门问题</h3>
                     <ul id="recentcomments">
-                        <li class="recentcomments"><a href="#" rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating WordPress with Your Website</a></li>
-
+                        @foreach($support as $q)
+                        <li class="recentcomments"><a href="#">{{ strip_tags($q->title) }}</a></li>
+                        @endforeach
                     </ul>
                 </section>
 
@@ -84,10 +87,5 @@
     </div>
 </div>
 <!-- End of Page Container -->
-<script>
 
-    $('.like-count').click(function(){
-        
-    })
-</script>
 @endsection

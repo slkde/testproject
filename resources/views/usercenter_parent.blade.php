@@ -7,11 +7,14 @@
     <meta name="description" content="个人中心" />
     <link href="{{ asset('css/usercenter/base.css')}}" rel="stylesheet">
     <link href="{{ asset('css/usercenter/index.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}"/>
+    <script type='text/javascript' src="{{ asset('js/jquery.min.js') }}"></script>
     <!--[if lt IE 9]>
     <script src="{{ asset('js/usercenter/modernizr.js')}}"></script>
     <![endif]-->
     <script type="text/javascript" src="{{ asset('js/usercenter/jquery.js')}}"></script>
-    {{--  <script type="text/javascript" src="{{ asset('layer/layer.js')}}"></script>  --}}
+    <script type='text/javascript' src="{{ asset('js/jquery-1.8.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/res/layer/layer.js')}}"></script>
 </head>
 <body style=    'font: 12px "宋体", Arial, Helvetica, sans-serif;
 color: #666666;
@@ -42,12 +45,13 @@ background: url(../../images/usercenter/bg.png) right top no-repeat'>
                         <li><a href="{{ url('/') }}">网站首页</a></li>
                             <li><a href="{{ asset('/user/question')  }}">我的提问</a></li>
                             <li><a href="{{ asset('/user/answer') }}/{{ Auth::user()->id }}">我的回答</a></li>
-                        <li><a href="#">个人信息</a>
+                            <li><a href="{{ url('/user/person') }}">个人资料</a></li>
+                        {{--  <li><a href="#">个人信息</a>
                             <ul>
                                 <li><a href="{{ url('/user/person') }}">个人资料</a></li>
                                 <li><a href="{{ url('/user/person') }}">我的相册</a></li>
                             </ul>
-                        </li>
+                        </li>  --}}
                         <li><a href="{{ url('/user/changes') }}">修改信息</a> </li>
                     </ul>
                 </div>

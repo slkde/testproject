@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\User;
-
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -75,19 +74,26 @@ class UserChangeController extends Controller
             'email' => 'required',
             'job' => 'required',
         ],$message);
-        //除去令牌
-        $user = $request->except('_token', 'password_confirmation');
-        //密码加密
-        $pwd = (int)$user['password'];
-        $user['password'] = md5($pwd);
-        //写入数据库
-        $res = User::where('id', $id)->update($user);
-        if($res)
+        //判断验证码是否正确   strcasecmp   相同为0  
+        if(strcasecmp($request->input('code'), session()->get('code')) == 0)
         {
-            return back()->with('msg', '修改成功');
+            //验证码正确，则除去表单的令牌
+            $user = $request->except('_token', 'password_confirmation', 'code');
+            //密码加密
+            $pwd = (int)$user['password'];
+            $user['password'] = md5($pwd);
+            //写入数据库
+            $res = User::where('id', '=', $id)->update($user);
+            if($res)
+            {
+                return back()->with('msg', '修改成功');
+            }else{
+                return back()->with('msg', '修改失败');
+            }
         }else{
-            return back()->with('msg', '修改失败');
+            return back()->with('msg', '验证码错误');
         }
+
     }
 
     /**

@@ -24,7 +24,11 @@ class SetRequest extends Request
     public function rules()
     {
         return [
-            'password' => 'confirmed|between:6,14'
+            'username' => 'sometimes|between:3,10|alpha_dash|unique:ask_user,username',
+            'nickname' => 'sometimes|between:3,10|unique:ask_user,nickname',
+            'email' => 'sometimes|email|unique:ask_user,email',
+            'password' => 'sometimes|confirmed|between:6,14',
+            'phone' => 'sometimes|integer|unique:ask_user,phone',
         ];
     }
 }

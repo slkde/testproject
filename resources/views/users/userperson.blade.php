@@ -8,7 +8,7 @@
   <div class="container">
     <div class="bloglist f_l">
     {{--个人信息展示--}}
-      <table style="margin-left:200px;margin-top: 50px;">
+      <table style="margin-left:270px;margin-top: 100px;">
         <tr>
           <td>
             <p class="dateview">
