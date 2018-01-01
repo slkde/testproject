@@ -67,6 +67,10 @@ class UsersController extends Controller
     public function signin(\App\Http\Requests\UserLoginRequest $request)
     {
         //
+        $idd = User::where('email',$request->get('email'))->get();
+        if($idd[0]->identty == 3){
+            return redirect()->back()->withInput()->withErrors(['password'=>'账户被禁用']);
+        }
         // 验证码
         if($request->vcode != Session::get('vcode')){
             return redirect()->back()->withInput()->withErrors(['password'=>'验证码错误']);
