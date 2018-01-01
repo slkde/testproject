@@ -48,7 +48,7 @@ class QuestionListController extends Controller
     {
         //验证是否用昵称
         if(\Auth::user()->identty < 1){
-            return redirect('/user/set');
+            return redirect('/user/set')->withErrors(['error'=>'必须验证邮箱才能提问']);
         }
         //验证是否用昵称
         if(empty(\Auth::user()->nickname)){

@@ -3,7 +3,12 @@
 <div style="background: url('{{ asset('images/background2.jpg') }} '); margin-top:50px;width:100%;height:100%">
 	<br>
 	<h2 style="text-align: center">问问答--信息修改</h2>
-	<h3 class="msg" style="text-align: center"></h3>
+	<h3 class="msg" style="text-align: center">
+		@if($errors->has('error'))
+		{{ $errors->get('error')[0] }}
+	@endif
+	</h3>
+	
 	<br> {!! Form::open( ['url'=>'/user/set', 'class'=>'set']) !!} 
 	@if(empty(Auth::user()->username))
 	<div class="row">
