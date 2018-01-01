@@ -47,6 +47,10 @@ class QuestionListController extends Controller
     public function create()
     {
         //验证是否用昵称
+        if(\Auth::user()->identty < 1){
+            return redirect('/user/set');
+        }
+        //验证是否用昵称
         if(empty(\Auth::user()->nickname)){
             return redirect('/user/set');
         }
