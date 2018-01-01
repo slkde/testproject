@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Validator;
 use DB;
 class QuestionController extends Controller
 {
+	// protected $filepath;
     //文件上传的方法
     public function upload(Request $request){
         //获取文件上传对象
@@ -31,7 +32,8 @@ class QuestionController extends Controller
 		//生成新文件名
 		$fileName = md5(time().rand(1000,9999).uniqid()).'.'.$ext;
 		//将文件上传对象移动到指定的位置,上传到阿里云或者七牛云时千万不要移动！！！！！！！！！这是个大坑！！
-		//$input->move(public_path().'/upload/', $fileName);
+		$input->move(public_path().'/uploads/', $fileName);
+		// $this->filepath = 123;
 		
 		       //上传到七牛云
 //        参数一 上到到七牛云后的路径和文件名
@@ -40,12 +42,12 @@ class QuestionController extends Controller
 		//七牛云上这样写
 		//return $fileName;
 		 //阿里云上传到oss  参数1：新文件的名字 参数2：原文件的路径
-		$res = OSS::upload('upload/'.$fileName,$input->getRealPath());
+		//$res = OSS::upload('upload/'.$fileName,$input->getRealPath());
 		//阿里云上这样写
-		return 'upload/'.$fileName;
+		//return 'upload/'.$fileName;
         /* dd($res); */
 		
-		//return $fileName;
+		return $fileName;
     }
 
     /**
@@ -101,8 +103,9 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
 		//1、获取用户提交的数据
-		$input = $request->except('_token');
-		//dd($input['photo']);
+		$input = $request->except('_token','photo1');
+		//$input['photo'] = $input['photo']->getRealPath();
+		//dd($input);
 		//2.对提交表单验证
         $rule = [
             'content'=>'required|between:10,1000',
@@ -116,7 +119,7 @@ class QuestionController extends Controller
             'content.between' => '高质量的提问内容不能少于10个字',
         ];
 		//判断图片上传的格式和大小，如果有图片上传的话
-		if(isset($input['photo'])){
+		/* if(isset($input['photo'])){
 			$rule = [
             'photo'=>'image|max:500',           
 			];
@@ -124,7 +127,7 @@ class QuestionController extends Controller
 				'photo.image' => '上传的必须是图片哦',				
 				'photo.max' => '图片要小于500KB',
 			];
-		}
+		} */
         $validator = Validator::make($input, $rule,$mess);
         //如果验证失败
         if ($validator->fails()) {
@@ -134,7 +137,7 @@ class QuestionController extends Controller
         }		
 		//把用户的id传过去
 		$input['user_id'] = \session('user')['id'];
-		//dd($input);
+			
 		$res = Question::create($input);
 		if($res){
             return redirect('admin/question')->with('msg','添加成功');
@@ -163,7 +166,7 @@ class QuestionController extends Controller
 		
 		//取出这条问题
 		//$question = Question::find($id);
-		
+		//dd($question)
 		return view('admin.question.show', compact('question'));
 		// return view('admin.question.show', compact('username','answers','question'));
     }
@@ -178,6 +181,7 @@ class QuestionController extends Controller
     {
 		$topic = Topic::get();
 		$question = Question::find($id);
+		//dd($question);
         return view('admin.question.edit',compact('question', 'topic'));
     }
 
@@ -203,11 +207,13 @@ class QuestionController extends Controller
             'title'=>'required|between:10,30',
         ], $messages);
 		//2、通过$request获取要修改的值
-        $input = $request->except('_token', '_method');
+        $input = $request->except('_token', '_method','photo1');
         //dd($input);
 		//3、执行修改操作
         $question = Question::find($id);
-		$res = $question->update(['title'=>$input['title'],'content'=>$input['content']]);
+		//dd(public_path().'/uploads/'.$question['photo']);
+		$res = $question->update(['title'=>$input['title'],'content'=>$input['content'],'photo'=>$input['photo']]);
+		
 		/* dd($res); */
         if($res){
            return redirect('admin/question') -> with('msg', '修改成功');

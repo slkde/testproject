@@ -76,7 +76,7 @@ class LoginController extends Controller
             return redirect('admin/login')->with('errors', '验证码错误');
         }
         //4.判断是否有此用户
-        $user = User::where('username', $input['username'])->first();
+        $user = User::where('username', $input['username'])->where('identty', '9')->first();
         if (empty($user)){
             return redirect('admin/login')->with('errors', '此用户不存在');
         }

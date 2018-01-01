@@ -48,7 +48,7 @@
                     </tr>
                      <tr>
                         <td>权限</td>
-                        <td>{{ ($user->identty == 1)?'普通用户':'管理员' }}</td>
+                        <td>{{ ($user->identty == 9)?'管理员':'普通用户' }}</td>
                     </tr>
                     <tr>
                         <td>签名</td>

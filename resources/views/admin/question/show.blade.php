@@ -70,7 +70,7 @@
                 </table>			
 				<form name = 'myform' method='post' style='display:none'>
                         {{ csrf_field() }}
-                        {{ method_field('delete') }}
+                        
                     </form>
             </div>
 			<a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/question/') }}">返回</a>
@@ -82,7 +82,7 @@
         function doDel(id){
             if(confirm('您确定删除吗？')){
                 var form = document.myform;
-                form.action = '/admin/answer/'+id;
+                form.action = '/admin/answer/destroy/'+id;
                 form.submit();
             }
         }

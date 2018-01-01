@@ -209,22 +209,31 @@ class UserController extends Controller
         //通过$request获取要修改的值
         $input = $request->except('_token', '_method');
 
+		foreach($input as $k => $v){
+			if(empty($input[$k])){
+				unset($input[$k]);
+			}
+		}
+		if(!empty($input['passwork'])){
+		$input['passwork'] = \Hash::make($input['password']);
+		}
 //        dd($input);
         //2.对提交表单验证
         $rule = [
-            'username'=>'required|between:4,18|alpha_dash',
-            'identty' => 'required',
-            'password'=>'required|alpha_num|between:4,18',
-            'email'=>'required|email',
+            //'username'=>'required|between:4,18|alpha_dash',
+            //'identty' => 'required',
+            'password'=>'alpha_num|between:4,18',
+            'email'=>'email|unique:ask_user,email',
             'password_confirmation'=>'alpha_num|between:4,18|same:password',
         ];
         $mess = [
-            'username.required' => '用户名不能为空',
+           // 'username.required' => '用户名不能为空',
             'email.required' => '邮箱不能为空',
             'email.email' => '邮箱不符合格式',
+            'email.unique' => '邮箱已存在',
             // 'username.unique' => '用户名已被占用，请更换一个用户名',
-            'username.between' => '用户名必须在4-18位之间',
-            'username.alpha_dash' => '用户名只能由数字、字母或下划线组成',
+           // 'username.between' => '用户名必须在4-18位之间',
+            //'username.alpha_dash' => '用户名只能由数字、字母或下划线组成',
             'password.required' => '密码不能为空',
             'password.between' => '密码必须在4-18位之间',
             'password_confirmation.between' => '确认密码必须在4-18位之间',
@@ -242,7 +251,7 @@ class UserController extends Controller
         }
         //执行修改操作
 
-        $res = User::where('id',$id)->update(['username'=>$input['username'],'password'=>\Hash::make($input['password']),'identty'=>$input['identty'],'email'=>$input['email']]);
+        $res = User::where('id',$id)->update($input);
         // $user = User::find($id);
         // $res = $user->update(['username'=>$input['username'],'password'=>Crypt::encrypt($input['password']),'identty'=>$input['identty'],'email'=>$input['email']]);
         if($res){
