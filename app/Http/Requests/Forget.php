@@ -24,7 +24,7 @@ class Forget extends Request
     public function rules()
     {
         return [
-            'email' => 'required',
+            'email' => 'required|required_with:ask_user,email',
         ];
     }
 }

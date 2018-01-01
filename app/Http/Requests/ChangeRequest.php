@@ -24,7 +24,7 @@ class ChangeRequest extends Request
     public function rules()
     {
         return [
-            'email'=>'required|email',
+            'email'=>'required|required_with:ask_user,email|email',
             'password'=>'required|between:6,14|confirmed',
             'password_confirmation'=>'required|between:6,14',
         ];

@@ -25,7 +25,7 @@ class AnswerRequest extends Request
     {
         return [
             'answer_content' => 'required',
-            'question_id' => 'required'
+            'question_id' => 'required|required_with:ask_question,id'
         ];
     }
 }
