@@ -165,7 +165,7 @@
 								@foreach($hot as $v)
 								<li class="article-entry standard">
 									<h4>
-										<a href="single.html">{{ $v->title }}</a>
+										<a href="{{ url('/answer').'/'.$v->id }}">{{ $v->title }}</a>
 									</h4>
 									<span class="article-meta">{{ $v->created_at }} in
 										<a href="#" title="View all posts in Server &amp; Database">{{ $v->topic->name }}</a>
@@ -272,11 +272,11 @@
 		<!-- /.modal -->
 
 
-		<script>
-			$('.sendmsg').click(function(){
-        $('#username').val('{!! $info->user->nickname !!}');
-    })
-    
+<script>
+	$('.sendmsg').click(function(){
+		$('#username').val('{!! $info->user->nickname !!}');
+	})
+    @include('users.sendmsg')
 
     $('.likeclick').click( function(){
 
@@ -340,27 +340,27 @@
         }
         
         $('.subcontent').click(function(){
-            var content = $('#summernote').summernote('code');
+			var content = $('#summernote').summernote('code');
             $.ajax({
-            url:'/answer',
-            data:{'question_id':{{$info->id}},'answer_content':content,'_token':'{{csrf_token()}}'},
-            type:'post',
-            dataType:'json',
-            success:function(data){
-                window.location.reload();
-            },
-            statusCode:{422:function(data){
-                var error = JSON.parse(data.responseText);
-                console.log(error);
-                $('.subcontent').val(error.content[0]);
-                $('.subcontent').val(error.title[0]);
-                $('.subcontent').val(error.topic_id[0]);
-            }
-        }
-    })
-})
-
+				url:'/answer',
+				data:{'question_id':{{$info->id}},'answer_content':content,'_token':'{{csrf_token()}}'},
+				type:'post',
+				dataType:'json',
+				success:function(data){
+					window.location.reload();
+				},
+				statusCode:{422:function(data){
+					var error = JSON.parse(data.responseText);
+					console.log(error);
+					$('.subcontent').val(error.content[0]);
+					$('.subcontent').val(error.title[0]);
+					$('.subcontent').val(error.topic_id[0]);
+				}
+			}
+		})
+	})
 });
-
-		</script>
-		@endsection
+	
+	
+</script>
+@endsection
