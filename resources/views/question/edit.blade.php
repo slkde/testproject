@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-md-3">
     
-                    {!! Form::text('error',null,['class'=>'form-control err']) !!}
+                    {!! Form::text('error',null,['class'=>'form-control err err1 err2']) !!}
                     
                 </div>
             </div>
@@ -115,6 +115,8 @@
                 var error = JSON.parse(data.responseText);
                 console.log(error);
                $('.err').val(error.title[0]);
+                $('.err1').val(error.topic_id[0]);
+                $('.err2').val(error.content[0]);
             }
         }
         });
