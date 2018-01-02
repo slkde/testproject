@@ -174,7 +174,7 @@
                         <li><a class="" href="{{ url('/admin/config') }}">网站配置列表</a></li>
                     </ul>
                 </li>
-				<li class="sub-menu">
+				{{--  <li class="sub-menu">
                     <a href="javascript:;" class="">
                         <i class="icon_document_alt"></i>
                         <span>角色管理</span>
@@ -211,7 +211,7 @@
                         <li><a class="" href="blank.html">Blank Page</a></li>
                         <li><a class="" href="404.html">404 Error</a></li>
                     </ul>
-                </li>
+                </li>  --}}
 
             </ul>
             <!-- sidebar menu end-->

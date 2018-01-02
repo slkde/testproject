@@ -80,7 +80,7 @@
                                 </div><!-- end of post meta -->
 
                             </header>
-                            {!! EndaEditor::MarkDecode($v->content) !!}
+                            {!! $v->content !!}
                         </article>
                     @endforeach
 
