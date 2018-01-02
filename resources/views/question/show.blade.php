@@ -1,4 +1,7 @@
 @extends('parents')
+@section('title')
+	<title>{{ Config::get('webconfig.title') }}--问题列表</title>
+@endsection
 @section('content')
 
 

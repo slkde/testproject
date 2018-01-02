@@ -1,4 +1,7 @@
 @extends('parents') 
+@section('title')
+	<title>{{ Config::get('webconfig.title') }}--问题与回复</title>
+@endsection
 @section('content')
 
 <!-- Start of Page Container -->
@@ -45,9 +48,11 @@
 						<span class="like-count like-this">{{ $info->support }}点赞</span>
 					</div>
 					<!-- end of post meta -->
+					<div class="comment-body">
 
-					{!! $info->content !!}
-
+						{!! $info->content !!}
+					</div>
+					<div class="clearfix"></div>
 					<div class="like-btn">
 
 						<form id="like-it-form" action="#" method="post">
@@ -108,6 +113,7 @@
 									<div class="comment-body">
 										{!! $v->answer_content !!}
 									</div>
+									<div class="clearfix"></div>
 									<!-- end of comment-body -->
 
 								</article>

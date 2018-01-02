@@ -59,7 +59,7 @@
                 <tr id="value" style="display: none">
                     <th></th>
                     <td>
-                        <input class="form-control input-lg m-bot15" type="text" value="1|开启,2|关闭" name="value">
+                        <input class="form-control input-lg m-bot15" type="text" placeholder="1|开启,2|关闭" name="value">
                     </td>
                 </tr>
                 

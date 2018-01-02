@@ -1,6 +1,9 @@
 @extends('parents')
+@section('title')
+	<title>{{ Config::get('webconfig.title')}}--编辑我的问题</title>
+@endsection
 @section('content')
-{{--  @include('editor::head')  --}}
+
     <div class ="container">
         <br><br><br>
         <div class="row">

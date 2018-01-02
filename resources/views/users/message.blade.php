@@ -1,4 +1,7 @@
 @extends('parents')
+@section('title')
+	<title>{{ Config::get('webconfig.title') }}--站内信</title>
+@endsection
 @section('content')
 <div style="background: url('{{ asset('images/background2.jpg') }} '); margin-top:50px;width:100%;height:100%">
     <br><br>

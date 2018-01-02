@@ -7,7 +7,7 @@
     <!-- META TAGS -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-@yield('title')
+    @yield('title')
     
     <meta name="keyword" content="{{ Config::get('webconfig.keyword') }}">
     <meta name="description" content="{{ Config::get('webconfig.des') }}">
