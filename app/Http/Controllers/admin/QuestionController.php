@@ -103,7 +103,7 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
 		//1、获取用户提交的数据
-		$input = $request->except('_token','photo1');
+		$input = $request->except('_token');
 		//$input['photo'] = $input['photo']->getRealPath();
 		//dd($input);
 		//2.对提交表单验证
@@ -136,7 +136,7 @@ class QuestionController extends Controller
                 ->withInput();
         }		
 		//把用户的id传过去
-		$input['user_id'] = \session('user')['id'];
+		$input['user_id'] = \Auth::user()->id;
 			
 		$res = Question::create($input);
 		if($res){
