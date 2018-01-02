@@ -7,10 +7,12 @@
     <!-- META TAGS -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@yield('title')
+    
+    <meta name="keyword" content="{{ Config::get('webconfig.keyword') }}">
+    <meta name="description" content="{{ Config::get('webconfig.des') }}">
 
-    <title>{{ Config::get('webconfig.title') }}</title>
-
-    <link rel="shortcut icon" href="images/favicon.png" />
+    {{--  <link rel="shortcut icon" href="images/favicon.png" />  --}}
 
     <!-- Style Sheet-->
     <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}"/>
@@ -231,9 +233,10 @@
     <div id="footer-bottom-wrapper">
         <div id="footer-bottom" class="container">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-7 col-md-offset-3">
                     <p class="copyright">
-                        Copyright © 2017. All Rights Reserved by KnowledgeBase.Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+                        {{ Config::get('webconfig.copyright') }}&nbsp;
+                        <a href="#" title="{{ Config::get('webconfig.title') }}" target="_blank">{{ Config::get('webconfig.title') }}</a>
                     </p>
                 </div>
                 <style>

@@ -1,4 +1,7 @@
 @extends('parents')
+@section('title')
+{{ Config::get('webconfig.title') }}
+@endsection
 @section('content')
 {{--  @include('editor::decode')  --}}
 <!-- Start of Page Container -->
