@@ -56,10 +56,19 @@
                 </tr>
                 <br />
                 
-                <tr id="value" style="display: none">
+                <tr id="showradio" style="display: none">
                     <th></th>
                     <td>
                         <input class="form-control input-lg m-bot15" type="text" placeholder="1|开启,2|关闭" name="value">
+                    </td>
+                </tr>
+
+                <tr id="showimg" style="display: none">
+                    <th></th>
+                    <td>
+                        
+                        {!! Form::file('photo', [$options]) !!}
+                        
                     </td>
                 </tr>
                 
@@ -88,10 +97,12 @@
                    $('#value').hide();
                    break;
                case 'radio':
-                   $('#value').show();
+                   $('#showradio').show();
+                   $('#showimg').hide();
                    break;
                case 'img':
-                   $('#value').hide();
+                   $('#showimg').show();
+                   $('#showradio').hide();
                    break;
            }
         }

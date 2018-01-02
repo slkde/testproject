@@ -66,6 +66,7 @@ class ConfigController extends Controller
 
         $res = $this->tijiao($input);
         //执行成功了
+        $this->putFile();
         if($res){
             return redirect('admin/config');
         }else{
@@ -262,6 +263,7 @@ class ConfigController extends Controller
         $conf = Config::find($id);
         $res = $conf->update($input);
         // dd($res);
+        $this->putFile();
         if($res){
             return redirect('admin/config') -> with('msg', '修改成功');
         }else{

@@ -52,7 +52,7 @@
                         <label for=""><input type="radio" name="type" @if($conf->type == 'input') checked   @endif value="input" onclick="showTr(this)">普通文本框</label>
                         <label for=""><input type="radio" name="type" @if($conf->type == 'textarea') checked   @endif value="textarea" onclick="showTr(this)">文本域</label>
                         <label for=""><input type="radio" name="type" @if($conf->type == 'radio') checked   @endif value="radio" onclick="showTr(this)">单选按钮</label>
-                        <label for=""><input type="radio" name="type" @if($conf->type == 'img') checked   @endif value="img" onclick="showTr(this)">图片</label>
+                        {{--  <label for=""><input type="radio" name="type" @if($conf->type == 'img') checked   @endif value="img" onclick="showTr(this)">图片</label>  --}}
                     </td>
                 </tr>
                 <br />
