@@ -37,6 +37,10 @@ Route::resource('/user/set', 'User\UsersSetController');
 Route::resource('/user/message', 'User\UsersMessageController');
 //前台点赞功能
 Route::get('/question/like/{id}', 'Home\LikeController@like');
+//图片上传
+Route::post('/question/upload', 'Home\UploadController@upload');
+//前台登陆验证码
+Route::get('/vcode/{tmp}', 'Home\UsersController@vcode');
 
 
 //个人中心=================================================
@@ -56,6 +60,9 @@ Route::group(['middleware'=>'auth','prefix'=>'/user'],function(){
     Route::get('/code', 'User\UserCodeController@code');
 });
 
+Route::get('/person/question/{id}', 'User\PersonShowController@index');
+Route::get('/person/questioninfo/{id}', 'User\PersonShowController@questioninfo');
+Route::get('/person/answer/{id}', 'User\PersonShowController@answer');
 
 
 
@@ -104,8 +111,12 @@ Route::group(['prefix' => 'admin','namespace' => 'admin', 'middleware' => 'islog
 	//上传图片的路由
     Route::post('upload', 'QuestionController@upload');
 	
-	//提问模块
-    Route::resource('answer', 'AnswerController');
+	//回复模块
+    //Route::resource('answer', 'AnswerController');
+    Route::get('answer', 'AnswerController@index');
+    Route::get('answer/{id}', 'AnswerController@show');
+	Route::post('answer/destroy/{id}','AnswerController@destroy');
+	Route::post('answer/del/{id}','AnswerController@del');
 	
 	//角色路由
 	Route::resource('role', 'RoleController');
@@ -121,3 +132,11 @@ Route::group(['prefix' => 'admin','namespace' => 'admin', 'middleware' => 'islog
     Route::resource('config','ConfigController');
     Route::post('config/changecontent','ConfigController@changeContent');
 });
+
+
+
+
+
+
+
+

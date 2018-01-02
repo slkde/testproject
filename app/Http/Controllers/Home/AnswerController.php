@@ -17,48 +17,35 @@ class AnswerController extends Controller
     // public function __construct(Markdown $markdown)
     {
         // $this->markdown = $markdown;
-
+        //中间件验证登陆用户才可以访问
         $this->middleware('auth',['only'=>['store','edit','update']]);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
-     * Show the form for creating a new resource.
+     * 添加回答
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  nickname 昵称;username用户名;
      * @return \Illuminate\Http\Response
      */
     public function store(\App\Http\Requests\AnswerRequest $request)
     {
         //
         // dd(\Auth::user()->id);
+        if(empty(\Auth::user()->nickname)){
+            return redirect('/user/set');
+        }
+        if(empty(\Auth::user()->username)){
+            return redirect('/user/set');
+        }
         Answer::create(array_merge($request->all(),['user_id' => \Auth::user()->id]));
-        return 123;;
+        return 1;
     }
 
     /**
-     * Display the specified resource.
+     * 查看问题回复
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  $id问题id;
+     * @return info问题对象；data最新回复；hot最热问题
      */
     public function show($id)
     {
@@ -71,41 +58,34 @@ class AnswerController extends Controller
         // dd($info);
 
         // $info = Question::with('question_answer')->where('id', $id)->get()->toArray();
+        $hot = Question::orderBy('support','desc')->Paginate(5);
 		$data = Answer::where('question_id', $id)->orderBy('created_at', 'desc')->Paginate(5);
-        return view('answer.show', compact('info', 'data'));
+        return view('answer.show', compact('info', 'data','hot'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 删除回答
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
+     * @param  int  $id回答id；
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        //判断昵称是否为空
+        if(empty(\Auth::user()->nickname)){
+            //跳到个人设置
+            return redirect('/user/set');
+        }
+        //判断用户名是否为空
+        if(empty(\Auth::user()->username)){
+            return redirect('/user/set');
+        }
+        //判断删除回复是否为自己的回复
+        $ans = Answer::findOrFail($id);
+        if(\Auth::user()->id != $ans->user_id){
+            return '只能删自己的回复';
+        }
+        $ans->delete();
+        return 1;
     }
 }

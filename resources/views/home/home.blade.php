@@ -1,4 +1,7 @@
 @extends('parents')
+@section('title')
+	<title>{{ Config::get('webconfig.title') }}</title>
+@endsection
 @section('content')
 
     {{--轮播图开始--}}

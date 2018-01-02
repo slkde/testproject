@@ -1,4 +1,7 @@
 @extends('parents')
+@section('title')
+	<title>{{ Config::get('webconfig.title') }}--登陆</title>
+@endsection
 @section('content')
 
 <div style="background: url('{{ asset('images/background2.jpg') }} '); margin-top:50px;width:100%;height:100%">
@@ -40,6 +43,24 @@
                 {{--  {!! Form::password('password', null, ['class' => 'form-control']) !!}  --}}
                 <input type="password" class="form-control" name="password">
             </div>
+            <div class="form-group">
+                <div >
+                    
+                    {!! Form::label('vcode', '验证码:') !!}
+                    
+                </div>
+                <div class="col-md-6">
+                    
+                    {!! Form::text('vcode', null,['class'=>'form-control']) !!}
+                    
+                </div>
+                <div class="col-md-6">
+                    
+                    <img class="revcode" src="{{ url('vcode') }}/1">
+                    
+                </div>
+                
+            </div>
 
             {!! Form::submit('提交登陆', ['class' => 'btn btn-primary form-control']) !!}
             
@@ -51,4 +72,11 @@
         <br><br><br><br><br><br><br><br><br>
     </div>
 </div>
+<script>    
+
+    $('.revcode').click(function(){
+        var url = "{{ url('vcode') }}" + '/' + Math.random();
+        $(this).attr('src',url);
+    })
+</script>
 @stop

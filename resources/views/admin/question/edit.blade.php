@@ -40,9 +40,10 @@
 							<th>缩略图：</th>
 							<td>
 							  <!--  <input type="text" size="50" class="lg" name="photo" id="art_thumb"> -->
-								<input id="file_upload" name="photo" type="file" multiple="true" value="{{ $question->photo }}">
-
-								<p><img id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" src="{{ $question->photo}}" /></p>
+								<input id="file_upload" name="photo1" type="file" multiple="true" >
+								
+								<p><img id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" src="{{ $question->photo}}" /><input type="hidden" name="photo" id="img2">
+								</p>
 
 								<script type="text/javascript">
 									$(function () {
@@ -87,9 +88,10 @@
 											success: function(data) {
 		                                    //console.log(data);
 		                                    //alert("上传成功");
-												//$('#img1').attr('src','/'+data);
+												$('#img1').attr('src','/uploads/'+data);
+												$('#img2').val('/uploads/'+data);
 												//上传到阿里云
-												$('#img1').attr('src','http://kangke.oss-cn-beijing.aliyuncs.com/'+data); 
+												//$('#img1').attr('src','http://kangke.oss-cn-beijing.aliyuncs.com/'+data); 
 												//上传到七牛云
 												//$('#img1').attr('src','http://p15p213cx.bkt.clouddn.com/'+data);
 												$('#art_thumb').val(data);

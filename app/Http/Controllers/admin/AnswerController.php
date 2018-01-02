@@ -10,17 +10,33 @@ use App\Model\Answer;
 use App\Model\Question;
 class AnswerController extends Controller
 {
+	public function del($id)
+    {
+		$res = Answer::where('id',$id)->delete();
+		if ($res > 0) {
+					return redirect('admin/answer/') -> with('msg', '删除成功'); 
+			   }else{
+				   return back() -> with('msg', '修改失败');
+			   }
+	}
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-		$data = Answer::get();
+		$where = [];
+        $db = Answer::with('user');
+		if($request->has('answer_content')){
+            $answer_content = $request->input('answer_content');
+            $where['answer_content'] = $answer_content;
+            $db->where('answer_content','like',"%{$answer_content}%");
+        }
+		$data = $db->paginate(3); 
 		//$data = $this->findSubTree($datas,0,0);
 		/* dd($data); */
-        return view('admin.answer.list',compact('data'));
+        return view('admin.answer.list',compact('data','where'));
     }
 
     /**
@@ -52,32 +68,13 @@ class AnswerController extends Controller
      */
     public function show($id)
     {
-        //
+        $answer = Answer::findOrFail($id);
+		$user = Answer::with('user');
+		$answer_question = Answer::with('answer_question');
+		return view('admin.answer.show', compact('answer','user','answer_question'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
+ 
     /**
      * Remove the specified resource from storage.
      *
@@ -98,18 +95,9 @@ class AnswerController extends Controller
     }
 	
 	
-    /**递归获取子孙栏目
-     * @param $cates
-     */
-    protected function findSubTree($cates,$id=0,$lev=1){
-        $subtree = [];//子孙数组
-        foreach ($cates as $v) {
-            if($v->pid==$id){
-                $v->lev = $lev;
-                $subtree[] = $v;
-                $subtree = array_merge($subtree,$this->findSubTree($cates,$v->id,$lev+1));
-            }
-        }
-        return $subtree;
-    }
 }
+
+
+
+
+

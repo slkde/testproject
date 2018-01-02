@@ -38,8 +38,8 @@
                 @foreach($data as $k=>$v)
                         <tr>
                             <td class="tc">{{$v->id}}</td>
-                            <td>{{$v->title}}</td>
-                            <td>{{$v->content}}</td>
+                            <td width="100px">{{$v->title}}</td>
+                            <td width="550px">{{$v->content}}</td>
 							
 							<td>{{ $v->user->username }}</td>
                             <td>{{$v->support}}</td>                         

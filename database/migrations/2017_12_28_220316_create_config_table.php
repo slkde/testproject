@@ -20,9 +20,9 @@ class CreateConfigTable extends Migration
             $table->string('name');
             $table->text('content');
             $table->integer('order')->unsigned()->default(0);
-            $table->string('tips');
+            $table->string('tips')->nullable();
             $table->string('type');
-            $table->string('value');
+            $table->string('value')->nullable();
         });
     }
 

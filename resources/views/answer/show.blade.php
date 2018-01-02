@@ -1,6 +1,8 @@
 @extends('parents') 
-@section('content') 
-{{-- @include('editor::decode') --}}
+@section('title')
+	<title>{{ Config::get('webconfig.title') }}--问题与回复</title>
+@endsection
+@section('content')
 
 <!-- Start of Page Container -->
 <hr>
@@ -20,16 +22,18 @@
 				<article class=" type-post format-standard hentry clearfix">
 
 					<h1 class="post-title">
+						<a href="{{ asset('person/question').'/'.$info->user->id }}">
 						<img src="{{ asset($info->user->photo) }}" class="img-circle user_photo" width="70" height="70">
+						</a>
 						</li>
 						<a href="#">{!! $info->title !!}</a>
 					</h1>
 
 					<div class="post-meta clearfix">
 						<span class="date">{{ $info->created_at }}</span>
-						<span class="category">
+						{{--  <span class="category">
 							<a href="#" title="View all posts in Server &amp; Database">悬赏：{{ $info->bonus }}</a>
-						</span>
+						</span>  --}}
 						<span class="comments">
 							<a href="#" title="Comment on Integrating WordPress with Your Website">评论数:{{ $info->question_answer->count('id') }}</a>
 						</span>
@@ -44,9 +48,11 @@
 						<span class="like-count like-this">{{ $info->support }}点赞</span>
 					</div>
 					<!-- end of post meta -->
+					<div class="comment-body">
 
-					{!! $info->content !!}
-
+						{!! $info->content !!}
+					</div>
+					<div class="clearfix"></div>
 					<div class="like-btn">
 
 						<form id="like-it-form" action="#" method="post">
@@ -74,10 +80,10 @@
 						<ol class="commentlist">
 
 							@foreach($info->question_answer as $v)
-							<li class="comment even thread-even depth-1" id="li-comment-2">
+							<li class="comment even thread-even depth-1" id="li-comment-{{$v->id}}">
 								<article id="comment-2">
 
-									<a href="#">
+									<a href="{{ asset('person/answer').'/'.$v->user->id }}">
 										<img alt="" src="{{ asset($v->user->photo) }}" class="avatar avatar-60 photo" height="60" width="60">
 									</a>
 
@@ -87,8 +93,12 @@
 											<cite class="fn">
 												<a href="#" rel="external nofollow" class="url">{{ $v->user->nickname }}</a>
 											</cite>
+											{{--  -
+											<a class="comment-reply-link" href="#">Reply</a>  --}}
+											@if(Auth::user()->id == $v->user_id)
 											-
-											<a class="comment-reply-link" href="#">Reply</a>
+											<a class="comment-delete" href="javascript:;" answer-id="{{$v->id}}">删除</a>
+											@endif
 										</h5>
 
 										<p class="date">
@@ -103,6 +113,7 @@
 									<div class="comment-body">
 										{!! $v->answer_content !!}
 									</div>
+									<div class="clearfix"></div>
 									<!-- end of comment-body -->
 
 								</article>
@@ -121,14 +132,14 @@
 							<div class="row">
 								{{--
 								<div class="col-md-9" role="main"> --}}
-                                     
+
 									<div class="form-group">
 										<div id="summernote"></div>
 									</div>
 									<div class="form-group">
 
-                                        
-                                        <button type="button" class="btn btn-primary  pull-right  subcontent">发表评论</button>
+
+										<button type="button" class="btn btn-primary  pull-right  subcontent">发表评论</button>
 
 									</div>
 
@@ -157,16 +168,17 @@
 							<h3 class="title">问题排行</h3>
 							</h3>
 							<ul class="articles">
+								@foreach($hot as $v)
 								<li class="article-entry standard">
 									<h4>
-										<a href="single.html">Integrating WordPress with Your Website</a>
+										<a href="{{ url('/answer').'/'.$v->id }}">{{ $v->title }}</a>
 									</h4>
-									<span class="article-meta">25 Feb, 2013 in
-										<a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a>
+									<span class="article-meta">{{ $v->created_at }} in
+										<a href="#" title="View all posts in Server &amp; Database">{{ $v->topic->name }}</a>
 									</span>
-									<span class="like-count">66</span>
+									<span class="like-count">{{ $v->support }}</span>
 								</li>
-
+								@endforeach
 							</ul>
 						</section>
 
@@ -188,7 +200,7 @@
 								@foreach($data as $a)
 								<li class="recentcomments">
 									<div style="overflow:hidden;text-overflow:ellipsis;white-space: nowrap;">
-										<a href="#">{{ $a->answer_content }}</a>
+										<a href="#">{{ strip_tags($a->answer_content) }}</a>
 									</div>
 								</li>
 								@endforeach
@@ -255,8 +267,8 @@
 						<button type="button" class="btn btn-default" data-dismiss="modal" onclick="clearmsg()">关闭</button>
 						<button type="button" class="btn btn-primary" id="sendout">发送</button>
 					</div>
-                    
-                    {!! Form::close() !!}
+
+					{!! Form::close() !!}
 
 				</div>
 				<!-- /.modal-content -->
@@ -266,17 +278,11 @@
 		<!-- /.modal -->
 
 
-
-
-
-
-
-
-		<script>
-			$('.sendmsg').click(function(){
-        $('#username').val('{!! $info->user->nickname !!}');
-    })
-    
+<script>
+	$('.sendmsg').click(function(){
+		$('#username').val('{!! $info->user->nickname !!}');
+	})
+    @include('users.sendmsg')
 
     $('.likeclick').click( function(){
 
@@ -290,36 +296,77 @@
         }
         });
         
+	});
+	
+	$('.comment-delete').click( function(){
+		var aid = $(this).attr('answer-id');
+        $.ajax({
+        url:'/answer/'+ aid,
+        async:true,
+		type:'delete',
+		data:{'_token':'{{csrf_token()}}'},
+        datatype:'json',
+        success:function(data){
+		window.location.reload()
+		}
+        });
+        
     });
 
 
         $(document).ready(function() {
         $('#summernote').summernote({
             height: 200,
-            lang: 'zh-CN',
-        });
+			lang: 'zh-CN',
+			callbacks: {
+                onImageUpload: function (files) {
+                    var sumfile = $('#summernote')
+                    sendFile(sumfile, files[0]);
+                }
+            }
+		});
+		
+
+		function sendFile(sumfile, file) {
+            var formData = new FormData();
+            formData.append("file", file);
+            formData.append("_token", '{{csrf_token()}}');
+
+            $.ajax({
+                url: "/question/upload",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function (data) {
+                    sumfile.summernote('insertImage',  "{{ asset('/') }}" +data);
+                }
+            });
+        }
         
         $('.subcontent').click(function(){
-            var content = $('#summernote').summernote('code');
+			var content = $('#summernote').summernote('code');
             $.ajax({
-            url:'/answer',
-            data:{'question_id':{{$info->id}},'answer_content':content,'_token':'{{csrf_token()}}'},
-            type:'post',
-            dataType:'json',
-            success:function(data){
-                console.log(data);
-            },
-            statusCode:{422:function(data){
-                var error = JSON.parse(data.responseText);
-                console.log(error);
-                $('.subcontent').val(error.content[0]);
-                $('.subcontent').val(error.title[0]);
-                $('.subcontent').val(error.topic_id[0]);
-            }
-        }
-    })
-})
-
+				url:'/answer',
+				data:{'question_id':{{$info->id}},'answer_content':content,'_token':'{{csrf_token()}}'},
+				type:'post',
+				dataType:'json',
+				success:function(data){
+					window.location.reload();
+				},
+				statusCode:{422:function(data){
+					var error = JSON.parse(data.responseText);
+					console.log(error);
+					$('.subcontent').val(error.content[0]);
+					$('.subcontent').val(error.title[0]);
+					$('.subcontent').val(error.topic_id[0]);
+				}
+			}
+		})
+	})
 });
+	
+	
 </script>
 @endsection

@@ -1,6 +1,9 @@
 @extends('parents')
+@section('title')
+	<title>{{ Config::get('webconfig.title') }}--问题列表</title>
+@endsection
 @section('content')
-@include('editor::decode')
+{{--  @include('editor::decode')  --}}
 <!-- Start of Page Container -->
 <hr>
 <div class="page-container">
@@ -27,7 +30,7 @@
 
                     </header>
 
-                        {!! EndaEditor::MarkDecode($v->content) !!}
+                        {!! $v->content !!}
 
                 </article>
                 @endforeach
@@ -40,16 +43,16 @@
 
 
             <!-- start of sidebar -->
-            <aside class="col-md-4 page-sidebar">
+            {{--  <aside class="col-md-4 page-sidebar">
 
                 <section class="widget">
                     <div class="support-widget">
                         <h3 class="title">客服</h3>
                         <p class="intro">需要更多的支持?如果你没有找到一个答案,联系我们进一步的帮助。</p>
                     </div>
-                </section>
+                </section>  --}}
 
-
+{{--  
                 <section class="widget">
                     <h3 class="title">文章</h3>
                     <ul class="articles">
@@ -60,7 +63,7 @@
                         </li>
 
                     </ul>
-                </section>
+                </section>  --}}
 
 
 
@@ -76,7 +79,7 @@
                     <h3 class="title">热门问题</h3>
                     <ul id="recentcomments">
                         @foreach($support as $q)
-                        <li class="recentcomments"><a href="#">{{ $q->title }}</a></li>
+                        <li class="recentcomments"><a href="#">{{ strip_tags($q->title) }}</a></li>
                         @endforeach
                     </ul>
                 </section>
@@ -87,10 +90,5 @@
     </div>
 </div>
 <!-- End of Page Container -->
-<script>
 
-    $('.like-count').click(function(){
-        
-    })
-</script>
 @endsection

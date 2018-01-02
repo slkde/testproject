@@ -1,4 +1,7 @@
 @extends('parents')
+@section('title')
+	<title>{{ Config::get('webconfig.title') }}--提交一个问题</title>
+@endsection
 @section('content')
 {{--  @include('editor::head')  --}}
 <div style="background: url('{{ asset('images/background2.jpg') }} '); margin-top:50px;width:100%;height:100%">
@@ -67,7 +70,32 @@
         $('#summernote').summernote({
             height: 430,
             lang: 'zh-CN',
+            
+            callbacks: {
+                onImageUpload: function (files) {
+                    var sumfile = $('#summernote')
+                    sendFile(sumfile, files[0]);
+                }
+            }
         });
+
+        function sendFile(sumfile, file) {
+            var formData = new FormData();
+            formData.append("file", file);
+            formData.append("_token", '{{csrf_token()}}');
+
+            $.ajax({
+                url: "/question/upload",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function (data) {
+                    sumfile.summernote('insertImage', "{{ asset('/') }}" +data);
+                }
+            });
+        }
     });
 
     $('.subcontent').click(function(){

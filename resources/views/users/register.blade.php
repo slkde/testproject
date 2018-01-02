@@ -1,4 +1,7 @@
 @extends('parents')
+@section('title')
+	<title>{{ Config::get('webconfig.title') }}--用户注册</title>
+@endsection
 @section('content')
 
 

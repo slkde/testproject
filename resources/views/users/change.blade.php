@@ -1,6 +1,9 @@
 @extends('parents')
+@section('title')
+	<title>{{ Config::get('webconfig.title') }}--修改密码</title>
+@endsection
 @section('content')
-    <div class="container heade">
+    <div class="container heade" style="margin-top:50px;">
         <div class="row">
         <div class="col-md-6 col-md-offset-3" role="main">
             {!! Form::open(['method'=>'patch','url'=>'/user/forget/'.$token]) !!}
@@ -20,6 +23,9 @@
                 @if($errors->has('email'))
             {{ $errors->get('email')['0'] }}
             @endif
+            @if($errors->has('msg'))
+                <button type="button" class="btn btn-danger btn-xs">{{ $errors->get('msg') }}</button>
+                @endif
                 
                 {!! Form::email('email', null, ['class' => 'form-control']) !!}
                 
