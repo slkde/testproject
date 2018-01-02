@@ -105,6 +105,8 @@ class QuestionListController extends Controller
     {
         //
         $questions = Question::where('topic_id',$id)->latest('created_at')->Paginate(6);
+        $support = Question::latest('support')->Paginate(5);
+        $hot = Question::orderBy('support','desc')->Paginate(5);
         // dd($questions);
         // $questions = Question::findOrFail($id);
         // $info->content = $this->markdown->markdown($info->content);
@@ -115,7 +117,7 @@ class QuestionListController extends Controller
 
         // $info = Question::with('question_answer')->where('id', $id)->get()->toArray();
 
-        return view('question.show', compact('questions'));
+        return view('question.show', compact('questions','support','hot'));
     }
 
     /**

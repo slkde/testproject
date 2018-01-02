@@ -1,9 +1,13 @@
 @extends('parents')
 @section('content')
-@include('editor::decode')
+
 
 <!-- Start of Page Container -->
 <div class="page-container">
+    <br>
+    <br>
+
+
     <div class="container">
         
         <div class="row">
@@ -42,41 +46,35 @@
             <aside class="col-md-4 page-sidebar">
 
                 <section class="widget">
-                    <div class="support-widget">
-                        <h3 class="title">客服</h3>
-                        <p class="intro">需要更多的支持?如果你没有找到一个答案,联系我们进一步的帮助。</p>
-                    </div>
-                </section>
-
-
-                <section class="widget">
-                    <h3 class="title">文章</h3>
-                    <ul class="articles">
-                        <li class="article-entry standard">
-                            <h4><a href="single.html">Integrating WordPress with Your Website</a></h4>
-                            <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
-                            <span class="like-count">66</span>
-                        </li>
-
-                    </ul>
-                </section>
-
-
-
-                <section class="widget"><h3 class="title">话题</h3>
-                    <ul>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet,">Advanced Techniques</a> </li>
-
-                    </ul>
-                </section>
-
-                <section class="widget">
-                    <h3 class="title">最新评论</h3>
+                    <h3 class="title">热门问题</h3>
                     <ul id="recentcomments">
-                        <li class="recentcomments"><a href="#" rel="external nofollow" class="url">John Doe</a> on <a href="#">Integrating WordPress with Your Website</a></li>
-
+                        @foreach($support as $q)
+                        <li class="recentcomments"><a href="#">{{ strip_tags($q->title) }}</a></li>
+                        @endforeach
                     </ul>
                 </section>
+
+
+						<section class="widget">
+							<h3 class="title">问题排行</h3>
+							</h3>
+							<ul class="articles">
+								@foreach($hot as $v)
+								<li class="article-entry standard">
+									<h4>
+										<a href="{{ url('/answer').'/'.$v->id }}">{{ $v->title }}</a>
+									</h4>
+									<span class="article-meta">{{ $v->created_at }} in
+										<a href="#" title="View all posts in Server &amp; Database">{{ $v->topic->name }}</a>
+									</span>
+									<span class="like-count">{{ $v->support }}</span>
+								</li>
+								@endforeach
+							</ul>
+						</section>
+
+
+
 
             </aside>
             <!-- end of sidebar -->
