@@ -23,7 +23,7 @@ class HomeController extends Controller
 	    $input = $request->input('keyword') ? $request->input('keyword') : '';
         //	    dd($input);
 	    $questions = Question::where('title','like','%'.$input.'%')->latest('support')->Paginate(10);
-	    $topics = Topic::get();
+        $topics = Topic::get();
 	    return view('home.home', compact('questions', 'topics'));
     }
 

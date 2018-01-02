@@ -5,14 +5,26 @@
 @section('content')
 
     {{--轮播图开始--}}
+    
     <div class="search-area " id="search_top" style="margin-top: 50px">
         <div class="search-area container input-group-lg">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- 轮播（Carousel）指标 -->
                 <ol class="carousel-indicators">
+                    @if(!empty(Config::get('webconfig.photo')))
+                    @foreach(Config::get('webconfig.photo') as $k => $v)
+                    @if($k == 0)
+                    <li data-target="#carousel-example-generic" data-slide-to="{{ $k }}" class="active"></li>
+                    @else
+                    <li data-target="#carousel-example-generic" data-slide-to="{{ $k }}"></li>
+                    @endif
+                    @endforeach
+                    @else
                     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    @endif
+                    {{--  <li data-target="#carousel-example-generic" data-slide-to="2"></li>  --}}
                 </ol>
                 <!-- 轮播（Carousel）项目 -->
                 <div class="carousel-inner">
@@ -27,18 +39,33 @@
                                 </div><!-- /input-group -->
                             </div>
                         </form></div>
+                    {{--  <div class="item active">
+                        <img style="width:1140px;height:286px;" src="{{asset('images/seven.jpg')}}" alt="First slide">
+                    </div>  --}}
+                    @if(!empty(Config::get('webconfig.photo')))
+                    @foreach(Config::get('webconfig.photo') as $k => $v)
+                        @if($k == 0)
+                        <div class="item active">
+                        @else
+                        <div class="item">
+                        @endif
+                        <img style="width:1140px;height:286px;" src="{{asset( $v )}}" alt="Second slide">
+                    </div>
+                    @endforeach
+                    @else
                     <div class="item active">
                         <img style="width:1140px;height:286px;" src="{{asset('images/seven.jpg')}}" alt="First slide">
-
                     </div>
                     <div class="item">
                         <img style="width:1140px;height:286px;" src="{{asset('images/four.jpg')}}" alt="Second slide">
-
                     </div>
                     <div class="item">
                         <img style="width:1140px;height:286px;" src="{{asset('images/three.jpg')}}" alt="Third slide">
-
                     </div>
+                    @endif
+                    {{--  <div class="item">
+                        <img style="width:1140px;height:286px;" src="{{asset('images/three.jpg')}}" alt="Third slide">
+                    </div>  --}}
                 </div>
                 <!-- 轮播（Carousel）导航 -->
                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">

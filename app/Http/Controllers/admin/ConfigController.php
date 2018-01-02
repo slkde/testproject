@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use League\Flysystem\Exception;
 use DB;
+use Image;
 
 class ConfigController extends Controller
 {
@@ -38,7 +39,19 @@ class ConfigController extends Controller
         //1.获取要写入的数据
 
        $conf =  Config::orderBy('order','asc')->lists('content','name')->toArray();
-       //dd($conf);
+       $imgconf =  Config::orderBy('order','asc')->select('content','name')->get();
+       $config = [];
+       foreach($imgconf as $k => $v){
+        //    dd($v);
+        if($v['name'] == 'photo'){
+            $config['photo'][] = $v['content'];
+        }
+       }
+      //    $img = $imgconf->toArray();
+        unset($conf['photo']);
+       $conf = array_merge($config,$conf);
+    //    dd($config);
+    
         $c = '<?php return '.var_export($conf,true).';';
 
 
@@ -163,7 +176,7 @@ class ConfigController extends Controller
                     break;
                 case 'img':
 
-                    $v->content = '<input name="content[]" type="hidden" value="'.$v->content.'"/><img style="width:100px" name="content[]"  src="'.$v->content.'">';
+                    $v->content = '<input name="content[]" type="hidden" value="'.$v->content.'"/><img style="width:100px" name="content[]"  src="'. url($v->content) .'">';
                     break;
             }
         }
@@ -195,8 +208,17 @@ class ConfigController extends Controller
         //获取用户提交的数据
         $input = $request->except('_token');
     // dd($input);
+        if(!empty($input['photo'])){
+            // dd($input);
+            $input['content'] = $this->upimg($input['photo']);
+            unset($input['photo']);
+        }
+        foreach($input as $k => $v){
+            if(empty($input[$k])){
+                unset($input[$k]);
+            }
+        }
         $res = Config::create($input);
-
         if($res){
             //如果网址配置项添加到数据库成功，同步到web_config配置文件
             $this->putFile();
@@ -206,16 +228,6 @@ class ConfigController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -244,7 +256,16 @@ class ConfigController extends Controller
         //
         //通过$request获取要修改的值
         $input = $request->except('_token', '_method');
-        // dd($input);
+        if(!empty($input['photo'])){
+            // dd($input);
+            $res = Config::find($id);
+            if($res->type == 'img'){
+                unlink($res->content);
+            }
+            $input['content'] = $this->upimg($input['photo']);
+            unset($input['photo']);
+        }
+        
         foreach($input as $k=>$v){
             if(empty($input[$k])){
                 unset($input[$k]);
@@ -280,6 +301,36 @@ class ConfigController extends Controller
     public function destroy($id)
     {
         //删除配置项内容
-        $res = Config::find($id)->delete();
+        $res = Config::find($id);
+        if($res->type == 'img'){
+            unlink($res->content);
+        }
+        $res->delete();
+    }
+
+
+    public function upimg($file){
+        //验证上传类型
+        $photo_check = \Validator::make([ 'image'=>$file ], ['image' => 'image']);
+        if($photo_check->fails()){
+            return [
+                'success' => false,
+                'errors'   => $photo_check->getMessageBag()->toArray()
+            ];
+        }
+        
+        // 上传路径
+        $uppath = 'uploads/config/' ;
+        //活动原扩展名
+        $ext = $file->getClientOriginalExtension();
+        //拼接文件名
+        $name = \Auth::user()->id . date('YmdHis'). '.' . $ext;
+        //移动上传文件
+        $file->move($uppath, $name);
+        //调整图片大小
+        // Image::make($uppath.$name)->fit(200)->save();
+        //返回路径
+        
+        return $uppath . $name;
     }
 }

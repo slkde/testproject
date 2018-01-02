@@ -13,7 +13,7 @@
         </div>
 
 
-        <form action="{{ url('/admin/config') }}" method="post" class=" navbar-left">
+        <form action="{{ url('/admin/config') }}" method="post" enctype="multipart/form-data" class=" navbar-left">
             
             <table>
                 {{ csrf_field() }}
@@ -27,7 +27,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        <input class="form-control input-lg m-bot15" type="text" name="name" placeholder="配置项的名字">
+                        <input class="form-control input-lg m-bot15" type="text" name="name" placeholder="配置项名,轮播用photo">
                     </td>
                 </tr>
                 
@@ -67,7 +67,7 @@
                     <th></th>
                     <td>
                         
-                        {!! Form::file('photo', [$options]) !!}
+                        {!! Form::file('photo') !!}
                         
                     </td>
                 </tr>

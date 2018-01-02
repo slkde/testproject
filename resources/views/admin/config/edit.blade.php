@@ -28,7 +28,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        <input class="form-control input-lg m-bot15" type="text" name="name" placeholder="配置项的名字" value="{{$conf->name}}">
+                        <input class="form-control input-lg m-bot15" type="text" name="name" placeholder="配置项名,轮播图用photo" value="{{$conf->name}}">
                     </td>
                 </tr>
                 
@@ -52,7 +52,7 @@
                         <label for=""><input type="radio" name="type" @if($conf->type == 'input') checked   @endif value="input" onclick="showTr(this)">普通文本框</label>
                         <label for=""><input type="radio" name="type" @if($conf->type == 'textarea') checked   @endif value="textarea" onclick="showTr(this)">文本域</label>
                         <label for=""><input type="radio" name="type" @if($conf->type == 'radio') checked   @endif value="radio" onclick="showTr(this)">单选按钮</label>
-                        {{--  <label for=""><input type="radio" name="type" @if($conf->type == 'img') checked   @endif value="img" onclick="showTr(this)">图片</label>  --}}
+                        <label for=""><input type="radio" name="type" @if($conf->type == 'img') checked   @endif value="img" onclick="showTr(this)">图片</label>
                     </td>
                 </tr>
                 <br />
@@ -60,15 +60,15 @@
                 <tr id="radio" style="display: none">
                     <th></th>
                     <td>
-                        <input class="form-control input-lg m-bot15" type="text" value="1|开启,2|关闭" name="value">
+                        <input class="form-control input-lg m-bot15" type="text" placeholder="1|开启,2|关闭" name="value">
                     </td>
                 </tr>
 
                 <tr id="img" style="display: none">
                     <th></th>
                     <td>
-                        <input type="file" name="upload_file" value=""><br>
-                        <img style="width:100px"  src="{{$conf->content}}" alt="" >
+                        <input type="file" name="photo"><br>
+                        <img style="width:100px"  src="{{ url($conf->content) }}" alt="" >
                     </td>
                 </tr>
 
