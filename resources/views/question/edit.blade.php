@@ -1,6 +1,10 @@
 @extends('parents')
 @section('title')
-	<title>{{ Config::get('webconfig.title')}}--编辑我的问题</title>
+    @if(!empty(Config::get('webconfig.title')))
+    <title>{{ Config::get('webconfig.title')}}--编辑我的问题</title>
+	@else
+	<title>问答系统</title>
+	@endif
 @endsection
 @section('content')
 
