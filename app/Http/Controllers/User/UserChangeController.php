@@ -61,6 +61,7 @@ class UserChangeController extends Controller
             'phone.required'=> '手机号必填',
             'phone.digits'=> '手机号长度为11',
             'phone.numeric'=> '手机号码只能是数字',
+            'phone.unique'=> '手机号码已经存在',
 
             'email.required'=> '邮箱必填',
 
@@ -70,7 +71,7 @@ class UserChangeController extends Controller
             'nickname' => 'required|max:10|alpha_num',
             'password_confirmation' => 'required|max:10|alpha_num',
             'password' => 'required|max:10|alpha_num|confirmed',
-            'phone' => 'required|digits:11|numeric',
+            'phone' => 'required|digits:11|numeric|unique:ask_user',
             'email' => 'required',
             'job' => 'required',
         ],$message);
@@ -78,7 +79,7 @@ class UserChangeController extends Controller
         if(strcasecmp($request->input('code'), session()->get('code')) == 0)
         {
             //验证码正确，则除去表单的令牌
-            $user = $request->except('_token', 'password_confirmation', 'code');
+            $user = $request->except('_token', 'password_confirmation', 'code', 'file_upload');
             //密码加密
             $pwd = (int)$user['password'];
             $user['password'] = md5($pwd);

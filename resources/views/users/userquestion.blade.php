@@ -18,11 +18,11 @@
     {{--问题的配图部分--}}
     {{--  <figure><img src="{{ asset($v->photo)}}"></figure>  --}}
 
-    {{--问题的内容--}}
-    <ul>
-      <p>{{ $v->content }}</p>
-      <a title="{{ $v->title }}" href="{{ url('/user/question').'/'.$v->id }}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
-    </ul>
+        {{--问题的内容--}}
+        <ul>
+          {{ $v->content }}
+          <a title="{{ $v->title }}" href="{{ url('/user/question').'/'.$v->id }}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+        </ul>
 
     {{--底栏信息--}}
     <p class="dateview">

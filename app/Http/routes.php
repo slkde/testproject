@@ -50,6 +50,8 @@ Route::group(['middleware'=>'auth','prefix'=>'/user'],function(){
     Route::resource('/person', 'User\UserPersonController');
     //用户修改信息路由
     Route::resource('/changes', 'User\UserChangeController');
+    //用户修改信息时候    头像路由
+    Route::post('/pic', 'User\UserPicController@pic');
     //用户修改信息时候    验证码路由
     Route::get('/code', 'User\UserCodeController@code');
 });

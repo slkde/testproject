@@ -16,12 +16,12 @@ height: 32px;"></div>
     @foreach($info as $v)
     <p class="dateview">
         <span >
-              问题：{{ $v->answer_question->content }}
+              问题：{!! $v->answer_question->content !!}
         </span>
     </p>
     <p class="dateview">
         <span >
-              我的回答：{{ $v->answer_content }}
+              我的回答：{!! $v->answer_content !!}
         </span>
     </p>
     <p class="dateview">

@@ -26,7 +26,7 @@ height: 32px;"></div>
         </span>
     </p>
     <br><br>
-    <p style="margin-left:50px">{{$question->content}}</p>
+    <p style="margin-left:50px">{!! $question->content !!}</p>
 
     {{--以下是回复区--}}
     <h1>回复区：</h1>
@@ -43,7 +43,7 @@ height: 32px;"></div>
               回答时间:{{ $v->created_at }}
         </span>
     </p>
-    回答内容：<h3>{{ $v->answer_content }}</h3>
+    回答内容：<h3>{!! $v->answer_content !!}</h3>
     @endforeach
     {!! $user->render() !!}
 </div>

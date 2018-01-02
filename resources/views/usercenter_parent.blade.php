@@ -27,6 +27,13 @@ background: url(../../images/usercenter/bg.png) right top no-repeat'>
         <div class="contenttop" style="	width: 1000px;
 	margin: auto;">
             <div class="logo f_l" style="margin-left:300px">个人中心</div>
+            <div class="logo f_r" style="margin-left:300px">
+                <table class="table">
+                    <tr>
+                        <td><img src="{{ '/'.\Auth::user()->photo }}" alt="" style="width:100px;height:100px"></td>
+                    </tr>
+                </table>
+            </div>
             <div class="search f_r">
                 {{--<form action="" method="post" name="searchform" id="searchform">--}}
                     {{--<input name="keyboard" id="keyboard" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">--}}

@@ -21,9 +21,50 @@
       @endif
     </div>
     <div class="bloglist f_l"><br><br><br><br>
-      <form action="{{ url('/user/changes') }}" method="post" style="padding-left:270px">
+      <form id="art_form" action="{{ url('/user/changes') }}" method="post" style="padding-left:270px">
         {{ csrf_field() }}
         昵&nbsp&nbsp称：<input type="text" name="nickname" value="{{ old('nickname') }}" placeholder="{{ $user['nickname'] }}"><br><br><br>
+        修改头像： <input id="file_upload" name="file_upload" type="file" multiple="true"><br><br>
+          <input type="text" size="50" name="photo" id="photo">
+          <p><img id="img1" alt="上传后显示图片"  style="max-width:350px;max-height:100px;" /></p>
+        <script type="text/javascript">
+            $(function () {
+                $("#file_upload").change(function () {
+                    uploadImage();
+                })
+            })
+            function uploadImage() {
+            //判断是否有选择上传文件
+                var imgPath = $("#file_upload").val();
+                if (imgPath == "") {
+                    alert("请选择上传图片！");
+                    return;
+                }
+                //判断上传文件的后缀名
+                var strExtension = imgPath.substr(imgPath.lastIndexOf('.') + 1);
+                if (strExtension != 'jpg' && strExtension != 'gif'
+                    && strExtension != 'png' && strExtension != 'bmp') {
+                    alert("请选择图片文件");
+                    return;
+                }
+                var formData = new FormData($('#art_form')[0]);
+                $.ajax({
+                    type: "POST",
+                    url: "/user/pic",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        $('#img1').attr('src','/'+data);
+                        $('#photo').val(data);
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert("上传失败，请检查网络后重试");
+                    }
+                });
+            }
+        </script>
+        <br><br><br>
         密&nbsp&nbsp码：<input type="password"  name="password_confirmation"><br><br><br>
         确认密码：<input type="password" name="password"><br><br><br>
         性&nbsp&nbsp别：&nbsp&nbsp<label><input type="radio" name="sex" {{ $user['sex'] ? 'checked' : '' }} value="1">男</label>&nbsp&nbsp&nbsp&nbsp&nbsp
