@@ -22,7 +22,7 @@
 
                     <header class="clearfix">
 
-                        <h3 class="post-title">第{{ $v->id }}问
+                        <h3 class="post-title">
                             <a href="{{ url('answer/'.$v->id) }}">{{ $v->title }}</a>
                         </h3>
 

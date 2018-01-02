@@ -34,8 +34,13 @@
                 {!! Form::label('title', '标题：',['class' => 'form-control']) !!}
 
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-5">
                 {!! Form::text('title', $question->title, ['class' => 'form-control title']) !!}
+                </div>
+                <div class="col-md-3">
+    
+                    {!! Form::text('error',null,['class'=>'form-control err']) !!}
+                    
                 </div>
             </div>
 
@@ -109,9 +114,7 @@
             statusCode:{422:function(data){
                 var error = JSON.parse(data.responseText);
                 console.log(error);
-                $('.subcontent').val(error.content[0]);
-                $('.subcontent').val(error.title[0]);
-                $('.subcontent').val(error.topic_id[0]);
+               $('.err').val(error.title[0]);
             }
         }
         });

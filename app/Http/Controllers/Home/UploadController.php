@@ -40,7 +40,7 @@ class UploadController extends Controller
         //移动上传文件
         $file->move($uppath, $name);
         //调整图片大小
-        Image::make($uppath.$name)->fit(300)->save();
+        Image::make($uppath.$name)->fit(200)->save();
         //返回路径
         return $uppath . $name;
     }
