@@ -20,7 +20,7 @@
 
     {{--问题的内容--}}
     <ul>
-      <p>{{ $v->content }}</p>
+      <p>{{ strip_tags($v->content) }}</p>
       <a title="{{ $v->title }}" href="{{ url('/person/questioninfo').'/'.$v->id }}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
     </ul>
 

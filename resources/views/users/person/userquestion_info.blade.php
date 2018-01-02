@@ -26,8 +26,9 @@ height: 32px;"></div>
         </span>
     </p>
     <br><br>
-    <p style="margin-left:50px">{{$question->content}}</p>
-
+    <div style="margin-left:50px">{!! $question->content !!}</div>
+    <div class="clearfix"></div>
+    <br>
     {{--以下是回复区--}}
     <h1>回复区：</h1>
     {{--遍历回复的基本信息--}}

@@ -27,7 +27,7 @@ height: 32px;"></div>
     </p>
     <br><br>
     <p style="margin-left:50px">{!! $question->content !!}</p>
-
+    <div class="clearfix"></div>
     {{--以下是回复区--}}
     <h1>回复区：</h1>
     {{--遍历回复的基本信息--}}
@@ -44,6 +44,7 @@ height: 32px;"></div>
         </span>
     </p>
     回答内容：<h3>{!! $v->answer_content !!}</h3>
+    <div class="clearfix"></div>
     @endforeach
     {!! $user->render() !!}
 </div>

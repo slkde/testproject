@@ -19,11 +19,13 @@ height: 32px;"></div>
               问题：{{ $v->answer_question->content }}
         </span>
     </p>
+    <div class="clearfix"></div>
     <p class="dateview">
         <span >
               我的回答：{{ $v->answer_content }}
         </span>
     </p>
+    <div class="clearfix"></div>
     <p class="dateview">
         <span>
               回答时间：{{ $v->created_at }}
