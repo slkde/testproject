@@ -56,14 +56,27 @@
                 </tr>
                 <br />
                 
-                <tr id="showradio" style="display: none">
+                <tr id="showradio" class="hiddenall" style="display: none">
                     <th></th>
                     <td>
                         <input class="form-control input-lg m-bot15" type="text" placeholder="1|开启,2|关闭" name="value">
                     </td>
                 </tr>
 
-                <tr id="showimg" style="display: none">
+                <tr id="showarea" class="hiddenall"  style="display: none">
+                    <th></th>
+                    <td>
+                        <textarea class="form-control input-lg m-bot15"  name="value"></textarea>
+                    </td>
+                </tr>
+                <tr id="showinput" class="hiddenall"  style="display: none">
+                    <th></th>
+                    <td>
+                        <input class="form-control input-lg m-bot15" type="text"  name="value">
+                    </td>
+                </tr>
+
+                <tr id="showimg" class="hiddenall"  style="display: none">
                     <th></th>
                     <td>
                         
@@ -91,18 +104,20 @@
            var v =  $(obj).val();
            switch(v){
                case 'input':
-                  $('#value').hide();
+                 $('.hiddenall').hide();
+                  $('#showinput').show();
                   break;
                case 'textarea':
-                   $('#value').hide();
+                $('.hiddenall').hide();
+                   $('#showarea').show();
                    break;
                case 'radio':
+                $('.hiddenall').hide();
                    $('#showradio').show();
-                   $('#showimg').hide();
                    break;
                case 'img':
+                $('.hiddenall').hide();
                    $('#showimg').show();
-                   $('#showradio').hide();
                    break;
            }
         }

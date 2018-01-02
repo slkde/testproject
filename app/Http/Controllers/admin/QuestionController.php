@@ -207,12 +207,12 @@ class QuestionController extends Controller
             'title'=>'required|between:10,30',
         ], $messages);
 		//2、通过$request获取要修改的值
-        $input = $request->except('_token', '_method','photo1');
+        $input = $request->except('_token', '_method');
         //dd($input);
 		//3、执行修改操作
         $question = Question::find($id);
 		//dd(public_path().'/uploads/'.$question['photo']);
-		$res = $question->update(['title'=>$input['title'],'content'=>$input['content'],'photo'=>$input['photo']]);
+		$res = $question->update(['title'=>$input['title'],'content'=>$input['content']]);
 		
 		/* dd($res); */
         if($res){

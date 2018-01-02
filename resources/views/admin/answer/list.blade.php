@@ -33,7 +33,7 @@
                 <br><br>
         <div class="result_wrap">
             <div class="result_content">
-                <table class="table table-bordered table-hover"">
+                <table class="table table-bordered table-hover">
                     <tr>
                         <th class="tc">ID</th>                        
                         <th>内容</th>						
@@ -43,7 +43,7 @@
                 @foreach($data as $k=>$v)
                         <tr>
                             <td class="tc">{{$v->id}}</td>                           
-                            <td id="neirong" >{{$v->answer_content}}</td>		
+                            <td id="neirong" >{!!$v->answer_content!!}</td>		
 							<td>{{$v->created_at}}</td>
                             <td>
                                 <a class="btn btn-primary" href="{{url('admin/answer/'.$v->id)}}">详情</a>

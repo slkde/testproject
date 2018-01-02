@@ -26,7 +26,7 @@
                    <tr>
 					    <td>{{$question->id}}</td>
 						<td>{{$question->title}}</td>
-						<td>{{$question->content}}</td>
+						<td>{!!$question->content!!}</td>
 						<td>{{$question->user->username}}</td>
 						<td>{{$question->photo}}</td>
 						<td>{{$question->created_at}}</td>
@@ -55,7 +55,7 @@
 					<tr>
 						<td>||----{{$v->id}}</td>
 						
-						<td>{{$v->answer_content}}</td>
+						<td>{!!$v->answer_content!!}</td>
 						<td>{{$v->support}}</td>
 						<td>{{$v->created_at}}</td>
 						<td>{{$v->answer_status}}</td>

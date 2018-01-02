@@ -24,7 +24,7 @@
 		<!--搜索结果页面 列表 开始-->    
         <div class="result_wrap">
             <div class="result_content">
-                <table class="table table-bordered table-hover"">
+                <table class="table table-bordered table-hover">
                     <tr>
                         <th class="tc">ID</th>
                         <th>标题</th>
@@ -39,7 +39,7 @@
                         <tr>
                             <td class="tc">{{$v->id}}</td>
                             <td width="100px">{{$v->title}}</td>
-                            <td width="550px">{{$v->content}}</td>
+                            <td width="550px">{!!$v->content !!}}</td>
 							
 							<td>{{ $v->user->username }}</td>
                             <td>{{$v->support}}</td>                         
