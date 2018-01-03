@@ -20,14 +20,14 @@
                 <tr>
                     <th></th>
                     <td>
-                        <input class="form-control input-lg m-bot15" type="text" name="title" placeholder="配置项的描述">
+                        <input class="form-control input-lg m-bot15" type="text" name="title" placeholder="配置项的描述,不用数字">
                     </td>
                 </tr>
 
                 <tr>
                     <th></th>
                     <td>
-                        <input class="form-control input-lg m-bot15" type="text" name="name" placeholder="配置项名,轮播用photo">
+                        <input class="form-control input-lg m-bot15" type="text" name="name" placeholder="配置项名,轮播用photo,不用数字">
                     </td>
                 </tr>
                 
