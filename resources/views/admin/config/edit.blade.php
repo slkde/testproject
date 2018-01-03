@@ -57,20 +57,38 @@
                 </tr>
                 <br />
 
-                <tr id="radio" style="display: none">
+
+
+                <tr id="showradio" class="hiddenall" style="display: none">
                     <th></th>
                     <td>
                         <input class="form-control input-lg m-bot15" type="text" placeholder="1|开启,2|关闭" name="value">
                     </td>
                 </tr>
 
-                <tr id="img" style="display: none">
+                <tr id="showarea" class="hiddenall"  style="display: none">
                     <th></th>
                     <td>
-                        <input type="file" name="photo"><br>
-                        <img style="width:100px"  src="{{ url($conf->content) }}" alt="" >
+                        <textarea class="form-control input-lg m-bot15"  name="value"></textarea>
                     </td>
                 </tr>
+                <tr id="showinput" class="hiddenall"  style="display: none">
+                    <th></th>
+                    <td>
+                        <input class="form-control input-lg m-bot15" type="text"  name="value">
+                    </td>
+                </tr>
+
+                <tr id="showimg" class="hiddenall"  style="display: none">
+                    <th></th>
+                    <td>
+                        
+                        {!! Form::file('photo') !!}
+                        <img style="width:100px"  src="{{ url($conf->content) }}" alt="" >
+                        
+                    </td>
+                </tr>
+               
 
                 <tr>
                     <th></th>
@@ -90,13 +108,23 @@
             //获取value值是radio的单选按钮
            var obj =  $("input[value='radio']:checked");
            if(obj.length > 0){
-               $('#radio').show();
+               $('#showradio').show();
+           }
+
+           var obj =  $("input[value='textarea']:checked");
+           if(obj.length > 0){
+               $('#showarea').show();
+           }
+
+           var obj =  $("input[value='input']:checked");
+           if(obj.length > 0){
+               $('#showinput').show();
            }
 
             //页面中的单选按钮中图片这一项被选中，让id="field_img"的tr显示出来
             var obj =  $("input[value='img']:checked");
             if(obj.length > 0){
-                $('#img').show();
+                $('#showimg').show();
             }
         });
 
@@ -106,18 +134,20 @@
            var v =  $(obj).val();
            switch(v){
                case 'input':
-                  $('#value').hide();
+                 $('.hiddenall').hide();
+                  $('#showinput').show();
                   break;
                case 'textarea':
-                   $('#value').hide();
+                $('.hiddenall').hide();
+                   $('#showarea').show();
                    break;
                case 'radio':
-                   $('#radio').show();
-                   $('#img').hide();
+                $('.hiddenall').hide();
+                   $('#showradio').show();
                    break;
                case 'img':
-                   $('#img').show();
-                   $('#radio').hide();
+                $('.hiddenall').hide();
+                   $('#showimg').show();
                    break;
            }
         }

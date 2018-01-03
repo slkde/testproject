@@ -14,30 +14,15 @@ use Image;
 class ConfigController extends Controller
 {
     /**
-     * 这个方法的作用   批量修改配置项内容
-     * @author   xxxx
-     * @date     2017-12-19  9:14
-     * 
-     * @param Request $request 接收表单提交的内容
-     * @param Request $request 接收表单提交的内容
+     * 将网站配置写入配置文件
+     * @param name ; photo; content;
      *
-     * @return 如果修改成功重定向到配置项列表页，如果修改失败返回到原修改页面
+     * @return array
      */
 
-    //将网站配置表中的配置数据写入配置文件，后期直接从配置文件中取网站配置
 
     public function putFile()
     {
-//
-//        向配置文件中写入内容
-//        Config::put('webconfig.a','aaaaaa');
-//        从配置文件中读取配置项内容
-//        Config::get('webconfig.a');
-//        config('webconfig.a');
-
-        //return 111;
-        //1.获取要写入的数据
-
        $conf =  Config::orderBy('order','asc')->lists('content','name')->toArray();
        $imgconf =  Config::orderBy('order','asc')->select('content','name')->get();
        $config = [];
@@ -61,14 +46,11 @@ class ConfigController extends Controller
     }
     
     /**
-     * 这个方法的作用   批量修改配置项内容
-     * @author   xxxx
-     * @date     2017-12-19  9:14
      * 
-     * @param Request $request 接收表单提交的内容
-     * @param Request $request 接收表单提交的内容
+     * 
+     * @param 
      *
-     * @return 如果修改成功重定向到配置项列表页，如果修改失败返回到原修改页面
+     * @return 
      */
     public function changeContent(Request $request)
     {
@@ -85,11 +67,6 @@ class ConfigController extends Controller
         }else{
             return back();
         }
-//        dd($res);
-
-
-//        3.根据修改是否成功，跳转到对应的路由
-//        return redirect('admin/config');
 
     }
 
@@ -136,12 +113,9 @@ class ConfigController extends Controller
     
     public function index()
     {
-        //        获取网站配置数据
-        // $confs = Config::get();
-        // return view('admin.config.list',compact('confs'));
          
          
-//        获取网站配置数据
+        //获取网站配置数据
         $confs = Config::orderBy('order','asc')->get();
        
         //对获取到的网站配置数据中的网站内容进行格式化
@@ -186,9 +160,9 @@ class ConfigController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 显示配置文件添加页面
      *
-     * @return \Illuminate\Http\Response
+     * @return 
      */
     public function create()
     {
@@ -198,9 +172,9 @@ class ConfigController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 添加网站配置
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  name;title;photo;value;
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -230,10 +204,10 @@ class ConfigController extends Controller
 
 
     /**
-     * Show the form for editing the specified resource.
+     * 显示配置编辑页面
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  $id是当前配置的ID
+     * @return array
      */
     public function edit($id)
     {
@@ -244,11 +218,10 @@ class ConfigController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 更新配置文件
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  $id是当前配置的id
+     * @return BOOL
      */
     public function update(Request $request, $id)
     {
@@ -272,13 +245,6 @@ class ConfigController extends Controller
             }
         }
         
-        //获取网站配置内容
-        // $confs = Config::orderBy('order','asc')->get();
-        // dd($confs);
-        //对获取到的网站配置数据中的网站内容进行格式化
-        // foreach ($confs as $k => $v) {
-        //     if($k)
-        // }
 
         //执行修改操作
         $conf = Config::find($id);
@@ -293,10 +259,10 @@ class ConfigController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 删除配置
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  $id要删除的配置id
+     * @return 
      */
     public function destroy($id)
     {
@@ -309,6 +275,12 @@ class ConfigController extends Controller
     }
 
 
+    /**
+     * 上传图片
+     *
+     * @param  $file表单提交的文件
+     * @return 图片路径
+     */
     public function upimg($file){
         //验证上传类型
         $photo_check = \Validator::make([ 'image'=>$file ], ['image' => 'image']);
